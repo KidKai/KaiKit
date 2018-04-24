@@ -58,9 +58,10 @@
 			children = (
 				18D8068B208CD2C500D53845 /* KaiKit.podspec */,
 				184C1451208CBCA600FB9B8C /* main.swift */,
-				184C1448208CBC3100FB9B8C /* Products */,
-				0AD862070D4B35809B52BE08 /* Pods */,
 				EFA1D42A49B88E89D5623890 /* Frameworks */,
+				C4CADA91208ECB50007110FE /* KaiKit */,
+				0AD862070D4B35809B52BE08 /* Pods */,
+				184C1448208CBC3100FB9B8C /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +71,13 @@
 				184C1447208CBC3100FB9B8C /* KaiKit */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C4CADA91208ECB50007110FE /* KaiKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = KaiKit;
 			sourceTree = "<group>";
 		};
 		EFA1D42A49B88E89D5623890 /* Frameworks */ = {
@@ -91,6 +99,7 @@
 				184C1443208CBC3100FB9B8C /* Sources */,
 				184C1444208CBC3100FB9B8C /* Frameworks */,
 				184C1445208CBC3100FB9B8C /* CopyFiles */,
+				F9BC70DB9C9117ADC37C875D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -150,6 +159,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9BC70DB9C9117ADC37C875D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KaiKit/Pods-KaiKit-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
