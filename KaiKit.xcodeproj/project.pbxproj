@@ -7,11 +7,75 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1841E575209EF75400459C21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841E574209EF75400459C21 /* AppDelegate.swift */; };
+		1841E577209EF75400459C21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841E576209EF75400459C21 /* ViewController.swift */; };
+		1841E57A209EF75400459C21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1841E578209EF75400459C21 /* Main.storyboard */; };
+		1841E57C209EF75600459C21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1841E57B209EF75600459C21 /* Assets.xcassets */; };
+		1841E57F209EF75600459C21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1841E57D209EF75600459C21 /* LaunchScreen.storyboard */; };
+		1841E58A209EFBB200459C21 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1841E588209EFBB200459C21 /* Interface.storyboard */; };
+		1841E58C209EFBB300459C21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1841E58B209EFBB300459C21 /* Assets.xcassets */; };
+		1841E593209EFBB300459C21 /* KaiWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1841E592209EFBB300459C21 /* KaiWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1841E598209EFBB300459C21 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841E597209EFBB300459C21 /* InterfaceController.swift */; };
+		1841E59A209EFBB300459C21 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841E599209EFBB300459C21 /* ExtensionDelegate.swift */; };
+		1841E59C209EFBB400459C21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1841E59B209EFBB400459C21 /* Assets.xcassets */; };
+		1841E5A0209EFBB400459C21 /* KaiWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 1841E586209EFBB200459C21 /* KaiWatch.app */; };
+		1841E5B0209F011500459C21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841E5AF209F011500459C21 /* AppDelegate.swift */; };
+		1841E5B2209F011500459C21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841E5B1209F011500459C21 /* ViewController.swift */; };
+		1841E5B5209F011500459C21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1841E5B3209F011500459C21 /* Main.storyboard */; };
+		1841E5B7209F011700459C21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1841E5B6209F011700459C21 /* Assets.xcassets */; };
+		1841E5C3209F023A00459C21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841E5C2209F023A00459C21 /* AppDelegate.swift */; };
+		1841E5C5209F023A00459C21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1841E5C4209F023A00459C21 /* ViewController.swift */; };
+		1841E5C7209F023B00459C21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1841E5C6209F023B00459C21 /* Assets.xcassets */; };
+		1841E5CA209F023B00459C21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1841E5C8209F023B00459C21 /* Main.storyboard */; };
 		184C1452208CBCA600FB9B8C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C1451208CBCA600FB9B8C /* main.swift */; };
-		68D33BA84E18DE3CBBDF3E03 /* Pods_KaiKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA7256F9F14F6FFFFB46030 /* Pods_KaiKit.framework */; };
+		2942ABB551E8D61B7D0BC010 /* Pods_KaiIp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7938943883FBD58477697B1 /* Pods_KaiIp.framework */; };
+		2C82D6A376F62345B2CE81C8 /* Pods_KaiTv.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846F8767A895B4C21D993688 /* Pods_KaiTv.framework */; };
+		314CEB0BC90649B1613E39AA /* Pods_KaiMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53EFAD5FFFB01F99FEE443F3 /* Pods_KaiMac.framework */; };
+		558B0E703DFA311E9CE11CCE /* Pods_KaiWatch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F7E048ED8F5B7FBF939A611 /* Pods_KaiWatch_Extension.framework */; };
+		A53E493C468099A7F3A03D9C /* Pods_KaiWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B7F3094F02F4A45E3E1D7E /* Pods_KaiWatch.framework */; };
+		C309F338E245F2EC5D00D7E7 /* Pods_KaiKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA7256F9F14F6FFFFB46030 /* Pods_KaiKit.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1841E594209EFBB300459C21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 184C143F208CBC3100FB9B8C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1841E591209EFBB300459C21;
+			remoteInfo = "KaiWatch Extension";
+		};
+		1841E59E209EFBB400459C21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 184C143F208CBC3100FB9B8C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1841E585209EFBB200459C21;
+			remoteInfo = KaiWatch;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
+		1841E5A6209EFBB400459C21 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1841E593209EFBB300459C21 /* KaiWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1841E5A8209EFBB400459C21 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				1841E5A0209EFBB400459C21 /* KaiWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		184C1445208CBC3100FB9B8C /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -24,20 +88,104 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		12BC6112DCBD9E6934EA26CE /* Pods-KaiMac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaiMac.release.xcconfig"; path = "Pods/Target Support Files/Pods-KaiMac/Pods-KaiMac.release.xcconfig"; sourceTree = "<group>"; };
+		1841E572209EF75400459C21 /* KaiIp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaiIp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1841E574209EF75400459C21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1841E576209EF75400459C21 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1841E579209EF75400459C21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1841E57B209EF75600459C21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1841E57E209EF75600459C21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1841E580209EF75600459C21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1841E586209EFBB200459C21 /* KaiWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaiWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1841E589209EFBB200459C21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		1841E58B209EFBB300459C21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1841E58D209EFBB300459C21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1841E592209EFBB300459C21 /* KaiWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KaiWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1841E597209EFBB300459C21 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		1841E599209EFBB300459C21 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		1841E59B209EFBB400459C21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1841E59D209EFBB400459C21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1841E5AD209F011500459C21 /* KaiTv.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaiTv.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1841E5AF209F011500459C21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1841E5B1209F011500459C21 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1841E5B4209F011500459C21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1841E5B6209F011700459C21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1841E5B8209F011700459C21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1841E5C0209F023A00459C21 /* KaiMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaiMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1841E5C2209F023A00459C21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1841E5C4209F023A00459C21 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1841E5C6209F023B00459C21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1841E5C9209F023B00459C21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1841E5CB209F023B00459C21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1841E5CC209F023B00459C21 /* KaiMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KaiMac.entitlements; sourceTree = "<group>"; };
 		184C1447208CBC3100FB9B8C /* KaiKit */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = KaiKit; sourceTree = BUILT_PRODUCTS_DIR; };
 		184C1451208CBCA600FB9B8C /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		18D8068B208CD2C500D53845 /* KaiKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = KaiKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		1C49F39B24BE99E275CA3226 /* Pods-KaiKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaiKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KaiKit/Pods-KaiKit.debug.xcconfig"; sourceTree = "<group>"; };
+		1F0829C30C2D0E830B111B04 /* Pods-KaiKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaiKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-KaiKit/Pods-KaiKit.release.xcconfig"; sourceTree = "<group>"; };
+		41F8C71DDDA975F206F6B449 /* Pods-KaiIp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaiIp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KaiIp/Pods-KaiIp.debug.xcconfig"; sourceTree = "<group>"; };
 		4AA7256F9F14F6FFFFB46030 /* Pods_KaiKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KaiKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		50008081DBF5D9BD2C8C047A /* Pods-KaiKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaiKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-KaiKit/Pods-KaiKit.release.xcconfig"; sourceTree = "<group>"; };
-		73F11C1CAFB27AE636AFE6C8 /* Pods-KaiKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaiKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KaiKit/Pods-KaiKit.debug.xcconfig"; sourceTree = "<group>"; };
+		51735172E46C62A567E93C47 /* Pods-KaiMac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaiMac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KaiMac/Pods-KaiMac.debug.xcconfig"; sourceTree = "<group>"; };
+		53EFAD5FFFB01F99FEE443F3 /* Pods_KaiMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KaiMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F7E048ED8F5B7FBF939A611 /* Pods_KaiWatch_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KaiWatch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		676112868AE2FF2103432016 /* Pods-KaiWatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaiWatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-KaiWatch/Pods-KaiWatch.release.xcconfig"; sourceTree = "<group>"; };
+		846F8767A895B4C21D993688 /* Pods_KaiTv.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KaiTv.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84DA237FF16EBC52D484CB17 /* Pods-KaiTv.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaiTv.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KaiTv/Pods-KaiTv.debug.xcconfig"; sourceTree = "<group>"; };
+		9D23A8855B9ACE92B00D804D /* Pods-KaiTv.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaiTv.release.xcconfig"; path = "Pods/Target Support Files/Pods-KaiTv/Pods-KaiTv.release.xcconfig"; sourceTree = "<group>"; };
+		A33F68F4AC89FCBF7A4CBA4D /* Pods-KaiWatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaiWatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KaiWatch/Pods-KaiWatch.debug.xcconfig"; sourceTree = "<group>"; };
+		AF5330DF757119B39606619F /* Pods-KaiIp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaiIp.release.xcconfig"; path = "Pods/Target Support Files/Pods-KaiIp/Pods-KaiIp.release.xcconfig"; sourceTree = "<group>"; };
+		C805591BE969C319F6DB1091 /* Pods-KaiWatch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaiWatch Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KaiWatch Extension/Pods-KaiWatch Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		C8B7F3094F02F4A45E3E1D7E /* Pods_KaiWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KaiWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E60FAF7E9086BD33B22BA4FD /* Pods-KaiWatch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaiWatch Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-KaiWatch Extension/Pods-KaiWatch Extension.release.xcconfig"; sourceTree = "<group>"; };
+		F7938943883FBD58477697B1 /* Pods_KaiIp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KaiIp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1841E56F209EF75400459C21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2942ABB551E8D61B7D0BC010 /* Pods_KaiIp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1841E58F209EFBB300459C21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				558B0E703DFA311E9CE11CCE /* Pods_KaiWatch_Extension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1841E5AA209F011500459C21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C82D6A376F62345B2CE81C8 /* Pods_KaiTv.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1841E5BD209F023A00459C21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				314CEB0BC90649B1613E39AA /* Pods_KaiMac.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		184C1444208CBC3100FB9B8C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68D33BA84E18DE3CBBDF3E03 /* Pods_KaiKit.framework in Frameworks */,
+				C309F338E245F2EC5D00D7E7 /* Pods_KaiKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF636677B170B695A0C0B400 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A53E493C468099A7F3A03D9C /* Pods_KaiWatch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,10 +195,79 @@
 		0AD862070D4B35809B52BE08 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				73F11C1CAFB27AE636AFE6C8 /* Pods-KaiKit.debug.xcconfig */,
-				50008081DBF5D9BD2C8C047A /* Pods-KaiKit.release.xcconfig */,
+				41F8C71DDDA975F206F6B449 /* Pods-KaiIp.debug.xcconfig */,
+				AF5330DF757119B39606619F /* Pods-KaiIp.release.xcconfig */,
+				1C49F39B24BE99E275CA3226 /* Pods-KaiKit.debug.xcconfig */,
+				1F0829C30C2D0E830B111B04 /* Pods-KaiKit.release.xcconfig */,
+				51735172E46C62A567E93C47 /* Pods-KaiMac.debug.xcconfig */,
+				12BC6112DCBD9E6934EA26CE /* Pods-KaiMac.release.xcconfig */,
+				84DA237FF16EBC52D484CB17 /* Pods-KaiTv.debug.xcconfig */,
+				9D23A8855B9ACE92B00D804D /* Pods-KaiTv.release.xcconfig */,
+				C805591BE969C319F6DB1091 /* Pods-KaiWatch Extension.debug.xcconfig */,
+				E60FAF7E9086BD33B22BA4FD /* Pods-KaiWatch Extension.release.xcconfig */,
+				A33F68F4AC89FCBF7A4CBA4D /* Pods-KaiWatch.debug.xcconfig */,
+				676112868AE2FF2103432016 /* Pods-KaiWatch.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		1841E573209EF75400459C21 /* KaiIp */ = {
+			isa = PBXGroup;
+			children = (
+				1841E574209EF75400459C21 /* AppDelegate.swift */,
+				1841E57B209EF75600459C21 /* Assets.xcassets */,
+				1841E580209EF75600459C21 /* Info.plist */,
+				1841E57D209EF75600459C21 /* LaunchScreen.storyboard */,
+				1841E578209EF75400459C21 /* Main.storyboard */,
+				1841E576209EF75400459C21 /* ViewController.swift */,
+			);
+			path = KaiIp;
+			sourceTree = "<group>";
+		};
+		1841E587209EFBB200459C21 /* KaiWatch */ = {
+			isa = PBXGroup;
+			children = (
+				1841E58B209EFBB300459C21 /* Assets.xcassets */,
+				1841E58D209EFBB300459C21 /* Info.plist */,
+				1841E588209EFBB200459C21 /* Interface.storyboard */,
+			);
+			path = KaiWatch;
+			sourceTree = "<group>";
+		};
+		1841E596209EFBB300459C21 /* KaiWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1841E59B209EFBB400459C21 /* Assets.xcassets */,
+				1841E599209EFBB300459C21 /* ExtensionDelegate.swift */,
+				1841E59D209EFBB400459C21 /* Info.plist */,
+				1841E597209EFBB300459C21 /* InterfaceController.swift */,
+			);
+			path = "KaiWatch Extension";
+			sourceTree = "<group>";
+		};
+		1841E5AE209F011500459C21 /* KaiTv */ = {
+			isa = PBXGroup;
+			children = (
+				1841E5AF209F011500459C21 /* AppDelegate.swift */,
+				1841E5B6209F011700459C21 /* Assets.xcassets */,
+				1841E5B8209F011700459C21 /* Info.plist */,
+				1841E5B3209F011500459C21 /* Main.storyboard */,
+				1841E5B1209F011500459C21 /* ViewController.swift */,
+			);
+			path = KaiTv;
+			sourceTree = "<group>";
+		};
+		1841E5C1209F023A00459C21 /* KaiMac */ = {
+			isa = PBXGroup;
+			children = (
+				1841E5C2209F023A00459C21 /* AppDelegate.swift */,
+				1841E5C6209F023B00459C21 /* Assets.xcassets */,
+				1841E5CB209F023B00459C21 /* Info.plist */,
+				1841E5CC209F023B00459C21 /* KaiMac.entitlements */,
+				1841E5C8209F023B00459C21 /* Main.storyboard */,
+				1841E5C4209F023A00459C21 /* ViewController.swift */,
+			);
+			path = KaiMac;
 			sourceTree = "<group>";
 		};
 		184C143E208CBC3100FB9B8C = {
@@ -59,6 +276,11 @@
 				18D8068B208CD2C500D53845 /* KaiKit.podspec */,
 				184C1451208CBCA600FB9B8C /* main.swift */,
 				EFA1D42A49B88E89D5623890 /* Frameworks */,
+				1841E573209EF75400459C21 /* KaiIp */,
+				1841E5C1209F023A00459C21 /* KaiMac */,
+				1841E5AE209F011500459C21 /* KaiTv */,
+				1841E587209EFBB200459C21 /* KaiWatch */,
+				1841E596209EFBB300459C21 /* KaiWatch Extension */,
 				0AD862070D4B35809B52BE08 /* Pods */,
 				184C1448208CBC3100FB9B8C /* Products */,
 			);
@@ -68,6 +290,11 @@
 			isa = PBXGroup;
 			children = (
 				184C1447208CBC3100FB9B8C /* KaiKit */,
+				1841E572209EF75400459C21 /* KaiIp.app */,
+				1841E586209EFBB200459C21 /* KaiWatch.app */,
+				1841E592209EFBB300459C21 /* KaiWatch Extension.appex */,
+				1841E5AD209F011500459C21 /* KaiTv.app */,
+				1841E5C0209F023A00459C21 /* KaiMac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -75,7 +302,12 @@
 		EFA1D42A49B88E89D5623890 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F7938943883FBD58477697B1 /* Pods_KaiIp.framework */,
 				4AA7256F9F14F6FFFFB46030 /* Pods_KaiKit.framework */,
+				53EFAD5FFFB01F99FEE443F3 /* Pods_KaiMac.framework */,
+				846F8767A895B4C21D993688 /* Pods_KaiTv.framework */,
+				5F7E048ED8F5B7FBF939A611 /* Pods_KaiWatch_Extension.framework */,
+				C8B7F3094F02F4A45E3E1D7E /* Pods_KaiWatch.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -83,11 +315,104 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1841E571209EF75400459C21 /* KaiIp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1841E581209EF75600459C21 /* Build configuration list for PBXNativeTarget "KaiIp" */;
+			buildPhases = (
+				44B69F6181874A78BB36476D /* [CP] Check Pods Manifest.lock */,
+				1841E56E209EF75400459C21 /* Sources */,
+				1841E56F209EF75400459C21 /* Frameworks */,
+				1841E570209EF75400459C21 /* Resources */,
+				1841E5A8209EFBB400459C21 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1841E59F209EFBB400459C21 /* PBXTargetDependency */,
+			);
+			name = KaiIp;
+			productName = KaiIp;
+			productReference = 1841E572209EF75400459C21 /* KaiIp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1841E585209EFBB200459C21 /* KaiWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1841E5A7209EFBB400459C21 /* Build configuration list for PBXNativeTarget "KaiWatch" */;
+			buildPhases = (
+				206324F2691C5FB0A39A64EC /* [CP] Check Pods Manifest.lock */,
+				1841E584209EFBB200459C21 /* Resources */,
+				1841E5A6209EFBB400459C21 /* Embed App Extensions */,
+				CF636677B170B695A0C0B400 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1841E595209EFBB300459C21 /* PBXTargetDependency */,
+			);
+			name = KaiWatch;
+			productName = KaiWatch;
+			productReference = 1841E586209EFBB200459C21 /* KaiWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		1841E591209EFBB300459C21 /* KaiWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1841E5A5209EFBB400459C21 /* Build configuration list for PBXNativeTarget "KaiWatch Extension" */;
+			buildPhases = (
+				5DCD42E6B90E4AB5FC1FAA1A /* [CP] Check Pods Manifest.lock */,
+				1841E58E209EFBB300459C21 /* Sources */,
+				1841E58F209EFBB300459C21 /* Frameworks */,
+				1841E590209EFBB300459C21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "KaiWatch Extension";
+			productName = "KaiWatch Extension";
+			productReference = 1841E592209EFBB300459C21 /* KaiWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+		1841E5AC209F011500459C21 /* KaiTv */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1841E5B9209F011700459C21 /* Build configuration list for PBXNativeTarget "KaiTv" */;
+			buildPhases = (
+				30CD9D108B21E2D4952F3620 /* [CP] Check Pods Manifest.lock */,
+				1841E5A9209F011500459C21 /* Sources */,
+				1841E5AA209F011500459C21 /* Frameworks */,
+				1841E5AB209F011500459C21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KaiTv;
+			productName = KaiTv;
+			productReference = 1841E5AD209F011500459C21 /* KaiTv.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1841E5BF209F023A00459C21 /* KaiMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1841E5CD209F023B00459C21 /* Build configuration list for PBXNativeTarget "KaiMac" */;
+			buildPhases = (
+				21D55289C9925DC48933F593 /* [CP] Check Pods Manifest.lock */,
+				1841E5BC209F023A00459C21 /* Sources */,
+				1841E5BD209F023A00459C21 /* Frameworks */,
+				1841E5BE209F023A00459C21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KaiMac;
+			productName = KaiMac;
+			productReference = 1841E5C0209F023A00459C21 /* KaiMac.app */;
+			productType = "com.apple.product-type.application";
+		};
 		184C1446208CBC3100FB9B8C /* KaiKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 184C144E208CBC3100FB9B8C /* Build configuration list for PBXNativeTarget "KaiKit" */;
 			buildPhases = (
-				53392A2D4C1246D7140D9F3D /* [CP] Check Pods Manifest.lock */,
+				7EE8B78EF433B1FE7891E895 /* [CP] Check Pods Manifest.lock */,
 				184C1443208CBC3100FB9B8C /* Sources */,
 				184C1444208CBC3100FB9B8C /* Frameworks */,
 				184C1445208CBC3100FB9B8C /* CopyFiles */,
@@ -107,10 +432,26 @@
 		184C143F208CBC3100FB9B8C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = KK;
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
-				ORGANIZATIONNAME = "Wade Kai";
+				ORGANIZATIONNAME = KidKai;
 				TargetAttributes = {
+					1841E571209EF75400459C21 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					1841E585209EFBB200459C21 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					1841E591209EFBB300459C21 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					1841E5AC209F011500459C21 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					1841E5BF209F023A00459C21 = {
+						CreatedOnToolsVersion = 9.3;
+					};
 					184C1446208CBC3100FB9B8C = {
 						CreatedOnToolsVersion = 9.3;
 					};
@@ -122,6 +463,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 184C143E208CBC3100FB9B8C;
 			productRefGroup = 184C1448208CBC3100FB9B8C /* Products */;
@@ -129,12 +471,155 @@
 			projectRoot = "";
 			targets = (
 				184C1446208CBC3100FB9B8C /* KaiKit */,
+				1841E571209EF75400459C21 /* KaiIp */,
+				1841E585209EFBB200459C21 /* KaiWatch */,
+				1841E591209EFBB300459C21 /* KaiWatch Extension */,
+				1841E5AC209F011500459C21 /* KaiTv */,
+				1841E5BF209F023A00459C21 /* KaiMac */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		1841E570209EF75400459C21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1841E57F209EF75600459C21 /* LaunchScreen.storyboard in Resources */,
+				1841E57C209EF75600459C21 /* Assets.xcassets in Resources */,
+				1841E57A209EF75400459C21 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1841E584209EFBB200459C21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1841E58C209EFBB300459C21 /* Assets.xcassets in Resources */,
+				1841E58A209EFBB200459C21 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1841E590209EFBB300459C21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1841E59C209EFBB400459C21 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1841E5AB209F011500459C21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1841E5B7209F011700459C21 /* Assets.xcassets in Resources */,
+				1841E5B5209F011500459C21 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1841E5BE209F023A00459C21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1841E5C7209F023B00459C21 /* Assets.xcassets in Resources */,
+				1841E5CA209F023B00459C21 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXShellScriptBuildPhase section */
-		53392A2D4C1246D7140D9F3D /* [CP] Check Pods Manifest.lock */ = {
+		206324F2691C5FB0A39A64EC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KaiWatch-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		21D55289C9925DC48933F593 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KaiMac-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		30CD9D108B21E2D4952F3620 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KaiTv-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		44B69F6181874A78BB36476D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KaiIp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5DCD42E6B90E4AB5FC1FAA1A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KaiWatch Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7EE8B78EF433B1FE7891E895 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -155,6 +640,42 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1841E56E209EF75400459C21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1841E577209EF75400459C21 /* ViewController.swift in Sources */,
+				1841E575209EF75400459C21 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1841E58E209EFBB300459C21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1841E59A209EFBB300459C21 /* ExtensionDelegate.swift in Sources */,
+				1841E598209EFBB300459C21 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1841E5A9209F011500459C21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1841E5B2209F011500459C21 /* ViewController.swift in Sources */,
+				1841E5B0209F011500459C21 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1841E5BC209F023A00459C21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1841E5C5209F023A00459C21 /* ViewController.swift in Sources */,
+				1841E5C3209F023A00459C21 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		184C1443208CBC3100FB9B8C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -165,7 +686,301 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		1841E595209EFBB300459C21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1841E591209EFBB300459C21 /* KaiWatch Extension */;
+			targetProxy = 1841E594209EFBB300459C21 /* PBXContainerItemProxy */;
+		};
+		1841E59F209EFBB400459C21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1841E585209EFBB200459C21 /* KaiWatch */;
+			targetProxy = 1841E59E209EFBB400459C21 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1841E578209EF75400459C21 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1841E579209EF75400459C21 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1841E57D209EF75600459C21 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1841E57E209EF75600459C21 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		1841E588209EFBB200459C21 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1841E589209EFBB200459C21 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+		1841E5B3209F011500459C21 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1841E5B4209F011500459C21 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1841E5C8209F023B00459C21 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1841E5C9209F023B00459C21 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		1841E582209EF75600459C21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41F8C71DDDA975F206F6B449 /* Pods-KaiIp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G6W3L5Q7N7;
+				INFOPLIST_FILE = KaiIp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wadekai.kaiios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1841E583209EF75600459C21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF5330DF757119B39606619F /* Pods-KaiIp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G6W3L5Q7N7;
+				INFOPLIST_FILE = KaiIp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wadekai.kaiios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1841E5A1209EFBB400459C21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A33F68F4AC89FCBF7A4CBA4D /* Pods-KaiWatch.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G6W3L5Q7N7;
+				IBSC_MODULE = KaiWatch_Extension;
+				INFOPLIST_FILE = KaiWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wadekai.kaiios.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Debug;
+		};
+		1841E5A2209EFBB400459C21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 676112868AE2FF2103432016 /* Pods-KaiWatch.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G6W3L5Q7N7;
+				IBSC_MODULE = KaiWatch_Extension;
+				INFOPLIST_FILE = KaiWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wadekai.kaiios.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Release;
+		};
+		1841E5A3209EFBB400459C21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C805591BE969C319F6DB1091 /* Pods-KaiWatch Extension.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G6W3L5Q7N7;
+				INFOPLIST_FILE = "KaiWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wadekai.kaiios.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Debug;
+		};
+		1841E5A4209EFBB400459C21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E60FAF7E9086BD33B22BA4FD /* Pods-KaiWatch Extension.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G6W3L5Q7N7;
+				INFOPLIST_FILE = "KaiWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wadekai.kaiios.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Release;
+		};
+		1841E5BA209F011700459C21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84DA237FF16EBC52D484CB17 /* Pods-KaiTv.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Launch Image";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = KaiTv/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wadekai.kaitv;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		1841E5BB209F011700459C21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D23A8855B9ACE92B00D804D /* Pods-KaiTv.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Launch Image";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = KaiTv/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wadekai.kaitv;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1841E5CE209F023B00459C21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51735172E46C62A567E93C47 /* Pods-KaiMac.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = KaiMac/KaiMac.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = G6W3L5Q7N7;
+				INFOPLIST_FILE = KaiMac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wadekai.kaimac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		1841E5CF209F023B00459C21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12BC6112DCBD9E6934EA26CE /* Pods-KaiMac.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = KaiMac/KaiMac.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = G6W3L5Q7N7;
+				INFOPLIST_FILE = KaiMac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wadekai.kaimac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 		184C144C208CBC3100FB9B8C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -217,7 +1032,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -271,7 +1087,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -281,22 +1098,26 @@
 		};
 		184C144F208CBC3100FB9B8C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73F11C1CAFB27AE636AFE6C8 /* Pods-KaiKit.debug.xcconfig */;
+			baseConfigurationReference = 1C49F39B24BE99E275CA3226 /* Pods-KaiKit.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G6W3L5Q7N7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
 		184C1450208CBC3100FB9B8C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 50008081DBF5D9BD2C8C047A /* Pods-KaiKit.release.xcconfig */;
+			baseConfigurationReference = 1F0829C30C2D0E830B111B04 /* Pods-KaiKit.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G6W3L5Q7N7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
@@ -304,6 +1125,51 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1841E581209EF75600459C21 /* Build configuration list for PBXNativeTarget "KaiIp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1841E582209EF75600459C21 /* Debug */,
+				1841E583209EF75600459C21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1841E5A5209EFBB400459C21 /* Build configuration list for PBXNativeTarget "KaiWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1841E5A3209EFBB400459C21 /* Debug */,
+				1841E5A4209EFBB400459C21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1841E5A7209EFBB400459C21 /* Build configuration list for PBXNativeTarget "KaiWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1841E5A1209EFBB400459C21 /* Debug */,
+				1841E5A2209EFBB400459C21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1841E5B9209F011700459C21 /* Build configuration list for PBXNativeTarget "KaiTv" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1841E5BA209F011700459C21 /* Debug */,
+				1841E5BB209F011700459C21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1841E5CD209F023B00459C21 /* Build configuration list for PBXNativeTarget "KaiMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1841E5CE209F023B00459C21 /* Debug */,
+				1841E5CF209F023B00459C21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		184C1442208CBC3100FB9B8C /* Build configuration list for PBXProject "KaiKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -1,7 +1,31 @@
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+use_frameworks!
 
 target 'KaiKit' do
-  use_frameworks!
+  platform :osx, '10.12'
+  pod 'KaiKit', :path => './'
+end
+
+target 'KaiIp' do
+  platform :ios, '8.0'
+  pod 'KaiKit', :path => './'
+end
+
+target 'KaiWatch' do
+  platform :watchos, '3.2'
+  pod 'KaiKit', :path => './'
+end
+
+target 'KaiWatch Extension' do
+  platform :watchos, '3.2'
+  pod 'KaiKit', :path => './'
+end
+
+target 'KaiTv' do
+  platform :tvos, '9.0'
+  pod 'KaiKit', :path => './'
+end
+
+target 'KaiMac' do
+  platform :osx, '10.12'
   pod 'KaiKit', :path => './'
 end
