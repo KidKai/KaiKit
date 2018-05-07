@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  UIView+KKViewGeometry.h
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -22,10 +22,19 @@
 //  SOFTWARE.
 //
 
-import KaiKit
+#import <UIKit/UIKit.h>
 
-class ViewController: KKViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-}
+@interface UIView (KKViewGeometry)
+
+@property (nonatomic) CGPoint origin;
+@property (nonatomic) CGFloat minX;
+@property (nonatomic, readonly) CGFloat midX;
+@property (nonatomic, readonly) CGFloat maxX;
+@property (nonatomic) CGFloat minY;
+@property (nonatomic, readonly) CGFloat midY;
+@property (nonatomic, readonly) CGFloat maxY;
+@property (nonatomic) CGSize  size;
+@property (nonatomic) CGFloat width;
+@property (nonatomic) CGFloat height;
+
+@end

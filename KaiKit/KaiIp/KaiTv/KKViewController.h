@@ -1,5 +1,5 @@
 //
-//  KKNavigationBar.m
+//  KKViewController.h
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -22,8 +22,8 @@
 //  SOFTWARE.
 //
 
-#import "KKNavigationBar.h"
+#import <UIKit/UIKit.h>
 
-@implementation KKNavigationBar
+@interface KKViewController : UIViewController
 
 @end

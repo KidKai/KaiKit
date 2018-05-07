@@ -1,5 +1,5 @@
 //
-//  KKNavigationBar.h
+//  UIViewController+KKNavigationBar.h
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -24,6 +24,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KKNavigationBar : UINavigationBar
+@interface UIViewController (KKNavigationBar)
+
+@property (nullable, nonatomic, readonly) UIView *kkNavigationBar;
+
+@property (nullable, nonatomic) UIColor *kkNavigationBarTintColor;
 
 @end
