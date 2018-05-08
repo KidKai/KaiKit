@@ -24,6 +24,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface UIViewController (KKNavigationBar)
 
 @property (nullable, nonatomic, readonly) UIView *kkNavigationBar;
@@ -31,3 +33,5 @@
 @property (nullable, nonatomic) UIColor *kkNavigationBarTintColor;
 
 @end
+
+NS_ASSUME_NONNULL_END

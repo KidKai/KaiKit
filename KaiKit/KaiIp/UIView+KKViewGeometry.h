@@ -24,6 +24,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface UIView (KKViewGeometry)
 
 @property (nonatomic) CGPoint origin;
@@ -38,3 +40,5 @@
 @property (nonatomic) CGFloat height;
 
 @end
+
+NS_ASSUME_NONNULL_END
