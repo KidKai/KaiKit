@@ -363,6 +363,7 @@
 				1841E58E209EFBB300459C21 /* Sources */,
 				1841E58F209EFBB300459C21 /* Frameworks */,
 				1841E590209EFBB300459C21 /* Resources */,
+				B740ED76D7F1C983DEB45134 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -400,6 +401,7 @@
 				1841E5BC209F023A00459C21 /* Sources */,
 				1841E5BD209F023A00459C21 /* Frameworks */,
 				1841E5BE209F023A00459C21 /* Resources */,
+				BF6E4F2967C0197B3FF0497B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -656,6 +658,42 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B740ED76D7F1C983DEB45134 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-KaiWatch Extension/Pods-KaiWatch Extension-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/KaiKit-watchOS/KaiKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KaiKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KaiWatch Extension/Pods-KaiWatch Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF6E4F2967C0197B3FF0497B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-KaiMac/Pods-KaiMac-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/KaiKit-macOS/KaiKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KaiKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KaiMac/Pods-KaiMac-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F7D4C6ECDC358B45E6B7CD84 /* [CP] Embed Pods Frameworks */ = {

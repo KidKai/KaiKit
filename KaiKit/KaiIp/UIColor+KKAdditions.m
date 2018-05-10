@@ -95,7 +95,7 @@
 
 - (UIColor *)initWithHexUStr:(NSString *)hexUStr
 {
-    UInt32 hexUInt = 0;
+    unsigned hexUInt = 0;
     NSScanner *scanner = [NSScanner scannerWithString:hexUStr];
     [scanner scanHexInt:&hexUInt];
     return [self initWithHexUInt:hexUInt];
