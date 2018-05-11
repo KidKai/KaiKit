@@ -93,6 +93,12 @@ KKDeviceGeneration const KKDeviceGenerationIPodtouch_4th_generation = @"iPod tou
 KKDeviceGeneration const KKDeviceGenerationIPodtouch_5th_generation = @"iPod touch (5th generation)";
 KKDeviceGeneration const KKDeviceGenerationIPodtouch_6th_generation = @"iPod touch (6th generation)";
 
+KKDeviceGeneration const KKDeviceGenerationMac = @"Mac";
+
+KKDeviceGeneration const KKDeviceGenerationSimulator = @"Simulator";
+
+KKDeviceGeneration const KKDeviceGenerationUnknown = @"Unknown";
+
 #pragma mark device identifier
 
 KKDeviceIdentifier const KKDeviceIdentifierAirPods = @"AirPods1,1";
@@ -285,17 +291,309 @@ KKDeviceInternalName const KKDeviceInternalNameIPodtouch_6th_generation = @"N102
 
 @implementation NSObject (KKDevice)
 
-- (NSString *)deviceGeneration
+- (KKDeviceGeneration)deviceGeneration
 {
-    return nil;
+#if TARGET_OS_OSX
+    if ([self.deviceInternalName containsString:@"Mac"]) {
+        return KKDeviceGenerationMac;
+    }
+#elif TARGET_OS_SIMULATOR
+    return KKDeviceGenerationSimulator;
+#elif TARGET_OS_IPHONE
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierAirPods] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAirPods]) {
+        return KKDeviceGenerationAirPods;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleTV_2nd_generation] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleTV_2nd_generation]) {
+        return KKDeviceGenerationAppleTV_2nd_generation;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleTV_3rd_generation] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleTV_3rd_generation_I] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleTV_3rd_generation] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleTV_3rd_generation_I]) {
+        return KKDeviceGenerationAppleTV_3rd_generation;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleTV_4th_generation] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleTV_4th_generation]) {
+        return KKDeviceGenerationAppleTV_4th_generation;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleTV4K] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleTV4K]) {
+        return KKDeviceGenerationAppleTV4K;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatch_1st_generation_27] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatch_1st_generation_28] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatch_1st_generation_27] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatch_1st_generation_28]) {
+        return KKDeviceGenerationAppleWatch_1st_generation;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries1_27] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries1_28] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries1_27] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries1_28]) {
+        return KKDeviceGenerationAppleWatchSeries1;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries2_74] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries2_75] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries2_74] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries2_75]) {
+        return KKDeviceGenerationAppleWatchSeries2;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries3_11s] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries3_11b] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries3_21s] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries3_21b] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries3_11s] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries3_11b] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries3_21s] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries3_21b]) {
+        return KKDeviceGenerationAppleWatchSeries3;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierHomePod] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameHomePod]) {
+        return KKDeviceGenerationHomePod;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPad] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPad]) {
+        return KKDeviceGenerationIPad;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPad2_93] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPad2_94] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPad2_95] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPad2_93A] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPad2_93] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPad2_94] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPad2_95] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPad2_93A]) {
+        return KKDeviceGenerationIPad2;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPad_3rd_generation_1] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPad_3rd_generation_2] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPad_3rd_generation_2A] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPad_3rd_generation_1] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPad_3rd_generation_2] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPad_3rd_generation_2A]) {
+        return KKDeviceGenerationIPad_3rd_generation;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPad_4th_generation_1] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPad_4th_generation_2] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPad_4th_generation_3] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPad_4th_generation_1] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPad_4th_generation_2] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPad_4th_generation_3]) {
+        return KKDeviceGenerationIPad_4th_generation;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadAir_1] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadAir_2] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadAir_3] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadAir_1] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadAir_2] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadAir_3]) {
+        return KKDeviceGenerationIPadAir;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadAir2_1] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadAir2_2] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadAir2_1] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadAir2_2]) {
+        return KKDeviceGenerationIPadAir2;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadPro_12_9_inch_8] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadPro_12_9_inch_9] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadPro_12_9_inch_8] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadPro_12_9_inch_9]) {
+        return KKDeviceGenerationIPadPro_12_9_inch;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadPro_9_7_inch_7] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadPro_9_7_inch_8] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadPro_9_7_inch_7] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadPro_9_7_inch_8]) {
+        return KKDeviceGenerationIPadPro_9_7_inch;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPad_5th_generation_1] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPad_5th_generation_2] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPad_5th_generation_1] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPad_5th_generation_2]) {
+        return KKDeviceGenerationIPad_5th_generation;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadPro_12_9_inch_2nd_generation_0] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadPro_12_9_inch_2nd_generation_1] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadPro_12_9_inch_2nd_generation_0] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadPro_12_9_inch_2nd_generation_1]) {
+        return KKDeviceGenerationIPadPro_12_9_inch_2nd_generation;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadPro_10_5_inch_7] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadPro_10_5_inch_8] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadPro_10_5_inch_7] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadPro_10_5_inch_8]) {
+        return KKDeviceGenerationIPadPro_10_5_inch;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPad_6th_generation_1] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPad_6th_generation_2] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPad_6th_generation_1] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPad_6th_generation_2]) {
+        return KKDeviceGenerationIPad_6th_generation;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadmini_5] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadmini_6] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadmini_7] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadmini_5] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadmini_6] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadmini_7]) {
+        return KKDeviceGenerationIPadmini;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadmini2_5] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadmini2_6] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadmini2_7] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadmini2_5] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadmini2_6] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadmini2_7]) {
+        return KKDeviceGenerationIPadmini2;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadmini3_5] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadmini3_6] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadmini3_7] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadmini3_5] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadmini3_6] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadmini3_7]) {
+        return KKDeviceGenerationIPadmini3;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadmini4_6] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPadmini4_7] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadmini4_6] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPadmini4_7]) {
+        return KKDeviceGenerationIPadmini4;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone]) {
+        return KKDeviceGenerationIPhone;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone3G] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone3G]) {
+        return KKDeviceGenerationIPhone3G;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone3GS] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone3GS]) {
+        return KKDeviceGenerationIPhone3GS;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone4_0] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone4_0B] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone4_2] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone4_0] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone4_0B] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone4_2]) {
+        return KKDeviceGenerationIPhone4;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone4S] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone4S]) {
+        return KKDeviceGenerationIPhone4S;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone5_1] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone5_2] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone5_1] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone5_2]) {
+        return KKDeviceGenerationIPhone5;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone5c_8] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone5c_9] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone5c_8] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone5c_9]) {
+        return KKDeviceGenerationIPhone5c;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone5s_1] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone5s_3] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone5s_1] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone5s_3]) {
+        return KKDeviceGenerationIPhone5s;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone6] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone6]) {
+        return KKDeviceGenerationIPhone6;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone6Plus] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone6Plus]) {
+        return KKDeviceGenerationIPhone6Plus;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone6s] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone6s] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone6s_m]) {
+        return KKDeviceGenerationIPhone6s;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone6sPlus] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone6sPlus] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone6sPlus_m]) {
+        return KKDeviceGenerationIPhone6sPlus;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhoneSE] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhoneSE] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhoneSE_u]) {
+        return KKDeviceGenerationIPhoneSE;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone7] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone7_1] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone7] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone7_1]) {
+        return KKDeviceGenerationIPhone7;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone7Plus] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone7Plus_1] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone7Plus] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone7Plus_1]) {
+        return KKDeviceGenerationIPhone7Plus;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone8] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone8_1] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone8] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone8_1]) {
+        return KKDeviceGenerationIPhone8;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone8Plus] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhone8Plus_1] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone8Plus] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhone8Plus_1]) {
+        return KKDeviceGenerationIPhone8Plus;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhoneX] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhoneX_1] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhoneX] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhoneX_1]) {
+        return KKDeviceGenerationIPhoneX;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPodtouch] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPodtouch]) {
+        return KKDeviceGenerationIPodtouch;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPodtouch_2nd_generation] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPodtouch_2nd_generation]) {
+        return KKDeviceGenerationIPodtouch_2nd_generation;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPodtouch_3rd_generation] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPodtouch_3rd_generation]) {
+        return KKDeviceGenerationIPodtouch_3rd_generation;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPodtouch_4th_generation] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPodtouch_4th_generation]) {
+        return KKDeviceGenerationIPodtouch_4th_generation;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPodtouch_5th_generation] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPodtouch_5th_generation] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPodtouch_5th_generation_a]) {
+        return KKDeviceGenerationIPodtouch_5th_generation;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPodtouch_6th_generation] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPodtouch_6th_generation]) {
+        return KKDeviceGenerationIPodtouch_6th_generation;
+    }
+#endif
+    return KKDeviceGenerationUnknown;
 }
 
-- (NSString *)deviceIdentifier
+- (KKDeviceIdentifier)deviceIdentifier
 {
     return sysinfobyname("hw.machine");
 }
 
-- (NSString *)deviceInternalName
+- (KKDeviceInternalName)deviceInternalName
 {
     return sysinfobyname("hw.model");
 }

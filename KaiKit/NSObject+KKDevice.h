@@ -22,9 +22,25 @@
 //  SOFTWARE.
 //
 
+#if TARGET_OS_OSX
+#import <Cocoa/Cocoa.h>
+#else
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#endif
+
+#if TARGET_OS_WATCH
+#import <WatchKit/WKDefines.h>
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
+
+#if TARGET_OS_WATCH
+typedef NS_ENUM(NSInteger, KKAppleWatchCaseSize) {
+    KKAppleWatchCaseSize38mm,
+    KKAppleWatchCaseSize42mm,
+} WK_AVAILABLE_WATCHOS_ONLY(2.0);
+#endif
 
 typedef NSString * KKDeviceGeneration NS_TYPED_EXTENSIBLE_ENUM;
 
@@ -78,6 +94,12 @@ FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationIPodtouch_3rd_gener
 FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationIPodtouch_4th_generation;
 FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationIPodtouch_5th_generation;
 FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationIPodtouch_6th_generation;
+
+FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationMac;
+
+FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationSimulator;
+
+FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationUnknown;
 
 typedef NSString * KKDeviceIdentifier NS_TYPED_EXTENSIBLE_ENUM;
 
@@ -271,9 +293,9 @@ FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameIPodtouch_6th_g
 
 @interface NSObject (KKDevice)
 
-@property (nonatomic, readonly, copy) NSString *deviceGeneration;
-@property (nonatomic, readonly, copy) NSString *deviceIdentifier;
-@property (nonatomic, readonly, copy) NSString *deviceInternalName;
+@property (nonatomic, readonly, copy) KKDeviceGeneration deviceGeneration;
+@property (nonatomic, readonly, copy) KKDeviceIdentifier deviceIdentifier;
+@property (nonatomic, readonly, copy) KKDeviceInternalName deviceInternalName;
 
 @end
 
