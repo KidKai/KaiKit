@@ -35,11 +35,39 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#if TARGET_OS_WATCH
+#if TARGET_OS_IOS
+
+typedef NS_ENUM(NSInteger, KKIPadDisplaySize) {
+    KKIPadDisplaySize_x_x_inch,
+    KKIPadDisplaySize_7_9_inch,
+    KKIPadDisplaySize_9_7_inch,
+    KKIPadDisplaySize_10_5_inch,
+    KKIPadDisplaySize_12_9_inch,
+} NS_ENUM_AVAILABLE_IOS(8.0);
+
+typedef NS_ENUM(NSInteger, KKIPhoneDisplaySize) {
+    KKIPhoneDisplaySize_x_x_inch,
+    KKIPhoneDisplaySize_3_5_inch,
+    KKIPhoneDisplaySize_4_0_inch,
+    KKIPhoneDisplaySize_4_7_inch,
+    KKIPhoneDisplaySize_5_5_inch,
+    KKIPhoneDisplaySize_5_8_inch,
+} NS_ENUM_AVAILABLE_IOS(8.0);
+
+typedef NS_ENUM(NSInteger, KKIPodtouchDisplaySize) {
+    KKIPodtouchDisplaySize_x_x_inch,
+    KKIPodtouchDisplaySize_3_5_inch,
+    KKIPodtouchDisplaySize_4_0_inch,
+} NS_ENUM_AVAILABLE_IOS(8.0);
+
+#elif TARGET_OS_WATCH
+
 typedef NS_ENUM(NSInteger, KKAppleWatchCaseSize) {
-    KKAppleWatchCaseSize38mm,
-    KKAppleWatchCaseSize42mm,
-} WK_AVAILABLE_WATCHOS_ONLY(2.0);
+    KKAppleWatchCaseSize_xxmm,
+    KKAppleWatchCaseSize_38mm,
+    KKAppleWatchCaseSize_42mm,
+} WK_AVAILABLE_WATCHOS_ONLY(3.2);
+
 #endif
 
 typedef NSString * KKDeviceGeneration NS_TYPED_EXTENSIBLE_ENUM;
@@ -292,6 +320,14 @@ FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameIPodtouch_5th_g
 FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameIPodtouch_6th_generation;
 
 @interface NSObject (KKDevice)
+
+#if TARGET_OS_IOS
+@property (nonatomic, readonly) KKIPadDisplaySize iPadDisplaySize;
+@property (nonatomic, readonly) KKIPhoneDisplaySize iPhoneDisplaySize;
+@property (nonatomic, readonly) KKIPodtouchDisplaySize iPodtouchDisplaySize;
+#elif TARGET_OS_WATCH
+@property (nonatomic, readonly) KKAppleWatchCaseSize appleWatchCaseSize;
+#endif
 
 @property (nonatomic, readonly, copy) KKDeviceGeneration deviceGeneration;
 @property (nonatomic, readonly, copy) KKDeviceIdentifier deviceIdentifier;

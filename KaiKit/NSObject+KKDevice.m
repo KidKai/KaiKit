@@ -291,6 +291,132 @@ KKDeviceInternalName const KKDeviceInternalNameIPodtouch_6th_generation = @"N102
 
 @implementation NSObject (KKDevice)
 
+#if TARGET_OS_IOS
+- (KKIPadDisplaySize)iPadDisplaySize
+{
+    if ([self.deviceGeneration isEqualToString:KKDeviceGenerationIPadmini] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPadmini2] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPadmini3] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPadmini4]) {
+        return KKIPadDisplaySize_7_9_inch;
+    }
+    if ([self.deviceGeneration isEqualToString:KKDeviceGenerationIPad] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPad2] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPad_3rd_generation] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPad_4th_generation] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPadAir] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPadAir2] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPadPro_9_7_inch] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPad_5th_generation] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPad_6th_generation]) {
+        return KKIPadDisplaySize_9_7_inch;
+    }
+    if ([self.deviceGeneration isEqualToString:KKDeviceGenerationIPadPro_10_5_inch]) {
+        return KKIPadDisplaySize_10_5_inch;
+    }
+    if ([self.deviceGeneration isEqualToString:KKDeviceGenerationIPadPro_12_9_inch] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPadPro_12_9_inch_2nd_generation]) {
+        return KKIPadDisplaySize_12_9_inch;
+    }
+    return KKIPadDisplaySize_x_x_inch;
+}
+- (KKIPhoneDisplaySize)iPhoneDisplaySize
+{
+    if ([self.deviceGeneration isEqualToString:KKDeviceGenerationIPhone] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPhone3G] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPhone3GS] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPhone4] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPhone4S]) {
+        return KKIPhoneDisplaySize_3_5_inch;
+    }
+    if ([self.deviceGeneration isEqualToString:KKDeviceGenerationIPhone5] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPhone5c] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPhone5s] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPhoneSE]) {
+        return KKIPhoneDisplaySize_4_0_inch;
+    }
+    if ([self.deviceGeneration isEqualToString:KKDeviceGenerationIPhone6] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPhone6s] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPhone7] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPhone8]) {
+        return KKIPhoneDisplaySize_4_7_inch;
+    }
+    if ([self.deviceGeneration isEqualToString:KKDeviceGenerationIPhone6Plus] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPhone6sPlus] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPhone7Plus] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPhone8Plus]) {
+        return KKIPhoneDisplaySize_5_5_inch;
+    }
+    if ([self.deviceGeneration isEqualToString:KKDeviceGenerationIPhoneX]) {
+        return KKIPhoneDisplaySize_5_8_inch;
+    }
+    if ([self.deviceGeneration isEqualToString:KKDeviceGenerationSimulator]) {
+        CGSize size = UIScreen.mainScreen.bounds.size;
+        CGFloat min = MIN(size.width, size.height);
+        CGFloat max = MAX(size.width, size.height);
+        if (min == 320.f && max == 480.f) {
+            return KKIPhoneDisplaySize_3_5_inch;
+        }
+        if (min == 320.f && max == 568.f) {
+            return KKIPhoneDisplaySize_4_0_inch;
+        }
+        if (min == 375.f && max == 667.f) {
+            return KKIPhoneDisplaySize_4_7_inch;
+        }
+        if (min == 414.f && max == 736.f) {
+            return KKIPhoneDisplaySize_5_5_inch;
+        }
+        if (min == 375.f && max == 812.f) {
+            return KKIPhoneDisplaySize_5_8_inch;
+        }
+    }
+    return KKIPhoneDisplaySize_x_x_inch;
+}
+- (KKIPodtouchDisplaySize)iPodtouchDisplaySize
+{
+    if ([self.deviceGeneration isEqualToString:KKDeviceGenerationIPodtouch] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPodtouch_2nd_generation] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPodtouch_3rd_generation] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPodtouch_4th_generation]) {
+        return KKIPodtouchDisplaySize_3_5_inch;
+    }
+    if ([self.deviceGeneration isEqualToString:KKDeviceGenerationIPodtouch_5th_generation] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPodtouch_6th_generation]) {
+        return KKIPodtouchDisplaySize_4_0_inch;
+    }
+    return KKIPodtouchDisplaySize_x_x_inch;
+}
+#elif TARGET_OS_WATCH
+- (KKAppleWatchCaseSize)appleWatchCaseSize
+{
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatch_1st_generation_27] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries1_27] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries2_74] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries3_11s] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries3_21s] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatch_1st_generation_27] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries1_27] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries2_74] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries3_11s] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries3_21s]) {
+        return KKAppleWatchCaseSize_38mm;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatch_1st_generation_28] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries1_28] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries2_75] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries3_11b] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries3_21b] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatch_1st_generation_28] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries1_28] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries2_75] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries3_11b] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries3_21b]) {
+        return KKAppleWatchCaseSize_42mm;
+    }
+    return KKAppleWatchCaseSize_xxmm;
+}
+#endif
+
 - (KKDeviceGeneration)deviceGeneration
 {
 #if TARGET_OS_OSX
