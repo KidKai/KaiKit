@@ -1,5 +1,5 @@
 //
-//  UIViewController+KKNavigationBar.h
+//  KaiIpGlobals.h
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -26,14 +26,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIViewController (KKNavigationBar)
+CG_EXTERN CGRect  screenBounds(void);
+CG_EXTERN CGFloat screenWidth(void);
+CG_EXTERN CGFloat screenHeight(void);
+CG_EXTERN CGFloat statusHeight(void);
 
-@property (nonatomic, readonly) CGFloat kkNavigationBarHeight;
+FOUNDATION_EXTERN NSString *sysVersion(void);
+FOUNDATION_EXTERN NSString *bundleName(void);
+FOUNDATION_EXTERN NSString *appVersion(void);
 
-@property (nullable, nonatomic, readonly) UIView *kkNavigationBar;
-
-@property (nullable, nonatomic) UIColor *kkNavigationBarTintColor;
-
-@end
+UIKIT_EXTERN UIViewController *rootground(void);
+UIKIT_EXTERN UIViewController *playground(void);
 
 NS_ASSUME_NONNULL_END

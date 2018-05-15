@@ -25,6 +25,8 @@
 #import "UIViewController+KKNavigationBar.h"
 #import <objc/runtime.h>
 
+#import "UIView+KKViewGeometry.h"
+
 @implementation UIViewController (KKNavigationBar)
 
 - (UIView *)kkNavigationBar
@@ -35,6 +37,11 @@
 - (void)setKkNavigationBar:(UIView *)kkNavigationBar
 {
     objc_setAssociatedObject(self, @selector(kkNavigationBar), kkNavigationBar, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (CGFloat)kkNavigationBarHeight
+{
+    return self.kkNavigationBar.height;
 }
 
 - (UIColor *)kkNavigationBarTintColor

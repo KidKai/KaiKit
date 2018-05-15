@@ -1,5 +1,5 @@
 //
-//  UIViewController+KKNavigationBar.h
+//  KaiKitDefines.h
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -22,18 +22,22 @@
 //  SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#ifndef KaiKitDefines_h
+#define KaiKitDefines_h
 
-NS_ASSUME_NONNULL_BEGIN
+#ifdef DEBUG
+#define NSLog(...) NSLog(__VA_ARGS__)
+#else
+#define NSLog(...) (void)0
+#endif
 
-@interface UIViewController (KKNavigationBar)
+#define weakify(var) \
+__weak typeof(var) weak_##var = var;
 
-@property (nonatomic, readonly) CGFloat kkNavigationBarHeight;
+#define strongify(var) \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wshadow\"") \
+__strong typeof(var) var = weak_##var; \
+_Pragma("clang diagnostic pop")
 
-@property (nullable, nonatomic, readonly) UIView *kkNavigationBar;
-
-@property (nullable, nonatomic) UIColor *kkNavigationBarTintColor;
-
-@end
-
-NS_ASSUME_NONNULL_END
+#endif /* KaiKitDefines_h */
