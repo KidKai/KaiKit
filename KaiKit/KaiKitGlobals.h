@@ -1,5 +1,5 @@
 //
-//  KaiIpGlobals.h
+//  KaiKitGlobals.h
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -22,22 +22,12 @@
 //  SOFTWARE.
 //
 
+#if TARGET_OS_OSX
+#import <AppKit/AppKit.h>
+#else
 #import <UIKit/UIKit.h>
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
-
-CG_EXTERN CGRect  screenBounds(void);
-CG_EXTERN CGFloat screenWidth(void);
-CG_EXTERN CGFloat screenHeight(void);
-CG_EXTERN CGFloat statusHeight(void);
-
-FOUNDATION_EXTERN NSString *sysVersion(void);
-FOUNDATION_EXTERN NSString *bundleName(void);
-FOUNDATION_EXTERN NSString *appVersion(void);
-
-UIKIT_EXTERN UIViewController * _Nullable rootground(void);
-UIKIT_EXTERN UIViewController * _Nullable playground(void);
-
-UIKIT_EXTERN void telephone(NSString *telephone);
 
 NS_ASSUME_NONNULL_END

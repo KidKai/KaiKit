@@ -62,13 +62,7 @@ NSString *appVersion()
     return [dict valueForKey:@"CFBundleShortVersionString"];
 }
 
-UIViewController *rootground()
-{
-    UIApplication *app = UIApplication.sharedApplication;
-    return app.keyWindow.rootViewController;
-}
-
-UIViewController *playgroundUnder(UIViewController *controller)
+static UIViewController *playgroundUnder(UIViewController *controller)
 {
     if ([controller isKindOfClass:[UITabBarController classForCoder]]) {
         UITabBarController *tab = (UITabBarController *)controller;
@@ -83,7 +77,26 @@ UIViewController *playgroundUnder(UIViewController *controller)
     return controller;
 }
 
+UIViewController *rootground()
+{
+    UIApplication *app = UIApplication.sharedApplication;
+    return app.keyWindow.rootViewController;
+}
+
 UIViewController *playground()
 {
     return playgroundUnder(rootground());
+}
+
+void telephone(NSString *telephone)
+{
+    NSString *string = [NSString stringWithFormat:@"tel://%@", telephone];
+    // faster response than coding UIWebView loading URL Request
+    UIApplication *app = UIApplication.sharedApplication;
+    NSURL *url = [NSURL URLWithString:string];
+    if (@available(iOS 10.0, *)) {
+        [app openURL:url options:@{} completionHandler:nil];
+    } else {
+        [app openURL:url];
+    }
 }

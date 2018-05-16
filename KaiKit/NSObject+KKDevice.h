@@ -23,9 +23,8 @@
 //
 
 #if TARGET_OS_OSX
-#import <Cocoa/Cocoa.h>
+#import <AppKit/AppKit.h>
 #else
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #endif
 
