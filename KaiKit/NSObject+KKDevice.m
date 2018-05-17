@@ -292,6 +292,7 @@ KKDeviceInternalName const KKDeviceInternalNameIPodtouch_6th_generation = @"N102
 @implementation NSObject (KKDevice)
 
 #if TARGET_OS_IOS
+
 - (KKIPadDisplaySize)iPadDisplaySize
 {
     if ([self.deviceGeneration isEqualToString:KKDeviceGenerationIPadmini] ||
@@ -320,6 +321,7 @@ KKDeviceInternalName const KKDeviceInternalNameIPodtouch_6th_generation = @"N102
     }
     return KKIPadDisplaySize_x_x_inch;
 }
+
 - (KKIPhoneDisplaySize)iPhoneDisplaySize
 {
     if ([self.deviceGeneration isEqualToString:KKDeviceGenerationIPhone] ||
@@ -372,6 +374,7 @@ KKDeviceInternalName const KKDeviceInternalNameIPodtouch_6th_generation = @"N102
     }
     return KKIPhoneDisplaySize_x_x_inch;
 }
+
 - (KKIPodtouchDisplaySize)iPodtouchDisplaySize
 {
     if ([self.deviceGeneration isEqualToString:KKDeviceGenerationIPodtouch] ||
@@ -386,7 +389,9 @@ KKDeviceInternalName const KKDeviceInternalNameIPodtouch_6th_generation = @"N102
     }
     return KKIPodtouchDisplaySize_x_x_inch;
 }
+
 #elif TARGET_OS_WATCH
+
 - (KKAppleWatchCaseSize)appleWatchCaseSize
 {
     if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatch_1st_generation_27] ||
@@ -415,6 +420,7 @@ KKDeviceInternalName const KKDeviceInternalNameIPodtouch_6th_generation = @"N102
     }
     return KKAppleWatchCaseSize_xxmm;
 }
+
 #endif
 
 - (KKDeviceGeneration)deviceGeneration

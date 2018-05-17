@@ -22,7 +22,7 @@
 //  SOFTWARE.
 //
 
-import Foundation
+import KaiKit
 import WatchKit
 
 class InterfaceController: WKInterfaceController {

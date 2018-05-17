@@ -22,7 +22,7 @@
 //  SOFTWARE.
 //
 
-import Cocoa
+import KaiKit
 
 class ViewController: NSViewController {
     override func viewDidLoad() {

@@ -28,6 +28,26 @@
 #import <UIKit/UIKit.h>
 #endif
 
+CF_IMPLICIT_BRIDGING_ENABLED
+
 NS_ASSUME_NONNULL_BEGIN
 
+CG_EXTERN CGColorRef CGColorGetBlack(void);     // 0.0 white
+CG_EXTERN CGColorRef CGColorGetDarkGray(void);  // 0.333 white
+CG_EXTERN CGColorRef CGColorGetLightGray(void); // 0.667 white
+CG_EXTERN CGColorRef CGColorGetWhite(void);     // 1.0 white
+CG_EXTERN CGColorRef CGColorGetGray(void);      // 0.5 white
+CG_EXTERN CGColorRef CGColorGetRed(void);       // 1.0, 0.0, 0.0 RGB
+CG_EXTERN CGColorRef CGColorGetGreen(void);     // 0.0, 1.0, 0.0 RGB
+CG_EXTERN CGColorRef CGColorGetBlue(void);      // 0.0, 0.0, 1.0 RGB
+CG_EXTERN CGColorRef CGColorGetCyan(void);      // 0.0, 1.0, 1.0 RGB
+CG_EXTERN CGColorRef CGColorGetYellow(void);    // 1.0, 1.0, 0.0 RGB
+CG_EXTERN CGColorRef CGColorGetMagenta(void);   // 1.0, 0.0, 1.0 RGB
+CG_EXTERN CGColorRef CGColorGetOrange(void);    // 1.0, 0.5, 0.0 RGB
+CG_EXTERN CGColorRef CGColorGetPurple(void);    // 0.5, 0.0, 0.5 RGB
+CG_EXTERN CGColorRef CGColorGetBrown(void);     // 0.6, 0.4, 0.2 RGB
+CG_EXTERN CGColorRef CGColorGetClear(void);     // 0.0 white, 0.0 alpha
+
 NS_ASSUME_NONNULL_END
+
+CF_IMPLICIT_BRIDGING_DISABLED
