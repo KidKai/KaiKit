@@ -80,9 +80,9 @@
     static const char hexEncodeCharsLower[] = "0123456789abcdef";
     static const char hexEncodeChars[] = "0123456789ABCDEF";
     
-    // malloc result data
+    // Malloc result data.
     char *resultData = malloc(self.length * 2 + 1);
-    // convert data to char[]
+    // Convert data to char[].
     unsigned char *sourceData = ((unsigned char *)self.bytes);
     
     if (isOutputLower) {
@@ -98,7 +98,7 @@
     }
     resultData[self.length * 2] = 0;
     
-    // convert result(char[]) to string
+    // Convert result(char[]) to string.
     NSString *result = [NSString stringWithCString:resultData encoding:NSASCIIStringEncoding];
     sourceData = nil;
     free(resultData);

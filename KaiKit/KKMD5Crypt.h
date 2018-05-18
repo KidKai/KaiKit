@@ -30,15 +30,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) NSData *md5;
 
-@property (nullable, nonatomic, readonly) NSString *md5L; // lowercase
-@property (nullable, nonatomic, readonly) NSString *md5U; // uppercase
+@property (nullable, nonatomic, readonly) NSString *md5L; // Lowercase.
+@property (nullable, nonatomic, readonly) NSString *md5U; // Uppercase.
 
 @end
 
 @interface NSString (MD5)
 
-@property (nullable, nonatomic, readonly) NSString *md5L; // lowercase
-@property (nullable, nonatomic, readonly) NSString *md5U; // uppercase
+@property (nullable, nonatomic, readonly) NSString *md5L; // Lowercase.
+@property (nullable, nonatomic, readonly) NSString *md5U; // Uppercase.
 
 @end
 

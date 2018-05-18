@@ -58,7 +58,7 @@
                         forBarMetrics:UIBarMetricsDefault];
     [navigationBar setShadowImage:[[UIImage alloc] init]];
     
-    // associated kkNavigationBar added or renew
+    // Associated kkNavigationBar added or renew.
     if (!kkNavigationBarTintColor) {
         [self.kkNavigationBar removeFromSuperview];
         [self setKkNavigationBar:nil];

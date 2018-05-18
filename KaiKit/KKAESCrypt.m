@@ -32,20 +32,18 @@
 - (NSData *)aes128WithKey:(NSString *)keyString
                 operation:(CCOperation)operation
 {
-    char keyPtr[kCCKeySizeAES128+1]; // room for terminator (unused)
-    bzero(keyPtr, sizeof(keyPtr));   // fill with zeros (for padding)
+    char keyPtr[kCCKeySizeAES128+1]; // Room for terminator (Unused).
+    bzero(keyPtr, sizeof(keyPtr));   // Fill with zeros (For padding).
     
-    // fetch key data
+    // Fetch key data.
     [keyString getCString:keyPtr
                 maxLength:sizeof(keyPtr)
                  encoding:NSUTF8StringEncoding];
     
     NSUInteger dataLength = [self length];
     
-    /*
-     for block ciphers, the output size will always be less than
-     or equal to the input size plus the size of the block
-     */
+    // For block ciphers, the output size will always be less than
+    // or equal to the input size plus the size of the block.
     size_t bufferSize = dataLength + kCCBlockSizeAES128;
     void *buffer = malloc(bufferSize);
     
@@ -56,8 +54,8 @@
                                      keyPtr,
                                      kCCKeySizeAES128,
                                      NULL,
-                                     [self bytes], dataLength, // input
-                                     buffer, bufferSize, // output
+                                     [self bytes], dataLength, // Input.
+                                     buffer, bufferSize, // Output.
                                      &numBytesEncrypted);
     
     if (status == kCCSuccess) {

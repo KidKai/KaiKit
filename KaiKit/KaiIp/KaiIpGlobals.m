@@ -91,7 +91,7 @@ UIViewController *playground()
 void telephone(NSString *telephone)
 {
     NSString *string = [NSString stringWithFormat:@"tel://%@", telephone];
-    // faster response than coding UIWebView loading URL Request
+    // Faster response than coding UIWebView loading URL Request.
     UIApplication *app = UIApplication.sharedApplication;
     NSURL *url = [NSURL URLWithString:string];
     if (@available(iOS 10.0, *)) {
