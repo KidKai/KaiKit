@@ -1,5 +1,5 @@
 //
-//  UIColor+KKAdditions.h
+//  KKMD5Crypt.h
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -22,35 +22,35 @@
 //  SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIColor (KKAdditions)
+@interface NSData (MD5)
 
-+ (UIColor *)colorWithInt:(UInt8)red
-                    green:(UInt8)green
-                     blue:(UInt8)blue;
-+ (UIColor *)colorWithInt:(UInt8)red
-                    green:(UInt8)green
-                     blue:(UInt8)blue
-                    alpha:(CGFloat)alpha;
-+ (UIColor *)colorWithHexUInt:(UInt32)hexUInt;
-+ (UIColor *)colorWithHexUStr:(NSString *)hexUStr;
+@property (nonatomic, readonly) NSData *md5;
 
-- (UIColor *)initWithInt:(UInt8)red
-                   green:(UInt8)green
-                    blue:(UInt8)blue
-NS_SWIFT_NAME(init(int:green:blue:));
-- (UIColor *)initWithInt:(UInt8)red
-                   green:(UInt8)green
-                    blue:(UInt8)blue
-                   alpha:(CGFloat)alpha
-NS_SWIFT_NAME(init(int:green:blue:alpha:));
-- (UIColor *)initWithHexUInt:(UInt32)hexUInt; // 0x33FFCC00
-- (UIColor *)initWithHexUStr:(NSString *)hexUStr; // '33FFCC00'
+@property (nullable, nonatomic, readonly) NSString *md5L; // lowercase
+@property (nullable, nonatomic, readonly) NSString *md5U; // uppercase
 
-@property (nullable, nonatomic, readonly) UIImage *image;
+@end
+
+@interface NSString (MD5)
+
+@property (nullable, nonatomic, readonly) NSString *md5L; // lowercase
+@property (nullable, nonatomic, readonly) NSString *md5U; // uppercase
+
+@end
+
+//
+//  Created by Kelp on 12/5/12.
+//  Updated by KidKai on 18/5/18.
+//  Copyright (c) 2012 Kelp http://kelp.phate.org/
+//
+
+@interface NSData (HEX)
+
+- (nullable NSString *)hexUsingLower:(BOOL)isOutputLower;
 
 @end
 

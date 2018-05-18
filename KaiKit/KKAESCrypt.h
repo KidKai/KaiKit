@@ -1,5 +1,5 @@
 //
-//  UIColor+KKAdditions.h
+//  KKAESCrypt.h
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -22,35 +22,21 @@
 //  SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIColor (KKAdditions)
+@interface NSData (AES)
 
-+ (UIColor *)colorWithInt:(UInt8)red
-                    green:(UInt8)green
-                     blue:(UInt8)blue;
-+ (UIColor *)colorWithInt:(UInt8)red
-                    green:(UInt8)green
-                     blue:(UInt8)blue
-                    alpha:(CGFloat)alpha;
-+ (UIColor *)colorWithHexUInt:(UInt32)hexUInt;
-+ (UIColor *)colorWithHexUStr:(NSString *)hexUStr;
+- (nullable NSData *)enaes128WithKey:(NSString *)key NS_SWIFT_NAME(enaes128(key:));
+- (nullable NSData *)deaes128WithKey:(NSString *)key NS_SWIFT_NAME(deaes128(key:));
 
-- (UIColor *)initWithInt:(UInt8)red
-                   green:(UInt8)green
-                    blue:(UInt8)blue
-NS_SWIFT_NAME(init(int:green:blue:));
-- (UIColor *)initWithInt:(UInt8)red
-                   green:(UInt8)green
-                    blue:(UInt8)blue
-                   alpha:(CGFloat)alpha
-NS_SWIFT_NAME(init(int:green:blue:alpha:));
-- (UIColor *)initWithHexUInt:(UInt32)hexUInt; // 0x33FFCC00
-- (UIColor *)initWithHexUStr:(NSString *)hexUStr; // '33FFCC00'
+@end
 
-@property (nullable, nonatomic, readonly) UIImage *image;
+@interface NSString (AES)
+
+- (nullable NSString *)base64Enaes128WithKey:(NSString *)key NS_SWIFT_NAME(base64Enaes128(key:));
+- (nullable NSString *)base64Deaes128WithKey:(NSString *)key NS_SWIFT_NAME(base64Deaes128(key:));
 
 @end
 
