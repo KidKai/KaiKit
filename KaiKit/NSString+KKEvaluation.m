@@ -24,7 +24,7 @@
 
 #import "NSString+KKEvaluation.h"
 
-static bool matches(NSString *regex, NSString *value)
+static BOOL matches(NSString *regex, NSString *value)
 {
     id predicate = [NSPredicate predicateWithFormat:@"self matches %@", regex];
     return [predicate evaluateWithObject:value];
