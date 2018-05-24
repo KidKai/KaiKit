@@ -174,14 +174,16 @@ YYEncodingType YYEncodingGetType(const char *typeEncoding) {
                         if (![scanner scanString:@"@\"" intoString:NULL]) continue;
                         
                         NSString *clsName = nil;
-                        if ([scanner scanUpToCharactersFromSet: [NSCharacterSet characterSetWithCharactersInString:@"\"<"] intoString:&clsName]) {
+                        if ([scanner scanUpToCharactersFromSet:
+                             [NSCharacterSet characterSetWithCharactersInString:@"\"<"]
+                                                    intoString:&clsName]) {
                             if (clsName.length) _cls = objc_getClass(clsName.UTF8String);
                         }
                         
                         NSMutableArray *protocols = nil;
                         while ([scanner scanString:@"<" intoString:NULL]) {
                             NSString* protocol = nil;
-                            if ([scanner scanUpToString:@">" intoString: &protocol]) {
+                            if ([scanner scanUpToString:@">" intoString:&protocol]) {
                                 if (protocol.length) {
                                     if (!protocols) protocols = [NSMutableArray new];
                                     [protocols addObject:protocol];
@@ -242,7 +244,9 @@ YYEncodingType YYEncodingGetType(const char *typeEncoding) {
             _getter = NSSelectorFromString(_name);
         }
         if (!_setter) {
-            _setter = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [_name substringToIndex:1].uppercaseString, [_name substringFromIndex:1]]);
+            _setter = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:",
+                                            [_name substringToIndex:1].uppercaseString,
+                                            [_name substringFromIndex:1]]);
         }
     }
     return self;

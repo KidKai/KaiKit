@@ -33,7 +33,8 @@
     unsigned char *digest = malloc(CC_MD5_DIGEST_LENGTH);
     
     CC_MD5(self.bytes, (CC_LONG)self.length, digest);
-    NSData *result = [[NSData alloc] initWithBytes:digest length:CC_MD5_DIGEST_LENGTH];
+    NSData *result =
+    [[NSData alloc] initWithBytes:digest length:CC_MD5_DIGEST_LENGTH];
     free(digest);
     
     return result;
@@ -87,19 +88,24 @@
     
     if (isOutputLower) {
         for (NSUInteger index = 0; index < self.length; index++) {
-            resultData[index * 2] = hexEncodeCharsLower[(sourceData[index] >> 4)];
-            resultData[index * 2 + 1] = hexEncodeCharsLower[(sourceData[index] % 0x10)];
+            resultData[index * 2] =
+            hexEncodeCharsLower[(sourceData[index] >> 4)];
+            resultData[index * 2 + 1] =
+            hexEncodeCharsLower[(sourceData[index] % 0x10)];
         }
     } else {
         for (NSUInteger index = 0; index < self.length; index++) {
-            resultData[index * 2] = hexEncodeChars[(sourceData[index] >> 4)];
-            resultData[index * 2 + 1] = hexEncodeChars[(sourceData[index] % 0x10)];
+            resultData[index * 2] =
+            hexEncodeChars[(sourceData[index] >> 4)];
+            resultData[index * 2 + 1] =
+            hexEncodeChars[(sourceData[index] % 0x10)];
         }
     }
     resultData[self.length * 2] = 0;
     
     // Convert result(char[]) to string.
-    NSString *result = [NSString stringWithCString:resultData encoding:NSASCIIStringEncoding];
+    NSString *result =
+    [NSString stringWithCString:resultData encoding:NSASCIIStringEncoding];
     sourceData = nil;
     free(resultData);
     

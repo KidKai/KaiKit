@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Provide some data-model method:
  
- * Convert json to any object, or convert any object to json.
+ * Convert JSON to any object, or convert any object to JSON.
  * Set object properties with a key-value dictionary (like KVC).
  * Implementations of `NSCoding`, `NSCopying`, `-hash` and `-isEqual:`.
  
@@ -24,8 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
  
  
  Sample Code:
-    
-     ********************** json convertor *********************
+ 
+     ********************** JSON converter *********************
  @code
      @interface YYAuthor : NSObject
      @property (nonatomic, strong) NSString *name;
@@ -41,20 +41,20 @@ NS_ASSUME_NONNULL_BEGIN
      @end
      @implementation YYBook
      @end
-    
      int main() {
-         // create model from json
+         // Create a model from JSON.
          YYBook *book = [YYBook yy_modelWithJSON:@"{\"name\": \"Harry Potter\", \"pages\": 256, \"author\": {\"name\": \"J.K.Rowling\", \"birthday\": \"1965-07-31\" }}"];
  
-         // convert model to json
+         // Convert a model to JSON.
          NSString *json = [book yy_modelToJSONString];
          // {"author":{"name":"J.K.Rowling","birthday":"1965-07-31T00:00:00+0000"},"name":"Harry Potter","pages":256}
      }
  @endcode
  
+ 
      ********************** Coding/Copying/hash/equal *********************
  @code
-     @interface YYShadow :NSObject <NSCoding, NSCopying>
+     @interface YYShadow : NSObject <NSCoding, NSCopying>
      @property (nonatomic, copy) NSString *name;
      @property (nonatomic, assign) CGSize size;
      @end
@@ -67,17 +67,16 @@ NS_ASSUME_NONNULL_BEGIN
      - (BOOL)isEqual:(id)object { return [self yy_modelIsEqual:object]; }
      @end
  @endcode
- 
  */
 @interface NSObject (YYModel)
 
 /**
- Creates and returns a new instance of the receiver from a json.
+ Creates and returns a new instance of the receiver from a JSON.
  This method is thread-safe.
  
- @param json  A json object in `NSDictionary`, `NSString` or `NSData`.
+ @param json  A JSON object in `NSDictionary`, `NSString` or `NSData`.
  
- @return A new instance created from the json, or nil if an error occurs.
+ @return A new instance created from the JSON, or nil if an error occurs.
  */
 + (nullable instancetype)yy_modelWithJSON:(id)json;
 
@@ -86,31 +85,31 @@ NS_ASSUME_NONNULL_BEGIN
  This method is thread-safe.
  
  @param dictionary  A key-value dictionary mapped to the instance's properties.
- Any invalid key-value pair in dictionary will be ignored.
+ Any invalid key-value pair in the dictionary will be ignored.
  
  @return A new instance created from the dictionary, or nil if an error occurs.
  
- @discussion The key in `dictionary` will mapped to the reciever's property name,
- and the value will set to the property. If the value's type does not match the
- property, this method will try to convert the value based on these rules:
+ @discussion The key in `dictionary` will be mapped to the receiver's property name,
+ and the value will set to the property. If the value's type does not match the property,
+ this method will try to convert the value based on these rules:
  
-     `NSString` or `NSNumber` -> c number, such as BOOL, int, long, float, NSUInteger...
-     `NSString` -> NSDate, parsed with format "yyyy-MM-dd'T'HH:mm:ssZ", "yyyy-MM-dd HH:mm:ss" or "yyyy-MM-dd".
-     `NSString` -> NSURL.
-     `NSValue` -> struct or union, such as CGRect, CGSize, ...
-     `NSString` -> SEL, Class.
+    `NSString`, `NSNumber` -> c number, such as BOOL, int, long, float, NSUInteger...
+    `NSString` -> NSDate, parsed with format "yyyy-MM-dd'T'HH:mm:ssZ", "yyyy-MM-dd HH:mm:ss" or "yyyy-MM-dd".
+    `NSString` -> NSURL.
+    `NSValue` -> struct or union, such as CGRect, CGSize, ...
+    `NSString` -> SEL, Class.
  */
 + (nullable instancetype)yy_modelWithDictionary:(NSDictionary *)dictionary;
 
 /**
- Set the receiver's properties with a json object.
+ Set the receiver's properties with a JSON object.
  
- @discussion Any invalid data in json will be ignored.
+ @discussion Any invalid data in JSON will be ignored.
  
- @param json  A json object of `NSDictionary`, `NSString` or `NSData`, mapped to the
- receiver's properties.
+ @param json  A JSON object of `NSDictionary`, `NSString` or `NSData`,
+ mapped to the receiver's properties.
  
- @return Whether succeed.
+ @return Whether successful or not.
  */
 - (BOOL)yy_modelSetWithJSON:(id)json;
 
@@ -118,58 +117,58 @@ NS_ASSUME_NONNULL_BEGIN
  Set the receiver's properties with a key-value dictionary.
  
  @param dic  A key-value dictionary mapped to the receiver's properties.
- Any invalid key-value pair in dictionary will be ignored.
+ Any invalid key-value pair in the dictionary will be ignored.
  
- @discussion The key in `dictionary` will mapped to the reciever's property name,
- and the value will set to the property. If the value's type doesn't match the
- property, this method will try to convert the value based on these rules:
+ @discussion The key in `dictionary` will be mapped to the receiver's property name,
+ and the value will set to the property. If the value's type does not match the property,
+ this method will try to convert the value based on these rules:
  
-     `NSString`, `NSNumber` -> c number, such as BOOL, int, long, float, NSUInteger...
-     `NSString` -> NSDate, parsed with format "yyyy-MM-dd'T'HH:mm:ssZ", "yyyy-MM-dd HH:mm:ss" or "yyyy-MM-dd".
-     `NSString` -> NSURL.
-     `NSValue` -> struct or union, such as CGRect, CGSize, ...
-     `NSString` -> SEL, Class.
+    `NSString`, `NSNumber` -> c number, such as BOOL, int, long, float, NSUInteger...
+    `NSString` -> NSDate, parsed with format "yyyy-MM-dd'T'HH:mm:ssZ", "yyyy-MM-dd HH:mm:ss" or "yyyy-MM-dd".
+    `NSString` -> NSURL.
+    `NSValue` -> struct or union, such as CGRect, CGSize, ...
+    `NSString` -> SEL, Class.
  
- @return Whether succeed.
+ @return Whether successful or not.
  */
 - (BOOL)yy_modelSetWithDictionary:(NSDictionary *)dic;
 
 /**
- Generate a json object from the receiver's properties.
+ Generate a JSON object from the receiver's properties.
  
- @return A json object in `NSDictionary` or `NSArray`, or nil if an error occurs.
+ @return A JSON object in `NSDictionary` or `NSArray`, or nil if an error occurs.
  See [NSJSONSerialization isValidJSONObject] for more information.
  
  @discussion Any of the invalid property is ignored.
- If the reciver is `NSArray`, `NSDictionary` or `NSSet`, it just convert
- the inner object to json object.
+ If the receiver is `NSArray`, `NSDictionary` or `NSSet`,
+ it just converts the inner object to JSON object.
  */
 - (nullable id)yy_modelToJSONObject;
 
 /**
- Generate a json string's data from the receiver's properties.
+ Generate a JSON string's data from the receiver's properties.
  
- @return A json string's data, or nil if an error occurs.
+ @return A JSON string's data, or nil if an error occurs.
  
  @discussion Any of the invalid property is ignored.
- If the reciver is `NSArray`, `NSDictionary` or `NSSet`, it will also convert the 
- inner object to json string.
+ If the receiver is `NSArray`, `NSDictionary` or `NSSet`,
+ it will also convert the inner object to JSON string.
  */
 - (nullable NSData *)yy_modelToJSONData;
 
 /**
- Generate a json string from the receiver's properties.
+ Generate a JSON string from the receiver's properties.
  
- @return A json string, or nil if an error occurs.
+ @return A JSON string, or nil if an error occurs.
  
  @discussion Any of the invalid property is ignored.
- If the reciver is `NSArray`, `NSDictionary` or `NSSet`, it will also convert the 
- inner object to json string.
+ If the receiver is `NSArray`, `NSDictionary` or `NSSet`,
+ it will also convert the inner object to JSON string.
  */
 - (nullable NSString *)yy_modelToJSONString;
 
 /**
- Copy a instance with the receiver's properties.
+ Copy an instance with the receiver's properties.
  
  @return A copied instance, or nil if an error occurs.
  */
@@ -187,14 +186,14 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param aDecoder  An archiver object.
  
- @return self
+ @return Self.
  */
 - (id)yy_modelInitWithCoder:(NSCoder *)aDecoder;
 
 /**
  Get a hash code with the receiver's properties.
  
- @return Hash code.
+ @return Hashcode.
  */
 - (NSUInteger)yy_modelHash;
 
@@ -203,7 +202,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param model  Another object.
  
- @return `YES` if the reciever is equal to the object, otherwise `NO`.
+ @return `YES` if the receiver is equal to the object, otherwise `NO`.
  */
 - (BOOL)yy_modelIsEqual:(id)model;
 
@@ -224,14 +223,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSArray (YYModel)
 
 /**
- Creates and returns an array from a json-array.
+ Creates and returns an array from a JSON-array.
  This method is thread-safe.
  
- @param cls  The instance's class in array.
- @param json  A json array of `NSArray`, `NSString` or `NSData`.
-              Example: [{"name":"Mary"},{name:"Joe"}]
+ @param cls  The instance's class in the array.
+ @param json  A JSON array of `NSArray`, `NSString` or `NSData`.
+              Example: [{"name":"Mary"},{"name":"Joe"}]
  
- @return A array, or nil if an error occurs.
+ @return An array, or nil if an error occurs.
  */
 + (nullable NSArray *)yy_modelArrayWithClass:(Class)cls json:(id)json;
 
@@ -245,12 +244,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSDictionary (YYModel)
 
 /**
- Creates and returns a dictionary from a json.
+ Creates and returns a dictionary from a JSON.
  This method is thread-safe.
  
- @param cls  The value instance's class in dictionary.
- @param json  A json dictionary of `NSDictionary`, `NSString` or `NSData`.
-              Example: {"user1":{"name","Mary"}, "user2": {name:"Joe"}}
+ @param cls  The value instance's class in a dictionary.
+ @param json  A JSON dictionary of `NSDictionary`, `NSString` or `NSData`.
+              Example: {"user1":{"name":"Mary"}, "user2":{"name":"Joe"}}
  
  @return A dictionary, or nil if an error occurs.
  */
@@ -260,7 +259,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- If the default model transform does not fit to your model class, implement one or
+ If the default model transform does not fit your model class, implement one or
  more method in this protocol to change the default key-value transform process.
  There's no need to add '<YYModel>' to your class header.
  */
@@ -274,15 +273,13 @@ NS_ASSUME_NONNULL_BEGIN
  implements this method and returns the additional mapper.
  
  Example:
-    
-    json: 
+ 
+    JSON:
         {
             "n":"Harry Pottery",
             "p": 256,
-            "ext" : {
-                "desc" : "A book written by J.K.Rowling."
-            },
-            "ID" : 100010
+            "ext": { "desc": "A book written by J.K.Rowling." },
+            "id" : 100010
         }
  
     model:
@@ -293,7 +290,7 @@ NS_ASSUME_NONNULL_BEGIN
         @property NSString *desc;
         @property NSString *bookID;
         @end
-        
+ 
         @implementation YYBook
         + (NSDictionary *)modelCustomPropertyMapper {
             return @{@"name"  : @"n",
@@ -302,7 +299,7 @@ NS_ASSUME_NONNULL_BEGIN
                      @"bookID": @[@"id", @"ID", @"book_id"]};
         }
         @end
-     @endcode
+    @endcode
  
  @return A custom mapper for properties.
  */
@@ -312,11 +309,11 @@ NS_ASSUME_NONNULL_BEGIN
  The generic class mapper for container properties.
  
  @discussion If the property is a container object, such as NSArray/NSSet/NSDictionary,
- implements this method and returns a property->class mapper, tells which kind of 
- object will be add to the array/set/dictionary.
+ implements this method and returns a property->class mapper,
+ tells which kind of object will be added to the array/set/dictionary.
  
-  Example:
-  @code
+ Example:
+    @code
         @class YYShadow, YYBorder, YYAttachment;
  
         @interface YYAttributes
@@ -328,12 +325,12 @@ NS_ASSUME_NONNULL_BEGIN
  
         @implementation YYAttributes
         + (NSDictionary *)modelContainerPropertyGenericClass {
-            return @{@"shadows" : [YYShadow class],
-                     @"borders" : YYBorder.class,
-                     @"attachments" : @"YYAttachment" };
+            return @{@"shadows": [YYShadow class],
+                     @"borders": YYBorder.class,
+                     @"attachments": @"YYAttachment"};
         }
         @end
-  @endcode
+    @endcode
  
  @return A class mapper.
  */
@@ -341,18 +338,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  If you need to create instances of different classes during json->object transform,
- use the method to choose custom class based on dictionary data.
+ use the method to choose a custom class based on dictionary data.
  
  @discussion If the model implements this method, it will be called to determine resulting class
- during `+modelWithJSON:`, `+modelWithDictionary:`, conveting object of properties of parent objects 
+ during `+modelWithJSON:`, `+modelWithDictionary:`, converting an object of properties of parent objects
  (both singular and containers via `+modelContainerPropertyGenericClass`).
  
  Example:
- @code
+    @code
         @class YYCircle, YYRectangle, YYLine;
  
         @implementation YYShape
-
         + (Class)modelCustomClassForDictionary:(NSDictionary*)dictionary {
             if (dictionary[@"radius"] != nil) {
                 return [YYCircle class];
@@ -364,19 +360,17 @@ NS_ASSUME_NONNULL_BEGIN
                 return [self class];
             }
         }
-
         @end
- @endcode
-
- @param dictionary The json/kv dictionary.
+    @endcode
+ 
+ @param dictionary  The JSON/key-value dictionary.
  
  @return Class to create from this dictionary, `nil` to use current class.
-
  */
 + (nullable Class)modelCustomClassForDictionary:(NSDictionary *)dictionary;
 
 /**
- All the properties in blacklist will be ignored in model transform process.
+ All the properties in the blacklist will be ignored in model transform process.
  Returns nil to ignore this feature.
  
  @return An array of property's name.
@@ -384,7 +378,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (nullable NSArray<NSString *> *)modelPropertyBlacklist;
 
 /**
- If a property is not in the whitelist, it will be ignored in model transform process.
+ If a property is not on the whitelist, it will be ignored in model transform process.
  Returns nil to ignore this feature.
  
  @return An array of property's name.
@@ -392,44 +386,44 @@ NS_ASSUME_NONNULL_BEGIN
 + (nullable NSArray<NSString *> *)modelPropertyWhitelist;
 
 /**
- This method's behavior is similar to `- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic;`, 
+ This method's behavior is similar to `-modelCustomTransformFromDictionary:`,
  but be called before the model transform.
  
  @discussion If the model implements this method, it will be called before
  `+modelWithJSON:`, `+modelWithDictionary:`, `-modelSetWithJSON:` and `-modelSetWithDictionary:`.
  If this method returns nil, the transform process will ignore this model.
  
- @param dic  The json/kv dictionary.
+ @param dic  The JSON/key-value dictionary.
  
  @return Returns the modified dictionary, or nil to ignore this model.
  */
 - (NSDictionary *)modelCustomWillTransformFromDictionary:(NSDictionary *)dic;
 
 /**
- If the default json-to-model transform does not fit to your model object, implement
- this method to do additional process. You can also use this method to validate the 
- model's properties.
+ If the default JSON-to-model transform does not fit to your model object,
+ implement this method to do an additional process. You can also
+ use this method to validate the model's properties.
  
  @discussion If the model implements this method, it will be called at the end of
  `+modelWithJSON:`, `+modelWithDictionary:`, `-modelSetWithJSON:` and `-modelSetWithDictionary:`.
  If this method returns NO, the transform process will ignore this model.
  
- @param dic  The json/kv dictionary.
+ @param dic  The JSON/key-value dictionary.
  
  @return Returns YES if the model is valid, or NO to ignore this model.
  */
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic;
 
 /**
- If the default model-to-json transform does not fit to your model class, implement
- this method to do additional process. You can also use this method to validate the
- json dictionary.
+ If the default model-to-JSON transform does not fit your model class,
+ implement this method to do an additional process. You can also
+ use this method to validate the JSON dictionary.
  
  @discussion If the model implements this method, it will be called at the end of
  `-modelToJSONObject` and `-modelToJSONString`.
- If this method returns NO, the transform process will ignore this json dictionary.
+ If this method returns NO, the transform process will ignore this JSON dictionary.
  
- @param dic  The json dictionary.
+ @param dic  The JSON dictionary.
  
  @return Returns YES if the model is valid, or NO to ignore this model.
  */

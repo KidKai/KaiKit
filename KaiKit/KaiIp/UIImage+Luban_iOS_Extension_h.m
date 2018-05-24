@@ -253,7 +253,7 @@ static char customImageName;
                 slantAngle:(CGFloat)slantAngle
                       size:(CGSize)size {
     // *******************************************************
-    // This draws the String str centred at the position
+    // This draws the String str centered at the position
     // specified by the polar coordinates (r, theta)
     // i.e. the x= r * cos(theta) y= r * sin(theta)
     // and rotated by the angle slantAngle
@@ -262,15 +262,15 @@ static char customImageName;
     NSDictionary *attributes = @{NSForegroundColorAttributeName:colour,
                                             NSFontAttributeName:font};
     CGContextSaveGState(context);
-    // Undo the inversion of the Y-axis (or the text goes backwards!)
+    // Undo the inversion of the Y-axis (or the text goes backward!)
     CGContextScaleCTM(context, 1.f, -1.f);
-    // Move the origin to the centre of the text (negating the y-axis manually)
+    // Move the origin to the center of the text (negating the y-axis manually)
     CGContextTranslateCTM(context, radius * cos(angle), -(radius * sin(angle)));
-    // Rotate the coordinate system
+    // Rotate the coordinate system.
     CGContextRotateCTM(context, -slantAngle);
-    // Calculate the width of the text
+    // Calculate the width of the text.
     CGSize offset = [str sizeWithAttributes:attributes];
-    // Move the origin to the centre of the text (negating the y-axis manually)
+    // Move the origin to the center of the text (negating the y-axis manually)
     CGContextTranslateCTM(context, -offset.width / 2.f, -offset.height / 2.f);
     
     NSInteger width  = (NSInteger)ceil(cos(slantAngle) * (double)offset.width);
