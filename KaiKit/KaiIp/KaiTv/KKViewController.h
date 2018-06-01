@@ -30,4 +30,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+
+@interface UIView (UIViewController)
+
+@property (nonatomic, weak, readonly) UIViewController *viewController;
+
+@end
+
 NS_ASSUME_NONNULL_END

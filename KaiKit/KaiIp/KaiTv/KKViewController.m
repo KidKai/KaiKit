@@ -67,3 +67,18 @@
 }
 
 @end
+
+
+@implementation UIView (UIViewController)
+
+- (UIViewController *)viewController
+{
+    id next = self.superview.nextResponder;
+    id vccl = [UIViewController classForCoder];
+    while (next != nil && ![next isKindOfClass:vccl]) {
+        next = [next nextResponder];
+    }
+    return (UIViewController *)next;
+}
+
+@end
