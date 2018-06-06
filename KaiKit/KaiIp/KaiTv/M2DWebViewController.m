@@ -3,7 +3,7 @@
 //  BoostMedia
 //
 //  Created by Akira Matsuda on 2013/01/11.
-//  Copyright (c) 2013年 akira.matsuda. All rights reserved.
+//  Copyright (c) 2013 akira.matsuda. All rights reserved.
 //
 
 #import "M2DWebViewController.h"
