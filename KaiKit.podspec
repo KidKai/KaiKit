@@ -11,10 +11,13 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = '9.0'
   s.source   = { :git => 'https://github.com/KidKai/KaiKit.git', :tag => s.version }
   s.source_files = 'KaiKit/*.{h,m,swift}'
-  s.ios.source_files = 'KaiKit/KaiIp/**/*.{h,m,swift}'
-  s.osx.source_files = 'KaiKit/KaiMac/**/*.{h,m,swift}'
+  s.ios.source_files = 'KaiKit/KaiIp/**/*.{h,m,swift}',
+                       'KaiKit/!KaiWatch/**/*.{h,m,swift}'
+  s.osx.source_files = 'KaiKit/KaiMac/**/*.{h,m,swift}',
+                       'KaiKit/!KaiWatch/**/*.{h,m,swift}'
   s.watchos.source_files = 'KaiKit/KaiIp/KaiWatch/**/*.{h,m,swift}'
-  s.tvos.source_files = 'KaiKit/KaiIp/KaiTv/**/*.{h,m,swift}'
+  s.tvos.source_files = 'KaiKit/KaiIp/KaiTv/**/*.{h,m,swift}',
+                        'KaiKit/!KaiWatch/**/*.{h,m,swift}'
   s.requires_arc = true
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.1' }
 end
