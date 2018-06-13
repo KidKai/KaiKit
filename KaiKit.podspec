@@ -10,7 +10,8 @@ Pod::Spec.new do |s|
   s.watchos.deployment_target = '3.2'
   s.tvos.deployment_target = '9.0'
   s.source   = { :git => 'https://github.com/KidKai/KaiKit.git', :tag => s.version }
-  s.source_files = 'KaiKit/*.{h,m,swift}'
+  s.source_files = 'KaiKit/*.{h,m,swift}',
+                   'KaiKit/YYModel/*.{h,m,swift}'
   s.ios.source_files = 'KaiKit/KaiIp/**/*.{h,m,swift}',
                        'KaiKit/!KaiWatch/**/*.{h,m,swift}'
   s.osx.source_files = 'KaiKit/KaiMac/**/*.{h,m,swift}',
