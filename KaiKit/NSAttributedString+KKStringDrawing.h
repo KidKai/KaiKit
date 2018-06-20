@@ -1,5 +1,5 @@
 //
-//  NSString+KKTransform.m
+//  NSAttributedString+KKStringDrawing.h
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -22,33 +22,32 @@
 //  SOFTWARE.
 //
 
-#import "NSString+KKTransform.h"
+#if TARGET_OS_OSX
+#import <AppKit/AppKit.h>
+#else
+#import <UIKit/UIKit.h>
+#endif
 
-@implementation NSString (KKTransform)
+NS_ASSUME_NONNULL_BEGIN
 
-- (NSString *)combine
-{
-    return [[self stringByReplacingOccurrencesOfString:@" " withString:@""]
-            stringByReplacingOccurrencesOfString:@"　" withString:@""];
-}
+@interface NSAttributedString (KKStringDrawing)
 
-- (NSString *)urlEncoded
-{
-    NSString *str = @"!*'();:@&=+$,/?%#[]";
-    NSCharacterSet *set =
-    [NSCharacterSet characterSetWithCharactersInString:str].invertedSet;
-    return [self stringByAddingPercentEncodingWithAllowedCharacters:set];
-}
+- (NSUInteger)numberOfLines:(CGFloat)bounded
+NS_SWIFT_NAME(numberOfLines(bounded:));
 
-- (NSString *)substringFromIndex:(NSUInteger)from toIndex:(NSUInteger)to
-{
-    if (self.length <= from || to < from) return nil;
-    
-    NSUInteger indexOfSafeLocation = self.length < to ? self.length : to;
-    NSRange range = NSMakeRange(from, indexOfSafeLocation - from);
-    NSRange compose = [self rangeOfComposedCharacterSequencesForRange:range];
-    
-    return [self substringWithRange:compose];
-}
+/*
+ +----------------------------------+
+ |          ----Aclinic----         |
+ |  ||                              |
+ |  Upright     Bounded             |
+ |  ||                              |
+ +----------------------------------+
+ */
+- (CGFloat)aclinic:(CGFloat)boundedUpright
+NS_SWIFT_NAME(aclinic(boundedUpright:));
+- (CGFloat)upright:(CGFloat)boundedAclinic
+NS_SWIFT_NAME(upright(boundedAclinic:));
 
 @end
+
+NS_ASSUME_NONNULL_END

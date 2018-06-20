@@ -48,28 +48,28 @@
     return YES;
 }
 
-+ (BOOL)copyItemAtPath:(NSString *)srcPath
-                toPath:(NSString *)dstPath
++ (BOOL)copyItemAtPath:(NSString *)srcPath toPath:(NSString *)dstPath
 {
     if ([self fileExistsAtPath:dstPath])
         [self removeItemAtPath:dstPath];
     NSError *error = nil;
-    BOOL result =
-    [NSFileManager.defaultManager
-     copyItemAtPath:srcPath toPath:dstPath error:&error];
+    BOOL result = [NSFileManager.defaultManager
+                   copyItemAtPath:srcPath
+                   toPath:dstPath
+                   error:&error];
     if (error) result = NO;
     return result;
 }
 
-+ (BOOL)moveItemAtPath:(NSString *)srcPath
-                toPath:(NSString *)dstPath
++ (BOOL)moveItemAtPath:(NSString *)srcPath toPath:(NSString *)dstPath
 {
     if ([self fileExistsAtPath:dstPath])
         [self removeItemAtPath:dstPath];
     NSError *error = nil;
-    BOOL result =
-    [NSFileManager.defaultManager
-     moveItemAtPath:srcPath toPath:dstPath error:&error];
+    BOOL result = [NSFileManager.defaultManager
+                   moveItemAtPath:srcPath
+                   toPath:dstPath
+                   error:&error];
     if (error) result = NO;
     return result;
 }
@@ -77,9 +77,9 @@
 + (BOOL)removeItemAtPath:(NSString *)path
 {
     NSError *error = nil;
-    BOOL result =
-    [NSFileManager.defaultManager
-     removeItemAtPath:path error:&error];
+    BOOL result = [NSFileManager.defaultManager
+                   removeItemAtPath:path
+                   error:&error];
     if (error) result = NO;
     return result;
 }
@@ -105,7 +105,9 @@
 {
     if (![self fileExistsAtPath:path]) {
         return [NSFileManager.defaultManager
-                createFileAtPath:path contents:[NSData data] attributes:nil];
+                createFileAtPath:path
+                contents:[NSData data]
+                attributes:nil];
     }
     return YES;
 }

@@ -1,5 +1,5 @@
 //
-//  NSString+KKTransform.m
+//  NSString+KKStringDrawing.h
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -22,33 +22,44 @@
 //  SOFTWARE.
 //
 
-#import "NSString+KKTransform.h"
+#if TARGET_OS_OSX
+#import <AppKit/AppKit.h>
+#else
+#import <UIKit/UIKit.h>
+#endif
 
-@implementation NSString (KKTransform)
+NS_ASSUME_NONNULL_BEGIN
 
-- (NSString *)combine
-{
-    return [[self stringByReplacingOccurrencesOfString:@" " withString:@""]
-            stringByReplacingOccurrencesOfString:@"　" withString:@""];
-}
+@interface NSString (KKStringDrawing)
 
-- (NSString *)urlEncoded
-{
-    NSString *str = @"!*'();:@&=+$,/?%#[]";
-    NSCharacterSet *set =
-    [NSCharacterSet characterSetWithCharactersInString:str].invertedSet;
-    return [self stringByAddingPercentEncodingWithAllowedCharacters:set];
-}
+#if TARGET_OS_OSX
+- (NSUInteger)numberOfLines:(CGFloat)bounded font:(NSFont *)font
+#else
+- (NSUInteger)numberOfLines:(CGFloat)bounded font:(UIFont *)font
+#endif
+NS_SWIFT_NAME(numberOfLines(bounded:font:));
 
-- (NSString *)substringFromIndex:(NSUInteger)from toIndex:(NSUInteger)to
-{
-    if (self.length <= from || to < from) return nil;
-    
-    NSUInteger indexOfSafeLocation = self.length < to ? self.length : to;
-    NSRange range = NSMakeRange(from, indexOfSafeLocation - from);
-    NSRange compose = [self rangeOfComposedCharacterSequencesForRange:range];
-    
-    return [self substringWithRange:compose];
-}
+/*
+ +----------------------------------+
+ |          ----Aclinic----         |
+ |  ||                              |
+ |  Upright     Bounded             |
+ |  ||                              |
+ +----------------------------------+
+ */
+#if TARGET_OS_OSX
+- (CGFloat)aclinic:(CGFloat)boundedUpright font:(NSFont *)font
+#else
+- (CGFloat)aclinic:(CGFloat)boundedUpright font:(UIFont *)font
+#endif
+NS_SWIFT_NAME(aclinic(boundedUpright:font:));
+#if TARGET_OS_OSX
+- (CGFloat)upright:(CGFloat)boundedAclinic font:(NSFont *)font
+#else
+- (CGFloat)upright:(CGFloat)boundedAclinic font:(UIFont *)font
+#endif
+NS_SWIFT_NAME(upright(boundedAclinic:font:));
 
 @end
+
+NS_ASSUME_NONNULL_END

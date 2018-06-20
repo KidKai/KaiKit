@@ -27,24 +27,14 @@
 
 @implementation UIColor (KKAdditions)
 
-+ (UIColor *)colorWithInt:(UInt8)red
-                    green:(UInt8)green
-                     blue:(UInt8)blue
++ (UIColor *)colorWithInt:(UInt8)red green:(UInt8)green blue:(UInt8)blue
 {
-    return [[UIColor alloc] initWithInt:red
-                                  green:green
-                                   blue:blue];
+    return [[UIColor alloc] initWithInt:red green:green blue:blue];
 }
 
-+ (UIColor *)colorWithInt:(UInt8)red
-                    green:(UInt8)green
-                     blue:(UInt8)blue
-                    alpha:(CGFloat)alpha
++ (UIColor *)colorWithInt:(UInt8)red green:(UInt8)green blue:(UInt8)blue alpha:(CGFloat)alpha
 {
-    return [[UIColor alloc] initWithInt:red
-                                  green:green
-                                   blue:blue
-                                  alpha:alpha];
+    return [[UIColor alloc] initWithInt:red green:green blue:blue alpha:alpha];
 }
 
 + (UIColor *)colorWithHexUInt:(UInt32)hexUInt
@@ -57,20 +47,12 @@
     return [[UIColor alloc] initWithHexUStr:hexUStr];
 }
 
-- (UIColor *)initWithInt:(UInt8)red
-                   green:(UInt8)green
-                    blue:(UInt8)blue
+- (UIColor *)initWithInt:(UInt8)red green:(UInt8)green blue:(UInt8)blue
 {
-    return [self initWithInt:red
-                       green:green
-                        blue:blue
-                       alpha:1.f];
+    return [self initWithInt:red green:green blue:blue alpha:1.f];
 }
 
-- (UIColor *)initWithInt:(UInt8)red
-                   green:(UInt8)green
-                    blue:(UInt8)blue
-                   alpha:(CGFloat)alpha
+- (UIColor *)initWithInt:(UInt8)red green:(UInt8)green blue:(UInt8)blue alpha:(CGFloat)alpha
 {
     return [self initWithRed:(CGFloat)red / 255.f
                        green:(CGFloat)green / 255.f

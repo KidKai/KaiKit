@@ -28,15 +28,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSData (AES)
 
-- (nullable NSData *)enaes128WithKey:(NSString *)key NS_SWIFT_NAME(enaes128(key:));
-- (nullable NSData *)deaes128WithKey:(NSString *)key NS_SWIFT_NAME(deaes128(key:));
+- (nullable NSData *)enaes128WithKey:(NSString *)key
+NS_SWIFT_NAME(enaes128(key:));
+- (nullable NSData *)deaes128WithKey:(NSString *)key
+NS_SWIFT_NAME(deaes128(key:));
 
 @end
 
 @interface NSString (AES)
 
-- (nullable NSString *)base64Enaes128WithKey:(NSString *)key NS_SWIFT_NAME(base64Enaes128(key:));
-- (nullable NSString *)base64Deaes128WithKey:(NSString *)key NS_SWIFT_NAME(base64Deaes128(key:));
+- (nullable NSString *)base64Enaes128WithKey:(NSString *)key
+NS_SWIFT_NAME(base64Enaes128(key:));
+- (nullable NSString *)base64Deaes128WithKey:(NSString *)key
+NS_SWIFT_NAME(base64Deaes128(key:));
 
 @end
 
