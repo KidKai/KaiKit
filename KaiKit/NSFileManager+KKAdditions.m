@@ -116,8 +116,7 @@
 {
     if (![self fileExistsAtPath:path]) return 0.f;
     NSEnumerator *enumerator =
-    [NSFileManager.defaultManager
-     subpathsAtPath:path].objectEnumerator;
+    [NSFileManager.defaultManager subpathsAtPath:path].objectEnumerator;
     NSString *filename = nil;
     unsigned long long folderSize = 0;
     while ((filename = enumerator.nextObject) != nil) {
