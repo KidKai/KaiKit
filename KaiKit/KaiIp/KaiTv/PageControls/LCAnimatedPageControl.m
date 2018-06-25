@@ -71,8 +71,8 @@ static CGFloat kLCMultiple = 1.4f;
     _indicatorCons = [NSMutableArray array];
     _numberOfPages = 0;
     _currentPage = 0;
-    _pageIndicatorColor = [UIColor orangeColor];
-    _currentPageIndicatorColor = [UIColor blackColor];
+    _pageIndicatorTintColor = [UIColor orangeColor];
+    _currentPageIndicatorTintColor = [UIColor blackColor];
     _indicatorMultiple = kLCMultiple;
     _indicatorDiameter = self.frame.size.height / _indicatorMultiple;
     _indicatorMargin = 0.f;
@@ -83,40 +83,41 @@ static CGFloat kLCMultiple = 1.4f;
 {
     [self addIndicatorsWithIndex:0];
     [self.sourceScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
-    CGFloat viewWidth = (_indicatorDiameter * _indicatorMultiple) * _numberOfPages + (_numberOfPages - 1) * _indicatorMargin;
-    self.contentWidthCon = [NSLayoutConstraint constraintWithItem:_contentView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1.f constant:viewWidth];
+    self.contentWidthCon = [NSLayoutConstraint constraintWithItem:_contentView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1.f constant:[self sizeForNumberOfPages:_numberOfPages].width];
     [self.contentView addConstraint:_contentWidthCon];
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_contentView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1.f constant:_indicatorDiameter * _indicatorMultiple]];
     
     switch (_pageStyle) {
-        case LCPageStyleSquirm: {
+        case PageStyleSquirmLC: {
             self.squirmView = [[UIView alloc] init];
             self.squirmView.translatesAutoresizingMaskIntoConstraints = NO;
             self.squirmView.clipsToBounds = YES;
             self.squirmView.layer.cornerRadius = _radius;
-            self.squirmView.backgroundColor = _currentPageIndicatorColor;
+            self.squirmView.backgroundColor = _currentPageIndicatorTintColor;
             [self.contentView addSubview:_squirmView];
             
             [self layoutSquirmView];
         } break;
             
-        case LCPageStyleScaleColor:
-        case LCPageStyleFillColor:
+        case PageStyleDanceColor: {
+            [self configDefaultIndicator];
+            [self.indicatorViews.firstObject setBackgroundColor:_currentPageIndicatorTintColor];
+            [self.contentView bringSubviewToFront:_indicatorViews.firstObject];
+        } break;
+            
+        case PageStyleStuffColor:
+        case PageStyleScaleColor:
             [self configDefaultIndicator];
             break;
             
-        case LCPageStyleDepthColor: {
-            [self configDefaultIndicator];
-            [self.indicatorViews.firstObject setBackgroundColor:_currentPageIndicatorColor];
-            [self.contentView bringSubviewToFront:_indicatorViews.firstObject];
-        } break;
+        default: break;
     }
 }
 
 - (void)setPageStyle:(PageStyle)pageStyle
 {
     _pageStyle = pageStyle;
-    if (pageStyle == LCPageStyleSquirm) {
+    if (pageStyle == PageStyleSquirmLC) {
         self.indicatorMultiple = 1.f;
     }
 }
@@ -130,6 +131,13 @@ static CGFloat kLCMultiple = 1.4f;
     }
 }
 
+- (CGSize)sizeForNumberOfPages:(NSInteger)pageCount
+{
+    CGFloat viewHeight = _indicatorDiameter * _indicatorMultiple;
+    CGFloat viewWidth = (pageCount - 1) * _indicatorMargin + pageCount * viewHeight;
+    return pageCount == 0 ? CGSizeZero : CGSizeMake(viewWidth, viewHeight);
+}
+
 - (void)setIndicatorDiameter:(CGFloat)indicatorDiameter
 {
     _indicatorDiameter = indicatorDiameter;
@@ -140,27 +148,27 @@ static CGFloat kLCMultiple = 1.4f;
 {
     for (NSInteger number = index; number < _numberOfPages; number++) {
         UIView *indicator = nil;
-        if (_pageStyle == LCPageStyleFillColor) {
+        if (_pageStyle == PageStyleStuffColor) {
             indicator = [[IndicatorView alloc] init];
-            [(IndicatorView *)indicator backView].backgroundColor = _currentPageIndicatorColor;
-            [(IndicatorView *)indicator frontView].backgroundColor = _pageIndicatorColor;
+            [(IndicatorView *)indicator backView].backgroundColor = _currentPageIndicatorTintColor;
+            [(IndicatorView *)indicator frontView].backgroundColor = _pageIndicatorTintColor;
             [(IndicatorView *)indicator backView].layer.cornerRadius = _radius;
             [(IndicatorView *)indicator frontView].layer.cornerRadius = _radius;
             [self configZeroScaleAnimation:[(IndicatorView *)indicator backView]];
             [self configZeroScaleAnimation:[(IndicatorView *)indicator frontView]];
         } else {
             indicator = [[UIView alloc] init];
-            indicator.backgroundColor = _pageIndicatorColor;
+            indicator.backgroundColor = _pageIndicatorTintColor;
         }
         indicator.clipsToBounds = YES;
         indicator.layer.cornerRadius = _radius;
         
         [self.contentView addSubview:indicator];
         [self.indicatorViews addObject:indicator];
-        if (_pageStyle == LCPageStyleScaleColor) {
+        if (_pageStyle == PageStyleScaleColor) {
             [self configCSAnimation:indicator];
         }
-        else if (_pageStyle == LCPageStyleDepthColor) {
+        else if (_pageStyle == PageStyleDanceColor) {
             if (number == 0) {
                 [self configScaleAnimation:indicator];
             } else {
@@ -217,10 +225,10 @@ static CGFloat kLCMultiple = 1.4f;
             [self addIndicatorsWithIndex:lastNumberPages];
         }
         [self resetContentLayout];
-        if (_pageStyle == LCPageStyleDepthColor) {
+        if (_pageStyle == PageStyleDanceColor) {
             [self configDepthView];
         }
-        else if (_pageStyle == LCPageStyleSquirm) {
+        else if (_pageStyle == PageStyleSquirmLC) {
             [self layoutSquirmView];
         }
     }
@@ -239,8 +247,7 @@ static CGFloat kLCMultiple = 1.4f;
 - (void)resetContentLayout
 {
     if (_numberOfPages) {
-        CGFloat viewWidth = (_indicatorDiameter * _indicatorMultiple) * _numberOfPages + (_numberOfPages - 1) * _indicatorMargin;
-        self.contentWidthCon = [NSLayoutConstraint constraintWithItem:_contentView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1.f constant:viewWidth];
+        self.contentWidthCon = [NSLayoutConstraint constraintWithItem:_contentView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1.f constant:[self sizeForNumberOfPages:_numberOfPages].width];
         [self.contentView addConstraint:_contentWidthCon];
         [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_contentView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1.f constant:_indicatorDiameter * _indicatorMultiple]];
     }
@@ -250,7 +257,7 @@ static CGFloat kLCMultiple = 1.4f;
 {
     UIView *depthView = self.indicatorViews.firstObject;
     [depthView.layer removeAllAnimations];
-    depthView.backgroundColor = _currentPageIndicatorColor;
+    depthView.backgroundColor = _currentPageIndicatorTintColor;
     [self.contentView bringSubviewToFront:depthView];
     [self configScaleAnimation:depthView];
     
@@ -273,17 +280,9 @@ static CGFloat kLCMultiple = 1.4f;
             UIView *currentIndicator = self.indicatorViews[currentIndex];
             self.currentPage = currentIndex;
             switch (self.pageStyle) {
-                case LCPageStyleSquirm: break;
+                case PageStyleSquirmLC: break;
                     
-                case LCPageStyleScaleColor: {
-                    currentIndicator.layer.timeOffset = 1.f;
-                } break;
-                    
-                case LCPageStyleFillColor: {
-                    [(IndicatorView *)currentIndicator frontView].layer.timeOffset = 1.f;
-                } break;
-                    
-                case LCPageStyleDepthColor: {
+                case PageStyleDanceColor: {
                     currentIndicator.layer.timeOffset = 0.f;
                     if (currentIndex) {
                         NSLayoutConstraint *currentCon = self.indicatorCons[currentIndex];
@@ -292,6 +291,16 @@ static CGFloat kLCMultiple = 1.4f;
                         lastCon.constant = (self.indicatorDiameter * self.indicatorMultiple * kLCHalfNumber) + currentIndex * (self.indicatorDiameter * self.indicatorMultiple + self.indicatorMargin);
                     }
                 } break;
+                    
+                case PageStyleStuffColor: {
+                    [(IndicatorView *)currentIndicator frontView].layer.timeOffset = 1.f;
+                } break;
+                    
+                case PageStyleScaleColor: {
+                    currentIndicator.layer.timeOffset = 1.f;
+                } break;
+                    
+                default: break;
             }
             self.isDefaultSet = NO;
         });
@@ -338,7 +347,7 @@ static CGFloat kLCMultiple = 1.4f;
         if (!_sourceScrollView.decelerating && _isDefaultSet) return;
         
         switch (_pageStyle) {
-            case LCPageStyleSquirm: {
+            case PageStyleSquirmLC: {
                 if (timeOffset - kLCHalfNumber <= 0.f) {
                     timeOffset = timeOffset * kLCDoubleNumber;
                 } else {
@@ -349,19 +358,7 @@ static CGFloat kLCMultiple = 1.4f;
                 _squirmWidthCon.constant = timeOffset * (_indicatorDiameter + _indicatorMargin);
             } break;
                 
-            case LCPageStyleScaleColor: {
-                if (isNoAnimationScroll) timeOffset = 1.f;
-                currentPointView.layer.timeOffset = timeOffset;
-                lastPointView.layer.timeOffset = 1.f - timeOffset;
-            } break;
-                
-            case LCPageStyleFillColor: {
-                if (isNoAnimationScroll) timeOffset = 1.f;
-                [(IndicatorView *)currentPointView frontView].layer.timeOffset = timeOffset;
-                [(IndicatorView *)lastPointView frontView].layer.timeOffset = 1.f - timeOffset;
-            } break;
-                
-            case LCPageStyleDepthColor: {
+            case PageStyleDanceColor: {
                 UIView *lastPointView = _indicatorViews.firstObject;
                 lastIndex = 0;
                 CGFloat halfTimeOffset = 0.f;
@@ -387,6 +384,20 @@ static CGFloat kLCMultiple = 1.4f;
                 }
                 lastCon.constant = (_indicatorDiameter * _indicatorMultiple * kLCHalfNumber) + (timeOffset + (currentIndex ? : 1 ) - 1) * (_indicatorDiameter * _indicatorMultiple + _indicatorMargin);
             } break;
+                
+            case PageStyleStuffColor: {
+                if (isNoAnimationScroll) timeOffset = 1.f;
+                [(IndicatorView *)currentPointView frontView].layer.timeOffset = timeOffset;
+                [(IndicatorView *)lastPointView frontView].layer.timeOffset = 1.f - timeOffset;
+            } break;
+                
+            case PageStyleScaleColor: {
+                if (isNoAnimationScroll) timeOffset = 1.f;
+                currentPointView.layer.timeOffset = timeOffset;
+                lastPointView.layer.timeOffset = 1.f - timeOffset;
+            } break;
+                
+            default: break;
         }
         _currentPage = currentIndex;
     }
@@ -439,8 +450,8 @@ static CGFloat kLCMultiple = 1.4f;
 - (void)configColorAnimation:(UIView *)view
 {
     CABasicAnimation *changeColor = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
-    changeColor.fromValue = (id)[self.pageIndicatorColor CGColor];
-    changeColor.toValue = (id)[self.currentPageIndicatorColor CGColor];
+    changeColor.fromValue = (id)[self.pageIndicatorTintColor CGColor];
+    changeColor.toValue = (id)[self.currentPageIndicatorTintColor CGColor];
     changeColor.duration  = 1.f;
     changeColor.removedOnCompletion = NO;
     [view.layer addAnimation:changeColor forKey:@"Change color"];

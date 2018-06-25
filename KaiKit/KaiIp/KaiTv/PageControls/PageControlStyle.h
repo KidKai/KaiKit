@@ -1,5 +1,5 @@
 //
-//  KaiKitDefines.h
+//  PageControlStyle.h
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -22,25 +22,20 @@
 //  SOFTWARE.
 //
 
-#ifndef KaiKitDefines_h
-#define KaiKitDefines_h
+#ifndef PageControlStyle_h
+#define PageControlStyle_h
 
-#ifdef DEBUG
-#define NSLog(...) NSLog(__VA_ARGS__)
-#else
-#define NSLog(...) (void)0
-#endif
+#import <UIKit/UIKit.h>
 
-#define weakify(var) \
-__weak typeof(var) weak_##var = var;
+typedef NS_ENUM(NSInteger, PageStyle) {
+    PageStyleNone = 0,
+    PageStyleSystem,
+    PageStyleSquirmCP,
+    
+    PageStyleSquirmLC,
+    PageStyleDanceColor,
+    PageStyleStuffColor,
+    PageStyleScaleColor,
+};
 
-#define strongify(var) \
-_Pragma("clang diagnostic push") \
-_Pragma("clang diagnostic ignored \"-Wshadow\"") \
-__strong typeof(var) var = weak_##var; \
-_Pragma("clang diagnostic pop")
-
-#define KaiKVOContext(K) \
-static void * const K = (void *)&K;
-
-#endif /* KaiKitDefines_h */
+#endif /* PageControlStyle_h */

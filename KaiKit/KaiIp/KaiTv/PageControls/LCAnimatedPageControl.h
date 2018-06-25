@@ -6,23 +6,16 @@
 //  Copyright (c) 2015 beike. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "PageControlStyle.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
-typedef NS_ENUM(NSInteger, PageStyle) {
-    LCPageStyleSquirm,
-    LCPageStyleScaleColor,
-    LCPageStyleFillColor,
-    LCPageStyleDepthColor,
-};
 
 @interface LCAnimatedPageControl : UIControl
 
 @property (nonatomic, strong) UIScrollView *sourceScrollView;
 @property (nonatomic, assign) NSInteger numberOfPages;
-@property (nonatomic, strong) UIColor *pageIndicatorColor;
-@property (nonatomic, strong) UIColor *currentPageIndicatorColor;
+@property (nonatomic, strong) UIColor *pageIndicatorTintColor;
+@property (nonatomic, strong) UIColor *currentPageIndicatorTintColor;
 @property (nonatomic, assign) CGFloat indicatorMultiple;
 @property (nonatomic, assign) CGFloat indicatorMargin;
 @property (nonatomic, assign) CGFloat indicatorDiameter;
@@ -31,6 +24,9 @@ typedef NS_ENUM(NSInteger, PageStyle) {
 
 - (void)prepareShow;
 - (void)clearIndicators;
+
+/** Returns minimum size required. */
+- (CGSize)sizeForNumberOfPages:(NSInteger)pageCount;
 
 @end
 

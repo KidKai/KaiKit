@@ -1,5 +1,5 @@
 //
-//  KaiKitDefines.h
+//  KKCarousel.h
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -22,25 +22,37 @@
 //  SOFTWARE.
 //
 
-#ifndef KaiKitDefines_h
-#define KaiKitDefines_h
+#import "iCarousel.h"
+#import "LCAnimatedPageControl.h"
 
-#ifdef DEBUG
-#define NSLog(...) NSLog(__VA_ARGS__)
-#else
-#define NSLog(...) (void)0
-#endif
+NS_ASSUME_NONNULL_BEGIN
 
-#define weakify(var) \
-__weak typeof(var) weak_##var = var;
+typedef NS_ENUM(NSInteger, KKPageControlAlignment) {
+    KKPageControlAlignmentCentre,
+    KKPageControlAlignmentRight,
+};
 
-#define strongify(var) \
-_Pragma("clang diagnostic push") \
-_Pragma("clang diagnostic ignored \"-Wshadow\"") \
-__strong typeof(var) var = weak_##var; \
-_Pragma("clang diagnostic pop")
+@interface KKCarousel : iCarousel
 
-#define KaiKVOContext(K) \
-static void * const K = (void *)&K;
+@property (nonatomic, strong) UIColor *pageIndicatorTintColor;
+@property (nonatomic, strong) UIColor *currentPageIndicatorTintColor;
+@property (nonatomic, assign) CGFloat indicatorBottomOffset;
+@property (nonatomic, assign) CGFloat indicatorRightOffset;
 
-#endif /* KaiKitDefines_h */
+/** PageStyle .danceColor, .stuffColor, .scaleColor */
+@property (nonatomic, assign) CGFloat indicatorMultiple;
+@property (nonatomic, assign) CGFloat indicatorMargin;
+@property (nonatomic, assign) CGFloat indicatorDiameter;
+
+@property (nonatomic, assign) KKPageControlAlignment pageAlignment;
+@property (nonatomic, assign) PageStyle pageStyle;
+
+/** CGFLOAT_MAX means infinite scrolling. Default to 0. */
+@property (nonatomic, assign) CGFloat autoscrollTimeInterval;
+
+/** Unlimited scroll frequency interval. Default to 3. */
+@property (nonatomic, assign) CGFloat autoscrollRateInterval;
+
+@end
+
+NS_ASSUME_NONNULL_END
