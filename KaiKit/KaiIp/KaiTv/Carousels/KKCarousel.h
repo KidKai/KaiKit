@@ -53,6 +53,9 @@ typedef NS_ENUM(NSInteger, KKPageControlAlignment) {
 /** Unlimited scroll frequency interval. Default to 3. */
 @property (nonatomic, assign) CGFloat autoscrollRateInterval;
 
+/** PageStyle .squirmCP CPSquirmPageControl */
+@property (nonatomic, assign) BOOL isRadiusZero;
+
 @end
 
 NS_ASSUME_NONNULL_END

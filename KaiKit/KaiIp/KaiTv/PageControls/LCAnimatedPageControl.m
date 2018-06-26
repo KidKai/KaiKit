@@ -7,7 +7,7 @@
 //
 
 #import "LCAnimatedPageControl.h"
-#import "IndicatorView.h"
+#import "LCIndicatorView.h"
 
 static CGFloat kLCDoubleNumber = 2.f;
 static CGFloat kLCHalfNumber = 0.5f;
@@ -149,13 +149,13 @@ static CGFloat kLCMultiple = 1.4f;
     for (NSInteger number = index; number < _numberOfPages; number++) {
         UIView *indicator = nil;
         if (_pageStyle == PageStyleStuffColor) {
-            indicator = [[IndicatorView alloc] init];
-            [(IndicatorView *)indicator backView].backgroundColor = _currentPageIndicatorTintColor;
-            [(IndicatorView *)indicator frontView].backgroundColor = _pageIndicatorTintColor;
-            [(IndicatorView *)indicator backView].layer.cornerRadius = _radius;
-            [(IndicatorView *)indicator frontView].layer.cornerRadius = _radius;
-            [self configZeroScaleAnimation:[(IndicatorView *)indicator backView]];
-            [self configZeroScaleAnimation:[(IndicatorView *)indicator frontView]];
+            indicator = [[LCIndicatorView alloc] init];
+            [(LCIndicatorView *)indicator backView].backgroundColor = _currentPageIndicatorTintColor;
+            [(LCIndicatorView *)indicator frontView].backgroundColor = _pageIndicatorTintColor;
+            [(LCIndicatorView *)indicator backView].layer.cornerRadius = _radius;
+            [(LCIndicatorView *)indicator frontView].layer.cornerRadius = _radius;
+            [self configZeroScaleAnimation:[(LCIndicatorView *)indicator backView]];
+            [self configZeroScaleAnimation:[(LCIndicatorView *)indicator frontView]];
         } else {
             indicator = [[UIView alloc] init];
             indicator.backgroundColor = _pageIndicatorTintColor;
@@ -191,15 +191,7 @@ static CGFloat kLCMultiple = 1.4f;
 
 - (void)setCurrentPage:(NSInteger)currentPage
 {
-    [self setCurrentPage:currentPage sendEvent:NO];
-}
-
-- (void)setCurrentPage:(NSInteger)currentPage sendEvent:(BOOL)sendEvent
-{
     _currentPage = MIN(currentPage, _numberOfPages - 1);
-    if (sendEvent) {
-        [self sendActionsForControlEvents:UIControlEventValueChanged];
-    }
 }
 
 - (void)setNumberOfPages:(NSInteger)numberOfPages
@@ -237,8 +229,8 @@ static CGFloat kLCMultiple = 1.4f;
 - (void)configCurrentIndicator
 {
     UIView *view = self.indicatorViews[_currentPage];
-    if ([view isKindOfClass:[IndicatorView class]]) {
-        [(IndicatorView *)view frontView].layer.timeOffset = 1.f;
+    if ([view isKindOfClass:[LCIndicatorView class]]) {
+        [(LCIndicatorView *)view frontView].layer.timeOffset = 1.f;
     } else {
         view.layer.timeOffset = 0.f;
     }
@@ -293,7 +285,7 @@ static CGFloat kLCMultiple = 1.4f;
                 } break;
                     
                 case PageStyleStuffColor: {
-                    [(IndicatorView *)currentIndicator frontView].layer.timeOffset = 1.f;
+                    [(LCIndicatorView *)currentIndicator frontView].layer.timeOffset = 1.f;
                 } break;
                     
                 case PageStyleScaleColor: {
@@ -387,8 +379,8 @@ static CGFloat kLCMultiple = 1.4f;
                 
             case PageStyleStuffColor: {
                 if (isNoAnimationScroll) timeOffset = 1.f;
-                [(IndicatorView *)currentPointView frontView].layer.timeOffset = timeOffset;
-                [(IndicatorView *)lastPointView frontView].layer.timeOffset = 1.f - timeOffset;
+                [(LCIndicatorView *)currentPointView frontView].layer.timeOffset = timeOffset;
+                [(LCIndicatorView *)lastPointView frontView].layer.timeOffset = 1.f - timeOffset;
             } break;
                 
             case PageStyleScaleColor: {
@@ -502,7 +494,7 @@ static CGFloat kLCMultiple = 1.4f;
     } else if (_currentPage) {
         self.currentPage--;
     }
-    [self setCurrentPage:_currentPage sendEvent:YES];
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
 - (void)dealloc

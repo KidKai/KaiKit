@@ -1,5 +1,5 @@
 //
-//  IndicatorView.h
+//  LCIndicatorView.h
 //  LCAnimatedPageControl
 //
 //  Created by beike on 8/14/15.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface IndicatorView : UIView
+@interface LCIndicatorView : UIView
 
 @property (nonatomic, strong) UIView *backView;
 @property (nonatomic, strong) UIView *frontView;

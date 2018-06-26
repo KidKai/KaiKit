@@ -23,6 +23,7 @@
 //
 
 #import "KKCarousel.h"
+#import "CPSquirmPageControl.h"
 #import "LCAnimatedPageControl.h"
 #import "UIView+KKViewGeometry.h"
 
@@ -89,7 +90,7 @@
     super.pagingEnabled = YES;
     _pageIndicatorTintColor = [UIColor groupTableViewBackgroundColor];
     _currentPageIndicatorTintColor = [UIColor darkGrayColor];
-    _indicatorMultiple = 1.25f;
+    _indicatorMultiple = 1.4f;
     _indicatorMargin = 10.f;
     _indicatorDiameter = 8.f;
     _autoscrollTimeInterval = 0.f;
@@ -116,6 +117,7 @@
 
 - (void)layoutSubviews
 {
+    CGSize tack = CGSizeMake(0.f, 0.f);
     CGSize size = CGSizeMake(36.f, 36.f);
     switch (_pageStyle) {
         case PageStyleNone: {
@@ -124,13 +126,13 @@
         } return;
             
         case PageStyleSystem: {
-            NSInteger numbers = self.numberOfItems;
             UIPageControl *pageControl = (UIPageControl *)_pageControl;
-            size.width += [pageControl sizeForNumberOfPages:numbers].width;
+            tack = [pageControl sizeForNumberOfPages:self.numberOfItems];
         } break;
             
         case PageStyleSquirmCP: {
-            
+            CPSquirmPageControl *pageControl = (CPSquirmPageControl *)_pageControl;
+            tack = [pageControl sizeForNumberOfPages:self.numberOfItems];
         } break;
             
         case PageStyleSquirmLC:
@@ -138,17 +140,18 @@
         case PageStyleStuffColor:
         case PageStyleScaleColor: {
             LCAnimatedPageControl *pageControl = (LCAnimatedPageControl *)_pageControl;
-            size.width += [pageControl sizeForNumberOfPages:self.numberOfItems].width;
+            tack = [pageControl sizeForNumberOfPages:self.numberOfItems];
         } break;
     }
-    _pageControl.size = size;
+    _pageControl.width = size.width + tack.width;
+    _pageControl.height = MAX(size.height, tack.height);
     
     if (_pageAlignment == KKPageControlAlignmentCentre) {
-        _pageControl.minX = (self.width - size.width) / 2.f;
+        _pageControl.minX = (self.width - _pageControl.width) / 2.f;
     } else {
-        _pageControl.minX = (self.width - size.width) - _indicatorRightOffset;
+        _pageControl.minX = (self.width - _pageControl.width) - _indicatorRightOffset;
     }
-    _pageControl.minY = self.height - size.height - _indicatorBottomOffset;
+    _pageControl.minY = self.height - _pageControl.height - _indicatorBottomOffset;
     
     [super layoutSubviews];
     [self bringSubviewToFront:_pageControl];
@@ -171,25 +174,25 @@
     }
     
     switch (_pageStyle) {
-        case PageStyleNone:
+        case PageStyleNone: {
             [self removePageControl];
-            break;
+        } break;
             
-        case PageStyleSystem:
+        case PageStyleSystem: {
             [self loadUIPageControl];
-            break;
+        } break;
             
-        case PageStyleSquirmCP:
+        case PageStyleSquirmCP: {
             [self loadCPPageControl];
-            break;
+        } break;
             
         case PageStyleSquirmLC:
         case PageStyleDanceColor:
         case PageStyleStuffColor:
-        case PageStyleScaleColor:
+        case PageStyleScaleColor: {
             [self loadLCPageControl];
             [self invalidateTimerNil];
-            break;
+        } break;
     }
 }
 
@@ -214,7 +217,16 @@
 
 - (void)loadCPPageControl
 {
+    CPSquirmPageControl *pageControl = [[CPSquirmPageControl alloc] init];
+    pageControl.numberOfPages = self.numberOfItems;
+    pageControl.pageIndicatorTintColor = _pageIndicatorTintColor;
+    pageControl.currentPageIndicatorTintColor = _currentPageIndicatorTintColor;
+    pageControl.indicatorMargin = _indicatorMargin;
+    pageControl.indicatorDiameter = _indicatorDiameter;
+    pageControl.isRadiusZero = _isRadiusZero;
     
+    _pageControl = pageControl;
+    [self addSubview:_pageControl];
 }
 
 - (void)loadLCPageControl
@@ -327,6 +339,12 @@
     }
 }
 
+- (void)setIsRadiusZero:(BOOL)isRadiusZero
+{
+    _isRadiusZero = isRadiusZero;
+    if (_pageControl) [self reloadData];
+}
+
 #pragma mark - Getters
 
 // iCarouselOptionWrap Off.
@@ -392,7 +410,9 @@
         } break;
             
         case PageStyleSquirmCP: {
-            
+            if (((CPSquirmPageControl *)_pageControl).currentPage != self.currentItemIndex) {
+                ((CPSquirmPageControl *)_pageControl).currentPage = self.currentItemIndex;
+            }
         } break;
             
         case PageStyleSquirmLC:

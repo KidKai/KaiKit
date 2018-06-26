@@ -1,14 +1,14 @@
 //
-//  IndicatorView.m
+//  LCIndicatorView.m
 //  LCAnimatedPageControl
 //
 //  Created by beike on 8/14/15.
 //  Copyright (c) 2015 beike. All rights reserved.
 //
 
-#import "IndicatorView.h"
+#import "LCIndicatorView.h"
 
-@implementation IndicatorView
+@implementation LCIndicatorView
 
 - (instancetype)init
 {
