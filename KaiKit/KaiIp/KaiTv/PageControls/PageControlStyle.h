@@ -31,7 +31,9 @@ typedef NS_ENUM(NSInteger, PageStyle) {
     PageStyleNone = 0,
     PageStyleSystem,
     PageStyleSquirmCP,
+    PageStyleAnimatedTA,
     
+    // autoTime == 0
     PageStyleSquirmLC,
     PageStyleDanceColor,
     PageStyleStuffColor,

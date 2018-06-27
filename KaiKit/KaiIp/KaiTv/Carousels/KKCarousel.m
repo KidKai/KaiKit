@@ -23,7 +23,9 @@
 //
 
 #import "KKCarousel.h"
+#import "TAPageControl.h"
 #import "CPSquirmPageControl.h"
+#import "UIColor+KKAdditions.h"
 #import "LCAnimatedPageControl.h"
 #import "UIView+KKViewGeometry.h"
 
@@ -88,8 +90,8 @@
 - (void)initialization
 {
     super.pagingEnabled = YES;
-    _pageIndicatorTintColor = [UIColor groupTableViewBackgroundColor];
-    _currentPageIndicatorTintColor = [UIColor darkGrayColor];
+    _pageIndicatorTintColor = [UIColor colorWithHexUInt:0x9FFFFFFF];
+    _currentPageIndicatorTintColor = [UIColor whiteColor];
     _indicatorMultiple = 1.4f;
     _indicatorMargin = 10.f;
     _indicatorDiameter = 8.f;
@@ -135,6 +137,11 @@
             tack = [pageControl sizeForNumberOfPages:self.numberOfItems];
         } break;
             
+        case PageStyleAnimatedTA: {
+            TAPageControl *pageControl = (TAPageControl *)_pageControl;
+            tack = [pageControl sizeForNumberOfPages:self.numberOfItems];
+        } break;
+            
         case PageStyleSquirmLC:
         case PageStyleDanceColor:
         case PageStyleStuffColor:
@@ -152,6 +159,8 @@
         _pageControl.minX = (self.width - _pageControl.width) - _indicatorRightOffset;
     }
     _pageControl.minY = self.height - _pageControl.height - _indicatorBottomOffset;
+    
+    if (_pageStyle == PageStyleAnimatedTA) [_pageControl sizeToFit];
     
     [super layoutSubviews];
     [self bringSubviewToFront:_pageControl];
@@ -184,6 +193,10 @@
             
         case PageStyleSquirmCP: {
             [self loadCPPageControl];
+        } break;
+            
+        case PageStyleAnimatedTA: {
+            [self loadTAPageControl];
         } break;
             
         case PageStyleSquirmLC:
@@ -224,6 +237,21 @@
     pageControl.indicatorMargin = _indicatorMargin;
     pageControl.indicatorDiameter = _indicatorDiameter;
     pageControl.isRadiusZero = _isRadiusZero;
+    
+    _pageControl = pageControl;
+    [self addSubview:_pageControl];
+}
+
+- (void)loadTAPageControl
+{
+    TAPageControl *pageControl = [[TAPageControl alloc] init];
+    pageControl.numberOfPages = self.numberOfItems;
+    pageControl.pageIndicatorTintColor = _pageIndicatorTintColor;
+    pageControl.currentPageIndicatorTintColor = _currentPageIndicatorTintColor;
+    pageControl.indicatorMargin = _indicatorMargin;
+    pageControl.indicatorDiameter = _indicatorDiameter;
+    pageControl.pageIndicatorImage = _pageIndicatorImage;
+    pageControl.currentPageIndicatorImage = _currentPageIndicatorImage;
     
     _pageControl = pageControl;
     [self addSubview:_pageControl];
@@ -345,6 +373,18 @@
     if (_pageControl) [self reloadData];
 }
 
+- (void)setPageIndicatorImage:(UIImage *)pageIndicatorImage
+{
+    _pageIndicatorImage = pageIndicatorImage;
+    if (_pageControl) [self reloadData];
+}
+
+- (void)setCurrentPageIndicatorImage:(UIImage *)currentPageIndicatorImage
+{
+    _currentPageIndicatorImage = currentPageIndicatorImage;
+    if (_pageControl) [self reloadData];
+}
+
 #pragma mark - Getters
 
 // iCarouselOptionWrap Off.
@@ -412,6 +452,12 @@
         case PageStyleSquirmCP: {
             if (((CPSquirmPageControl *)_pageControl).currentPage != self.currentItemIndex) {
                 ((CPSquirmPageControl *)_pageControl).currentPage = self.currentItemIndex;
+            }
+        } break;
+            
+        case PageStyleAnimatedTA: {
+            if (((TAPageControl *)_pageControl).currentPage != self.currentItemIndex) {
+                ((TAPageControl *)_pageControl).currentPage = self.currentItemIndex;
             }
         } break;
             

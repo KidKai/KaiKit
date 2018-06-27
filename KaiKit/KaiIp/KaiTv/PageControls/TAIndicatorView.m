@@ -34,10 +34,18 @@
 
 - (void)initialize
 {
-    self.backgroundColor    = [UIColor clearColor];
+    self.tintColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor clearColor];
+    
     self.layer.cornerRadius = CGRectGetWidth(self.frame) / 2.f;
     self.layer.borderWidth  = 2.f;
     self.layer.borderColor  = [UIColor whiteColor].CGColor;
+}
+
+- (void)setTintColor:(UIColor *)tintColor
+{
+    [super setTintColor:tintColor];
+    self.layer.borderColor = tintColor.CGColor;
 }
 
 - (void)changeActivityState:(BOOL)active
@@ -50,18 +58,6 @@
 
 
 @implementation TAAnimatedIView
-
-- (void)initialize
-{
-    [super initialize];
-    self.tintColor = [UIColor whiteColor];
-}
-
-- (void)setTintColor:(UIColor *)tintColor
-{
-    [super setTintColor:tintColor];
-    self.layer.borderColor = tintColor.CGColor;
-}
 
 - (void)changeActivityState:(BOOL)active
 {
