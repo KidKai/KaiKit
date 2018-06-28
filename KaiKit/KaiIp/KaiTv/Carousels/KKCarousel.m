@@ -188,14 +188,17 @@
         } break;
             
         case PageStyleSystem: {
+            [self removePageControl];
             [self loadUIPageControl];
         } break;
             
         case PageStyleSquirmCP: {
+            [self removePageControl];
             [self loadCPPageControl];
         } break;
             
         case PageStyleAnimatedTA: {
+            [self removePageControl];
             [self loadTAPageControl];
         } break;
             
@@ -203,6 +206,7 @@
         case PageStyleDanceColor:
         case PageStyleStuffColor:
         case PageStyleScaleColor: {
+            [self removePageControl];
             [self loadLCPageControl];
             [self invalidateTimerNil];
         } break;
