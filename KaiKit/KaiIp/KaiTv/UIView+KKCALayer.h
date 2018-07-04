@@ -32,7 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) IBInspectable CGFloat borderWidth;
 @property (nonatomic, nullable) IBInspectable UIColor *borderColor;
 @property (nonatomic, nullable) IBInspectable UIColor *shadowColor;
-@property (nonatomic) IBInspectable CGSize  shadowOffset;
+@property (nonatomic) IBInspectable float shadowOpacity;
+@property (nonatomic) IBInspectable CGSize shadowOffset;
 @property (nonatomic) IBInspectable CGFloat shadowRadius;
 
 @end

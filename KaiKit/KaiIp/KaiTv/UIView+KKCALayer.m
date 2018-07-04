@@ -68,6 +68,16 @@
     self.layer.shadowColor = shadowColor.CGColor;
 }
 
+- (float)shadowOpacity
+{
+    return self.layer.shadowOpacity;
+}
+
+- (void)setShadowOpacity:(float)shadowOpacity
+{
+    self.layer.shadowOpacity = shadowOpacity;
+}
+
 - (CGSize)shadowOffset
 {
     return self.layer.shadowOffset;
