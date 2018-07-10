@@ -25,6 +25,7 @@
 #import "KKViewController.h"
 #import "UIViewController+KKNavigationBar.h"
 
+#import "KaiIpGlobals.h"
 #import "UIView+KKViewGeometry.h"
 
 @implementation KKViewController
@@ -53,8 +54,9 @@
         [self.view addSubview:self.kkNavigationBar];
         UIView *navigationBar = self.navigationController.navigationBar;
         if (navigationBar.width == self.kkNavigationBar.width) return;
+        CGFloat height = statusHeight() + navigationBar.height;
         self.kkNavigationBar.width = navigationBar.width;
-        self.kkNavigationBar.height = navigationBar.maxY;
+        self.kkNavigationBar.height = height;
     }
 }
 
