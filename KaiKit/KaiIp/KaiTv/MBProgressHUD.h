@@ -247,7 +247,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Force the HUD dimensions to be equal if possible.
  */
-@property (assign, nonatomic, getter = isSquare) BOOL square UI_APPEARANCE_SELECTOR;
+@property (assign, nonatomic, getter=isSquare) BOOL square UI_APPEARANCE_SELECTOR;
 
 /**
  * When enabled, the bezel center gets slightly affected by the device accelerometer data.
@@ -345,7 +345,7 @@ NS_ASSUME_NONNULL_BEGIN
 /*
  * Display mode - NO = round or YES = annular. Defaults to round.
  */
-@property (nonatomic, assign, getter = isAnnular) BOOL annular;
+@property (nonatomic, assign, getter=isAnnular) BOOL annular;
 
 @end
 

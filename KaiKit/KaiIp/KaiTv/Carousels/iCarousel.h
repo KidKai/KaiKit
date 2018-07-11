@@ -114,10 +114,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat decelerationRate;
 @property (nonatomic, assign) CGFloat scrollSpeed;
 @property (nonatomic, assign) CGFloat bounceDistance;
-@property (nonatomic, assign, getter = isScrollEnabled) BOOL scrollEnabled;
-@property (nonatomic, assign, getter = isPagingEnabled) BOOL pagingEnabled;
-@property (nonatomic, assign, getter = isVertical) BOOL vertical;
-@property (nonatomic, readonly, getter = isWrapEnabled) BOOL wrapEnabled;
+@property (nonatomic, assign, getter=isScrollEnabled) BOOL scrollEnabled;
+@property (nonatomic, assign, getter=isPagingEnabled) BOOL pagingEnabled;
+@property (nonatomic, assign, getter=isVertical) BOOL vertical;
+@property (nonatomic, readonly, getter=isWrapEnabled) BOOL wrapEnabled;
 @property (nonatomic, assign) BOOL bounces;
 @property (nonatomic, assign) CGFloat scrollOffset;
 @property (nonatomic, readonly) CGFloat offsetMultiplier;
@@ -138,9 +138,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL scrollToItemBoundary;
 @property (nonatomic, assign) BOOL ignorePerpendicularSwipes;
 @property (nonatomic, assign) BOOL centerItemWhenSelected;
-@property (nonatomic, readonly, getter = isDragging) BOOL dragging;
-@property (nonatomic, readonly, getter = isDecelerating) BOOL decelerating;
-@property (nonatomic, readonly, getter = isScrolling) BOOL scrolling;
+@property (nonatomic, readonly, getter=isDragging) BOOL dragging;
+@property (nonatomic, readonly, getter=isDecelerating) BOOL decelerating;
+@property (nonatomic, readonly, getter=isScrolling) BOOL scrolling;
 
 - (void)scrollByOffset:(CGFloat)offset duration:(NSTimeInterval)duration;
 - (void)scrollToOffset:(CGFloat)offset duration:(NSTimeInterval)duration;

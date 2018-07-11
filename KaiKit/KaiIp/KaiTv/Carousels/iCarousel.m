@@ -115,15 +115,15 @@
 @property (nonatomic, assign) CGFloat startOffset;
 @property (nonatomic, assign) CGFloat endOffset;
 @property (nonatomic, assign) NSTimeInterval scrollDuration;
-@property (nonatomic, assign, getter = isScrolling) BOOL scrolling;
+@property (nonatomic, assign, getter=isScrolling) BOOL scrolling;
 @property (nonatomic, assign) NSTimeInterval startTime;
 @property (nonatomic, assign) NSTimeInterval lastTime;
 @property (nonatomic, assign) CGFloat startVelocity;
 @property (nonatomic, strong) NSTimer *timer;
-@property (nonatomic, assign, getter = isDecelerating) BOOL decelerating;
+@property (nonatomic, assign, getter=isDecelerating) BOOL decelerating;
 @property (nonatomic, assign) CGFloat previousTranslation;
-@property (nonatomic, assign, getter = isWrapEnabled) BOOL wrapEnabled;
-@property (nonatomic, assign, getter = isDragging) BOOL dragging;
+@property (nonatomic, assign, getter=isWrapEnabled) BOOL wrapEnabled;
+@property (nonatomic, assign, getter=isDragging) BOOL dragging;
 @property (nonatomic, assign) BOOL didDrag;
 @property (nonatomic, assign) NSTimeInterval toggleTime;
 
