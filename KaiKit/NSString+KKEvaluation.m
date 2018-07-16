@@ -40,7 +40,12 @@ static BOOL matches(NSString *regex, NSString *value)
 
 - (BOOL)isEmpty
 {
-    return !self.length || [self isEqual:[NSNull null]];
+    if (!self.length || [self isEqual:[NSNull null]]) return YES;
+    
+    NSCharacterSet *set = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    if (![[self stringByTrimmingCharactersInSet:set] length]) return YES;
+    
+    return NO;
 }
 
 - (BOOL)isChinaPhone
