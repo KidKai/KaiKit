@@ -190,6 +190,8 @@ static NSString * const kM2DWebViewControllerGetTitleScript = @"var elements=doc
             self.toolbarItems = @[fixedSpace6, goBackButton_, fixedSpace19, goForwardButton_, space, refreshButton, fixedSpace6];
         }
         
+        [goBackButton_ addObserver:self forKeyPath:@"enabled" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
+        
         goForwardButton_.enabled = NO;
         goBackButton_.enabled = NO;
     }
