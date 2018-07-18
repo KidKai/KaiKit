@@ -152,6 +152,7 @@ static NSString * const kM2DWebViewControllerGetTitleScript = @"var elements=doc
 
 - (void)dealloc
 {
+    [goBackButton_ removeObserver:self forKeyPath:@"enabled" context:NULL];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
