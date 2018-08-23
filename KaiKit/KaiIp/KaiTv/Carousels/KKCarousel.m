@@ -358,6 +358,7 @@
     CGFloat oldValue = _autoscrollTimeInterval;
     _autoscrollTimeInterval = autoscrollTimeInterval;
     if (oldValue != autoscrollTimeInterval) {
+        [self invalidateTimerNil];
         [self scheduledAutoTimer];
     }
 }
@@ -367,6 +368,7 @@
     CGFloat oldValue = _autoscrollRateInterval;
     _autoscrollRateInterval = autoscrollRateInterval;
     if (oldValue != autoscrollRateInterval) {
+        [self invalidateTimerNil];
         [self scheduledAutoTimer];
     }
 }
