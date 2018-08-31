@@ -97,6 +97,9 @@ void telephone(NSString *telephone)
     if (@available(iOS 10.0, *)) {
         [app openURL:url options:@{} completionHandler:nil];
     } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         [app openURL:url];
+#pragma clang diagnostic pop
     }
 }

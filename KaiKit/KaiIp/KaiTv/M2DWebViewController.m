@@ -165,7 +165,10 @@ static NSString * const kM2DWebViewControllerGetTitleScript = @"var elements=doc
 {
     [super viewDidLoad];
     self.title = NSLocalizedString(@"Loading...", @"");
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+#pragma clang diagnostic pop
 }
 
 - (void)viewWillAppear:(BOOL)animated
