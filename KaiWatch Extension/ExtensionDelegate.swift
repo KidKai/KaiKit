@@ -25,8 +25,7 @@
 import WatchKit
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
-    func applicationDidFinishLaunching() {
-    }
+    func applicationDidFinishLaunching() {}
 
     func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {
         for task in backgroundTasks {
