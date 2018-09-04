@@ -272,10 +272,10 @@ extension UnsafeMutableBufferPointer: CVarArg {}
 ///////////////////////////////////////////////////////////////////////////////
 
 public class XWVInvocation {
-    public final let target: AnyObject
-    private let thread: Thread?
+    @objc public final let target: AnyObject
+    @objc private let thread: Thread?
 
-    public init(target: AnyObject, thread: Thread? = nil) {
+    @objc public init(target: AnyObject, thread: Thread? = nil) {
         self.target = target
         self.thread = thread
     }

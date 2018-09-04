@@ -19,23 +19,23 @@ import WebKit
 
 public class XWVScriptObject: XWVObject {
     // asynchronized method calling
-    public func construct(arguments: [Any]?, completionHandler: Handler) {
+    @objc public func construct(arguments: [Any]?, completionHandler: Handler) {
         let expr = "new " + expression(forMethod: nil, arguments: arguments)
         evaluateExpression(expr, completionHandler: completionHandler)
     }
 
-    public func call(arguments: [Any]?, completionHandler: Handler) {
+    @objc public func call(arguments: [Any]?, completionHandler: Handler) {
         let expr = expression(forMethod: nil, arguments: arguments)
         evaluateExpression(expr, completionHandler: completionHandler)
     }
 
-    public func callMethod(_ name: String, with arguments: [Any]?, completionHandler: Handler) {
+    @objc public func callMethod(_ name: String, with arguments: [Any]?, completionHandler: Handler) {
         let expr = expression(forMethod: name, arguments: arguments)
         evaluateExpression(expr, completionHandler: completionHandler)
     }
 
     // synchronized method calling
-    public func construct(arguments: [Any]?) throws -> XWVScriptObject {
+    @objc public func construct(arguments: [Any]?) throws -> XWVScriptObject {
         let expr = "new" + expression(forMethod: nil, arguments: arguments)
         guard let result = try evaluateExpression(expr) as? XWVScriptObject else {
             let code = WKError.javaScriptExceptionOccurred.rawValue
@@ -44,48 +44,48 @@ public class XWVScriptObject: XWVObject {
         return result
     }
 
-    public func call(arguments: [Any]?) throws -> Any {
+    @objc public func call(arguments: [Any]?) throws -> Any {
         return try evaluateExpression(expression(forMethod: nil, arguments: arguments))
     }
 
-    public func callMethod(_ name: String, with arguments: [Any]?) throws -> Any {
+    @objc public func callMethod(_ name: String, with arguments: [Any]?) throws -> Any {
         return try evaluateExpression(expression(forMethod: name, arguments: arguments))
     }
 
     // property manipulation
-    public func defineProperty(_ name: String, descriptor: [String: Any]) throws -> Any {
+    @objc public func defineProperty(_ name: String, descriptor: [String: Any]) throws -> Any {
         let expr = "Object.defineProperty(\(namespace), \(name), \(jsonify(descriptor)!))"
         return try evaluateExpression(expr)
     }
 
-    public func deleteProperty(_ name: String) -> Bool {
+    @objc public func deleteProperty(_ name: String) -> Bool {
         let expr = "delete " + expression(forProperty: name)
         let result: Any? = try! evaluateExpression(expr)
         return (result as? NSNumber)?.boolValue ?? false
     }
 
-    public func hasProperty(_ name: String) -> Bool {
+    @objc public func hasProperty(_ name: String) -> Bool {
         let expr = expression(forProperty: name) + " != undefined"
         let result: Any? = try! evaluateExpression(expr)
         return (result as? NSNumber)?.boolValue ?? false
     }
 
     // property accessing
-    public func value(for name: String) throws -> Any {
+    @objc public func value(for name: String) throws -> Any {
         return try evaluateExpression(expression(forProperty: name))
     }
 
-    public func setValue(_ value: Any?, for name: String) {
+    @objc public func setValue(_ value: Any?, for name: String) {
         guard let json = jsonify(value) else { return }
         let script = expression(forProperty: name) + " = " + json
         webView?.asyncEvaluateJavaScript(script, completionHandler: nil)
     }
 
-    public func value(at index: UInt) throws -> Any {
+    @objc public func value(at index: UInt) throws -> Any {
         return try evaluateExpression("\(namespace)[\(index)]")
     }
 
-    public func setValue(_ value: Any?, at index: UInt) {
+    @objc public func setValue(_ value: Any?, at index: UInt) {
         guard let json = jsonify(value) else { return }
         let script = "\(namespace)[\(index)] = \(json)"
         webView?.asyncEvaluateJavaScript(script, completionHandler: nil)
@@ -112,7 +112,7 @@ public class XWVScriptObject: XWVObject {
     }
 }
 
-extension XWVScriptObject {
+@objc extension XWVScriptObject {
     // Subscript as property accessor
     public subscript(name: String) -> Any {
         get {

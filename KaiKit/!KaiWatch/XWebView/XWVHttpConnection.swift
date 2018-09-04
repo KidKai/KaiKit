@@ -16,7 +16,7 @@
 
 import Foundation
 
-protocol XWVHttpConnectionDelegate {
+@objc protocol XWVHttpConnectionDelegate {
     func handleRequest(_ request: URLRequest?) -> HTTPURLResponse
     func didOpenConnection(_ connection: XWVHttpConnection)
     func didCloseConnection(_ connection: XWVHttpConnection)
@@ -82,7 +82,7 @@ final class XWVHttpConnection: NSObject {
     }
 }
 
-extension XWVHttpConnection: StreamDelegate {
+@objc extension XWVHttpConnection: StreamDelegate {
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         switch eventCode {
         case Stream.Event.openCompleted:

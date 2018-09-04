@@ -18,7 +18,7 @@ import Foundation
 import ObjectiveC
 import WebKit
 
-extension WKWebView {
+@objc extension WKWebView {
     public var windowObject: XWVScriptObject {
         return XWVWindowObject(webView: self)
     }
@@ -50,7 +50,7 @@ public var undefined: AnyObject = {
     Void() as AnyObject
 }()
 
-extension WKWebView {
+@objc extension WKWebView {
     public static var undefined: AnyObject {
         return KaiKit.undefined
     }
@@ -118,7 +118,7 @@ extension WKWebView {
 @available(iOS 9.0, macOS 10.11, *)
 extension WKWebView {
     // Overlay support for loading file URL
-    public func loadFileURL(_ url: URL, overlayURLs: [URL]? = nil) -> WKNavigation? {
+    @objc public func loadFileURL(_ url: URL, overlayURLs: [URL]? = nil) -> WKNavigation? {
         if let count = overlayURLs?.count, count == 0 {
             return loadFileURL(url, allowingReadAccessTo: url.baseURL!)
         }

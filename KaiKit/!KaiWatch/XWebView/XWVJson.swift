@@ -72,7 +72,7 @@ private extension UnicodeScalar {
     var jsonString: String? { get }
 }
 
-public protocol CustomJSONStringable {
+@objc public protocol CustomJSONStringable {
     var jsonString: String? { get }
 }
 

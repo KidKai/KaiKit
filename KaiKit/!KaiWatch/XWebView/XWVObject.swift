@@ -21,8 +21,8 @@ private let webViewInvalidated =
     NSError(domain: WKErrorDomain, code: WKError.webViewInvalidated.rawValue, userInfo: nil)
 
 public class XWVObject: NSObject {
-    public let namespace: String
-    public private(set) weak var webView: WKWebView?
+    @objc public let namespace: String
+    @objc public private(set) weak var webView: WKWebView?
     private weak var origin: XWVObject?
     private let reference: Int
 
@@ -67,7 +67,7 @@ public class XWVObject: NSObject {
     }
 
     // Evaluate JavaScript expression
-    public func evaluateExpression(_ expression: String) throws -> Any {
+    @objc public func evaluateExpression(_ expression: String) throws -> Any {
         guard let webView = webView else {
             throw webViewInvalidated
         }
@@ -76,7 +76,7 @@ public class XWVObject: NSObject {
     }
 
     public typealias Handler = ((Any?, Error?) -> Void)?
-    public func evaluateExpression(_ expression: String, completionHandler: Handler) {
+    @objc public func evaluateExpression(_ expression: String, completionHandler: Handler) {
         guard let webView = webView else {
             completionHandler?(nil, webViewInvalidated)
             return
@@ -115,7 +115,7 @@ public class XWVObject: NSObject {
     }
 }
 
-extension XWVObject: CustomJSONStringable {
+@objc extension XWVObject: CustomJSONStringable {
     public var jsonString: String? {
         return namespace
     }

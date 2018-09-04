@@ -18,10 +18,10 @@ import Foundation
 import WebKit
 
 public class XWVChannel: NSObject, WKScriptMessageHandler {
-    public private(set) var identifier: String?
-    public let runLoop: RunLoop?
-    public let queue: DispatchQueue?
-    public private(set) weak var webView: WKWebView?
+    @objc public private(set) var identifier: String?
+    @objc public let runLoop: RunLoop?
+    @objc public let queue: DispatchQueue?
+    @objc public private(set) weak var webView: WKWebView?
     var typeInfo: XWVMetaObject!
 
     private var instances = [Int: XWVBindingObject]()
@@ -43,17 +43,17 @@ public class XWVChannel: NSObject, WKScriptMessageHandler {
         DispatchQueue(label: "org.xwebview.default-queue")
     }()
 
-    public convenience init(webView: WKWebView) {
+    @objc public convenience init(webView: WKWebView) {
         self.init(webView: webView, queue: XWVChannel.defaultQueue)
     }
 
-    public convenience init(webView: WKWebView, thread: Thread) {
+    @objc public convenience init(webView: WKWebView, thread: Thread) {
         let selector = #selector(getter: RunLoop.current)
         let runLoop = invoke(selector, of: RunLoop.self, on: thread) as! RunLoop
         self.init(webView: webView, runLoop: runLoop)
     }
 
-    public init(webView: WKWebView, queue: DispatchQueue) {
+    @objc public init(webView: WKWebView, queue: DispatchQueue) {
         assert(!queue.label.isEmpty, "Queue must be labeled")
         self.webView = webView
         self.queue = queue
@@ -61,14 +61,14 @@ public class XWVChannel: NSObject, WKScriptMessageHandler {
         webView.prepareForPlugin()
     }
 
-    public init(webView: WKWebView, runLoop: RunLoop) {
+    @objc public init(webView: WKWebView, runLoop: RunLoop) {
         self.webView = webView
         self.runLoop = runLoop
         queue = nil
         webView.prepareForPlugin()
     }
 
-    public func bindPlugin(_ object: AnyObject, toNamespace namespace: String) -> XWVScriptObject? {
+    @objc public func bindPlugin(_ object: AnyObject, toNamespace namespace: String) -> XWVScriptObject? {
         guard identifier == nil, let webView = webView else { return nil }
 
         let id = (object as? XWVScripting)?.channelIdentifier ?? String(XWVChannel.sequenceNumber)
@@ -86,7 +86,7 @@ public class XWVChannel: NSObject, WKScriptMessageHandler {
         return principal as XWVScriptObject
     }
 
-    public func unbind() {
+    @objc public func unbind() {
         guard let id = identifier else { return }
         let namespace = principal.namespace
         let plugin = principal.plugin
@@ -97,7 +97,7 @@ public class XWVChannel: NSObject, WKScriptMessageHandler {
         log("+Plugin object \(plugin?.description ?? "unknown") is unbound from \(namespace)")
     }
 
-    public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+    @objc public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         // A workaround for crash when postMessage(undefined)
         // guard unsafeBitCast(message.body, to: OpaquePointer!.self) != nil else { return }
 

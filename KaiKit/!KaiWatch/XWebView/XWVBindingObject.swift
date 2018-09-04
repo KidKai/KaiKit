@@ -214,7 +214,7 @@ extension XWVBindingObject {
     }
 }
 
-public extension XWVScriptObject {
+@objc public extension XWVScriptObject {
     static var bindingObject: XWVScriptObject? {
         return XWVBindingObject.currentBindingObject
     }
