@@ -51,6 +51,7 @@ KKDeviceGeneration const KKDeviceGenerationAppleWatch_1st_generation = @"Apple W
 KKDeviceGeneration const KKDeviceGenerationAppleWatchSeries1 = @"Apple Watch Series 1";
 KKDeviceGeneration const KKDeviceGenerationAppleWatchSeries2 = @"Apple Watch Series 2";
 KKDeviceGeneration const KKDeviceGenerationAppleWatchSeries3 = @"Apple Watch Series 3";
+KKDeviceGeneration const KKDeviceGenerationAppleWatchSeries4 = @"Apple Watch Series 4";
 KKDeviceGeneration const KKDeviceGenerationHomePod = @"HomePod";
 KKDeviceGeneration const KKDeviceGenerationIPad = @"iPad";
 KKDeviceGeneration const KKDeviceGenerationIPad2 = @"iPad 2";
@@ -86,6 +87,9 @@ KKDeviceGeneration const KKDeviceGenerationIPhone7Plus = @"iPhone 7 Plus";
 KKDeviceGeneration const KKDeviceGenerationIPhone8 = @"iPhone 8";
 KKDeviceGeneration const KKDeviceGenerationIPhone8Plus = @"iPhone 8 Plus";
 KKDeviceGeneration const KKDeviceGenerationIPhoneX = @"iPhone X";
+KKDeviceGeneration const KKDeviceGenerationIPhoneXR = @"iPhone XR";
+KKDeviceGeneration const KKDeviceGenerationIPhoneXS = @"iPhone XS";
+KKDeviceGeneration const KKDeviceGenerationIPhoneXSMax = @"iPhone XS Max";
 KKDeviceGeneration const KKDeviceGenerationIPodtouch = @"iPod touch";
 KKDeviceGeneration const KKDeviceGenerationIPodtouch_2nd_generation = @"iPod touch (2nd generation)";
 KKDeviceGeneration const KKDeviceGenerationIPodtouch_3rd_generation = @"iPod touch (3rd generation)";
@@ -117,6 +121,10 @@ KKDeviceIdentifier const KKDeviceIdentifierAppleWatchSeries3_11s = @"Watch3,1";
 KKDeviceIdentifier const KKDeviceIdentifierAppleWatchSeries3_11b = @"Watch3,2";
 KKDeviceIdentifier const KKDeviceIdentifierAppleWatchSeries3_21s = @"Watch3,3";
 KKDeviceIdentifier const KKDeviceIdentifierAppleWatchSeries3_21b = @"Watch3,4";
+KKDeviceIdentifier const KKDeviceIdentifierAppleWatchSeries4_31s = @"Watch4,1";
+KKDeviceIdentifier const KKDeviceIdentifierAppleWatchSeries4_31b = @"Watch4,2";
+KKDeviceIdentifier const KKDeviceIdentifierAppleWatchSeries4_41s = @"Watch4,3";
+KKDeviceIdentifier const KKDeviceIdentifierAppleWatchSeries4_41b = @"Watch4,4";
 KKDeviceIdentifier const KKDeviceIdentifierHomePod = @"AudioAccessory1,1";
 KKDeviceIdentifier const KKDeviceIdentifierIPad = @"iPad1,1";
 KKDeviceIdentifier const KKDeviceIdentifierIPad2_93 = @"iPad2,1";
@@ -185,6 +193,10 @@ KKDeviceIdentifier const KKDeviceIdentifierIPhone8Plus = @"iPhone10,2";
 KKDeviceIdentifier const KKDeviceIdentifierIPhone8Plus_1 = @"iPhone10,5";
 KKDeviceIdentifier const KKDeviceIdentifierIPhoneX = @"iPhone10,3";
 KKDeviceIdentifier const KKDeviceIdentifierIPhoneX_1 = @"iPhone10,6";
+KKDeviceIdentifier const KKDeviceIdentifierIPhoneXR = @"iPhone11,8";
+KKDeviceIdentifier const KKDeviceIdentifierIPhoneXS = @"iPhone11,2";
+KKDeviceIdentifier const KKDeviceIdentifierIPhoneXSMax = @"iPhone11,4";
+KKDeviceIdentifier const KKDeviceIdentifierIPhoneXSMax_p = @"iPhone11,6";
 KKDeviceIdentifier const KKDeviceIdentifierIPodtouch = @"iPod1,1";
 KKDeviceIdentifier const KKDeviceIdentifierIPodtouch_2nd_generation = @"iPod2,1";
 KKDeviceIdentifier const KKDeviceIdentifierIPodtouch_3rd_generation = @"iPod3,1";
@@ -210,6 +222,10 @@ KKDeviceInternalName const KKDeviceInternalNameAppleWatchSeries3_11s = @"N111sAP
 KKDeviceInternalName const KKDeviceInternalNameAppleWatchSeries3_11b = @"N111bAP";
 KKDeviceInternalName const KKDeviceInternalNameAppleWatchSeries3_21s = @"N121sAP";
 KKDeviceInternalName const KKDeviceInternalNameAppleWatchSeries3_21b = @"N121bAP";
+KKDeviceInternalName const KKDeviceInternalNameAppleWatchSeries4_31s = @"N131sAP";
+KKDeviceInternalName const KKDeviceInternalNameAppleWatchSeries4_31b = @"N131bAP";
+KKDeviceInternalName const KKDeviceInternalNameAppleWatchSeries4_41s = @"N141sAP";
+KKDeviceInternalName const KKDeviceInternalNameAppleWatchSeries4_41b = @"N141bAP";
 KKDeviceInternalName const KKDeviceInternalNameHomePod = @"B238aAP";
 KKDeviceInternalName const KKDeviceInternalNameIPad = @"K48AP";
 KKDeviceInternalName const KKDeviceInternalNameIPad2_93 = @"K93AP";
@@ -281,6 +297,10 @@ KKDeviceInternalName const KKDeviceInternalNameIPhone8Plus = @"D21AP";
 KKDeviceInternalName const KKDeviceInternalNameIPhone8Plus_1 = @"D211AP";
 KKDeviceInternalName const KKDeviceInternalNameIPhoneX = @"D22AP";
 KKDeviceInternalName const KKDeviceInternalNameIPhoneX_1 = @"D221AP";
+KKDeviceInternalName const KKDeviceInternalNameIPhoneXR = @"N841AP";
+KKDeviceInternalName const KKDeviceInternalNameIPhoneXS = @"D321AP";
+KKDeviceInternalName const KKDeviceInternalNameIPhoneXSMax = @"D331AP";
+KKDeviceInternalName const KKDeviceInternalNameIPhoneXSMax_p = @"D331pAP";
 KKDeviceInternalName const KKDeviceInternalNameIPodtouch = @"N45AP";
 KKDeviceInternalName const KKDeviceInternalNameIPodtouch_2nd_generation = @"N72AP";
 KKDeviceInternalName const KKDeviceInternalNameIPodtouch_3rd_generation = @"N18AP";
@@ -349,10 +369,18 @@ KKDeviceInternalName const KKDeviceInternalNameIPodtouch_6th_generation = @"N102
         [self.deviceGeneration isEqualToString:KKDeviceGenerationIPhone8Plus]) {
         return KKIPhoneDisplaySize_5_5_inch;
     }
-    if ([self.deviceGeneration isEqualToString:KKDeviceGenerationIPhoneX]) {
+    if ([self.deviceGeneration isEqualToString:KKDeviceGenerationIPhoneX] ||
+        [self.deviceGeneration isEqualToString:KKDeviceGenerationIPhoneXS]) {
         return KKIPhoneDisplaySize_5_8_inch;
     }
+    if ([self.deviceGeneration isEqualToString:KKDeviceGenerationIPhoneXR]) {
+        return KKIPhoneDisplaySize_6_1_inch;
+    }
+    if ([self.deviceGeneration isEqualToString:KKDeviceGenerationIPhoneXSMax]) {
+        return KKIPhoneDisplaySize_6_5_inch;
+    }
     if ([self.deviceGeneration isEqualToString:KKDeviceGenerationSimulator]) {
+        CGFloat scale = UIScreen.mainScreen.scale;
         CGSize size = UIScreen.mainScreen.bounds.size;
         CGFloat min = MIN(size.width, size.height);
         CGFloat max = MAX(size.width, size.height);
@@ -370,6 +398,12 @@ KKDeviceInternalName const KKDeviceInternalNameIPodtouch_6th_generation = @"N102
         }
         if (min == 375.f && max == 812.f) {
             return KKIPhoneDisplaySize_5_8_inch;
+        }
+        if (min == 414.f && max == 896.f && scale == 2.f) {
+            return KKIPhoneDisplaySize_6_1_inch;
+        }
+        if (min == 414.f && max == 896.f && scale == 3.f) {
+            return KKIPhoneDisplaySize_6_5_inch;
         }
     }
     return KKIPhoneDisplaySize_x_x_inch;
@@ -406,6 +440,12 @@ KKDeviceInternalName const KKDeviceInternalNameIPodtouch_6th_generation = @"N102
         [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries3_21s]) {
         return KKAppleWatchCaseSize_38mm;
     }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries4_31s] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries4_41s] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries4_31s] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries4_41s]) {
+        return KKAppleWatchCaseSize_40mm;
+    }
     if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatch_1st_generation_28] ||
         [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries1_28] ||
         [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries2_75] ||
@@ -417,6 +457,12 @@ KKDeviceInternalName const KKDeviceInternalNameIPodtouch_6th_generation = @"N102
         [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries3_11b] ||
         [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries3_21b]) {
         return KKAppleWatchCaseSize_42mm;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries4_31b] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries4_41b] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries4_31b] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries4_41b]) {
+        return KKAppleWatchCaseSize_44mm;
     }
     return KKAppleWatchCaseSize_xxmm;
 }
@@ -481,6 +527,16 @@ KKDeviceInternalName const KKDeviceInternalNameIPodtouch_6th_generation = @"N102
         [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries3_21s] ||
         [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries3_21b]) {
         return KKDeviceGenerationAppleWatchSeries3;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries4_31s] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries4_31b] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries4_41s] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierAppleWatchSeries4_41b] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries4_31s] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries4_31b] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries4_41s] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameAppleWatchSeries4_41b]) {
+        return KKDeviceGenerationAppleWatchSeries4;
     }
     if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierHomePod] ||
         [self.deviceInternalName isEqualToString:KKDeviceInternalNameHomePod]) {
@@ -690,6 +746,20 @@ KKDeviceInternalName const KKDeviceInternalNameIPodtouch_6th_generation = @"N102
         [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhoneX] ||
         [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhoneX_1]) {
         return KKDeviceGenerationIPhoneX;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhoneXR] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhoneXR]) {
+        return KKDeviceGenerationIPhoneXR;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhoneXS] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhoneXS]) {
+        return KKDeviceGenerationIPhoneXS;
+    }
+    if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhoneXSMax] ||
+        [self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPhoneXSMax_p] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhoneXSMax] ||
+        [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPhoneXSMax_p]) {
+        return KKDeviceGenerationIPhoneXSMax;
     }
     if ([self.deviceIdentifier isEqualToString:KKDeviceIdentifierIPodtouch] ||
         [self.deviceInternalName isEqualToString:KKDeviceInternalNameIPodtouch]) {

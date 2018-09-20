@@ -51,6 +51,8 @@ typedef NS_ENUM(NSInteger, KKIPhoneDisplaySize) {
     KKIPhoneDisplaySize_4_7_inch,
     KKIPhoneDisplaySize_5_5_inch,
     KKIPhoneDisplaySize_5_8_inch,
+    KKIPhoneDisplaySize_6_1_inch,
+    KKIPhoneDisplaySize_6_5_inch,
 } NS_ENUM_AVAILABLE_IOS(8.0);
 
 typedef NS_ENUM(NSInteger, KKIPodtouchDisplaySize) {
@@ -64,7 +66,9 @@ typedef NS_ENUM(NSInteger, KKIPodtouchDisplaySize) {
 typedef NS_ENUM(NSInteger, KKAppleWatchCaseSize) {
     KKAppleWatchCaseSize_xxmm,
     KKAppleWatchCaseSize_38mm,
+    KKAppleWatchCaseSize_40mm,
     KKAppleWatchCaseSize_42mm,
+    KKAppleWatchCaseSize_44mm,
 } WK_AVAILABLE_WATCHOS_ONLY(3.2);
 
 #endif
@@ -80,6 +84,7 @@ FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationAppleWatch_1st_gene
 FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationAppleWatchSeries1;
 FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationAppleWatchSeries2;
 FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationAppleWatchSeries3;
+FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationAppleWatchSeries4;
 FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationHomePod;
 FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationIPad;
 FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationIPad2;
@@ -115,6 +120,9 @@ FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationIPhone7Plus;
 FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationIPhone8;
 FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationIPhone8Plus;
 FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationIPhoneX;
+FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationIPhoneXR;
+FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationIPhoneXS;
+FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationIPhoneXSMax;
 FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationIPodtouch;
 FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationIPodtouch_2nd_generation;
 FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationIPodtouch_3rd_generation;
@@ -146,6 +154,10 @@ FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierAppleWatchSeries3_1
 FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierAppleWatchSeries3_11b;
 FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierAppleWatchSeries3_21s;
 FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierAppleWatchSeries3_21b;
+FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierAppleWatchSeries4_31s;
+FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierAppleWatchSeries4_31b;
+FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierAppleWatchSeries4_41s;
+FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierAppleWatchSeries4_41b;
 FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierHomePod;
 FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierIPad;
 FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierIPad2_93;
@@ -214,6 +226,10 @@ FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierIPhone8Plus;
 FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierIPhone8Plus_1;
 FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierIPhoneX;
 FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierIPhoneX_1;
+FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierIPhoneXR;
+FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierIPhoneXS;
+FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierIPhoneXSMax;
+FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierIPhoneXSMax_p;
 FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierIPodtouch;
 FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierIPodtouch_2nd_generation;
 FOUNDATION_EXPORT KKDeviceIdentifier const KKDeviceIdentifierIPodtouch_3rd_generation;
@@ -239,6 +255,10 @@ FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameAppleWatchSerie
 FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameAppleWatchSeries3_11b;
 FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameAppleWatchSeries3_21s;
 FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameAppleWatchSeries3_21b;
+FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameAppleWatchSeries4_31s;
+FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameAppleWatchSeries4_31b;
+FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameAppleWatchSeries4_41s;
+FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameAppleWatchSeries4_41b;
 FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameHomePod;
 FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameIPad;
 FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameIPad2_93;
@@ -310,6 +330,10 @@ FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameIPhone8Plus;
 FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameIPhone8Plus_1;
 FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameIPhoneX;
 FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameIPhoneX_1;
+FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameIPhoneXR;
+FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameIPhoneXS;
+FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameIPhoneXSMax;
+FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameIPhoneXSMax_p;
 FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameIPodtouch;
 FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameIPodtouch_2nd_generation;
 FOUNDATION_EXPORT KKDeviceInternalName const KKDeviceInternalNameIPodtouch_3rd_generation;

@@ -65,8 +65,8 @@ final class XWVHttpConnection: NSObject {
 
         input.delegate = self
         output.delegate = self
-        input.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
-        output.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+        input.schedule(in: RunLoop.current, forMode: RunLoop.Mode.default)
+        output.schedule(in: RunLoop.current, forMode: RunLoop.Mode.default)
         input.open()
         output.open()
         delegate.didOpenConnection(self)

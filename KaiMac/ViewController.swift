@@ -22,6 +22,7 @@
 //  SOFTWARE.
 //
 
+import AppKit
 import KaiKit
 
 class ViewController: NSViewController {
