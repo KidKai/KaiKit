@@ -1,5 +1,5 @@
 //
-//  NSString+KKEvaluation.h
+//  UIBarButtonItem+KKAdditions.m
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -22,27 +22,20 @@
 //  SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import "UIBarButtonItem+KKAdditions.h"
+#import "KaiIpGlobals.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@implementation UIBarButtonItem (KKAdditions)
 
-@interface NSString (KKEvaluation)
-
-@property (nonatomic, readonly) BOOL isAnURL;
-@property (nonatomic, readonly) BOOL isEmpty;
-@property (nonatomic, readonly) BOOL isInURL;
-@property (nonatomic, readonly) BOOL isUndefined;
-
-@property (nonatomic, readonly) BOOL isChinaPhone;
-@property (nonatomic, readonly) BOOL isValidEmail;
-@property (nonatomic, readonly) BOOL isValidIDNUM;
-@property (nonatomic, readonly) BOOL isAllNumbers;
-@property (nonatomic, readonly) BOOL isHasNumbers;
-@property (nonatomic, readonly) BOOL isHasULetter;
-@property (nonatomic, readonly) BOOL isHasLLetter;
-@property (nonatomic, readonly) BOOL isHasSpecial;
-@property (nonatomic, readonly) BOOL isHasChinese;
+- (UIBarButtonItem *)labeled
+{
+    UIBarButtonItem *barButtonItem = self;
+    barButtonItem.enabled = NO;
+    id aTintColor = playground().navigationController.navigationBar.tintColor;
+    id attributes = @{NSForegroundColorAttributeName:aTintColor};
+    [barButtonItem setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    [barButtonItem setTitleTextAttributes:attributes forState:UIControlStateDisabled];
+    return barButtonItem;
+}
 
 @end
-
-NS_ASSUME_NONNULL_END

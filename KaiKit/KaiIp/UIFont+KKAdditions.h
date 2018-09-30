@@ -1,5 +1,5 @@
 //
-//  NSString+KKEvaluation.h
+//  UIFont+KKAdditions.h
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -22,26 +22,23 @@
 //  SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSString (KKEvaluation)
+@interface UIFont (KKAdditions)
 
-@property (nonatomic, readonly) BOOL isAnURL;
-@property (nonatomic, readonly) BOOL isEmpty;
-@property (nonatomic, readonly) BOOL isInURL;
-@property (nonatomic, readonly) BOOL isUndefined;
-
-@property (nonatomic, readonly) BOOL isChinaPhone;
-@property (nonatomic, readonly) BOOL isValidEmail;
-@property (nonatomic, readonly) BOOL isValidIDNUM;
-@property (nonatomic, readonly) BOOL isAllNumbers;
-@property (nonatomic, readonly) BOOL isHasNumbers;
-@property (nonatomic, readonly) BOOL isHasULetter;
-@property (nonatomic, readonly) BOOL isHasLLetter;
-@property (nonatomic, readonly) BOOL isHasSpecial;
-@property (nonatomic, readonly) BOOL isHasChinese;
+@property (class, nonatomic, readonly) UIFont *largeTitleFont API_AVAILABLE(ios(11.0)) API_UNAVAILABLE(watchos, tvos);
+@property (class, nonatomic, readonly) UIFont *title1Font NS_AVAILABLE_IOS(9_0);
+@property (class, nonatomic, readonly) UIFont *title2Font NS_AVAILABLE_IOS(9_0);
+@property (class, nonatomic, readonly) UIFont *title3Font NS_AVAILABLE_IOS(9_0);
+@property (class, nonatomic, readonly) UIFont *headlineFont NS_AVAILABLE_IOS(7_0);
+@property (class, nonatomic, readonly) UIFont *subheadlineFont NS_AVAILABLE_IOS(7_0);
+@property (class, nonatomic, readonly) UIFont *bodyFont NS_AVAILABLE_IOS(7_0);
+@property (class, nonatomic, readonly) UIFont *calloutFont NS_AVAILABLE_IOS(9_0);
+@property (class, nonatomic, readonly) UIFont *footnoteFont NS_AVAILABLE_IOS(7_0);
+@property (class, nonatomic, readonly) UIFont *caption1Font NS_AVAILABLE_IOS(7_0);
+@property (class, nonatomic, readonly) UIFont *caption2Font NS_AVAILABLE_IOS(7_0);
 
 @end
 

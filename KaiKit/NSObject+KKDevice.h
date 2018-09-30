@@ -73,6 +73,8 @@ typedef NS_ENUM(NSInteger, KKAppleWatchCaseSize) {
 
 #endif
 
+// https://www.theiphonewiki.com/wiki/Models
+
 typedef NSString * KKDeviceGeneration NS_TYPED_EXTENSIBLE_ENUM;
 
 FOUNDATION_EXPORT KKDeviceGeneration const KKDeviceGenerationAirPods;

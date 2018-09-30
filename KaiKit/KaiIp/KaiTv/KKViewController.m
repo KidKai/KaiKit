@@ -37,14 +37,26 @@
           withTransitionCoordinator:coordinator];
     [coordinator animateAlongsideTransition:^(id  _Nonnull context) {
         UIView *navigationBar = self.navigationController.navigationBar;
+        CGFloat height = navigationBar.maxY - self.kkNavigationBar.minY;
         self.kkNavigationBar.width = navigationBar.width;
-        self.kkNavigationBar.height = navigationBar.maxY;
+        self.kkNavigationBar.height = height > 0.f ? height : 0.f;
     } completion:^(id  _Nonnull context) {
         UIView *navigationBar = self.navigationController.navigationBar;
         if (navigationBar.width == self.kkNavigationBar.width) return;
+        CGFloat height = navigationBar.maxY - self.kkNavigationBar.minY;
         self.kkNavigationBar.width = navigationBar.width;
-        self.kkNavigationBar.height = navigationBar.maxY;
+        self.kkNavigationBar.height = height > 0.f ? height : 0.f;
     }];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(didChangePreferredContentSize:)
+     name:UIContentSizeCategoryDidChangeNotification
+     object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -54,10 +66,28 @@
         [self.view addSubview:self.kkNavigationBar];
         UIView *navigationBar = self.navigationController.navigationBar;
         if (navigationBar.width == self.kkNavigationBar.width) return;
-        CGFloat height = statusHeight() + navigationBar.height;
+        CGFloat height = navigationBar.maxY - self.kkNavigationBar.minY;
         self.kkNavigationBar.width = navigationBar.width;
-        self.kkNavigationBar.height = height;
+        self.kkNavigationBar.height = height > 0.f ? height : 0.f;
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self setNavigationBarColors];
+    });
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    id controller = self.navigationController.viewControllers.lastObject;
+    if ([controller isKindOfClass:[KKViewController class]]) {
+        [controller animateNavigationBarColors];
+    }
+    [self.view endEditing:YES];
 }
 
 - (void)viewWillLayoutSubviews
@@ -66,6 +96,83 @@
     if (self.kkNavigationBar && self.kkNavigationBar.superview) {
         [self.view bringSubviewToFront:self.kkNavigationBar];
     }
+}
+
+- (void)willMoveToParentViewController:(UIViewController *)parent
+{
+    NSUInteger count = self.navigationController.viewControllers.count;
+    id controller = self.navigationController.viewControllers.lastObject;
+    if ([controller isKindOfClass:[KKViewController class]]) {
+        if (controller == self && count > 1) {
+            id papa = self.navigationController.viewControllers[count - 2];
+            if ([papa isKindOfClass:[KKViewController class]]) {
+                [papa setNavigationBarColors];
+            }
+        }
+    }
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self
+     name:UIContentSizeCategoryDidChangeNotification
+     object:nil];
+}
+
+- (void)setPreferredStatusBarStyle1:(UIStatusBarStyle)preferredStatusBarStyle1
+{
+    _preferredStatusBarStyle1 = preferredStatusBarStyle1;
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
+- (void)setNavigationBarColors
+{ /* Override in subclasses */ }
+
+- (void)setBeforePopNavigationBarColors
+{ /* Override in subclasses */ }
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return self.preferredStatusBarStyle1;
+}
+
+- (void)didChangePreferredContentSize:(NSNotification *)note
+{ /* Override in subclasses */ }
+
+- (void)cellularDataRestrictionDidUpdateNotifier
+{ /* Override in subclasses */ }
+
+- (void)setAFNetworkReachabilityStatusChangeBlock
+{ /* Override in subclasses */ }
+
+- (void)animateNavigationBarColors
+{
+    [self setBeforePopNavigationBarColors];
+    [self.transitionCoordinator
+     animateAlongsideTransition:^(id _Nonnull context) {
+         [self setNavigationBarColors];
+     }
+     completion:nil];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+    [self.view endEditing:YES];
+}
+
+@end
+
+
+@implementation UIViewController (UIStoryboard)
+
++ (instancetype)storyboardController
+{
+    id name = NSStringFromClass([self classForCoder]);
+    id aBundle = [NSBundle bundleForClass:[self classForCoder]];
+    id storyboard = [UIStoryboard storyboardWithName:name bundle:aBundle];
+    return [storyboard instantiateViewControllerWithIdentifier:name];
 }
 
 @end

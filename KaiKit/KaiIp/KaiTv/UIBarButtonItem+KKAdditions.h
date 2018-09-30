@@ -1,5 +1,5 @@
 //
-//  NSString+KKEvaluation.h
+//  UIBarButtonItem+KKAdditions.h
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -22,26 +22,13 @@
 //  SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSString (KKEvaluation)
+@interface UIBarButtonItem (KKAdditions)
 
-@property (nonatomic, readonly) BOOL isAnURL;
-@property (nonatomic, readonly) BOOL isEmpty;
-@property (nonatomic, readonly) BOOL isInURL;
-@property (nonatomic, readonly) BOOL isUndefined;
-
-@property (nonatomic, readonly) BOOL isChinaPhone;
-@property (nonatomic, readonly) BOOL isValidEmail;
-@property (nonatomic, readonly) BOOL isValidIDNUM;
-@property (nonatomic, readonly) BOOL isAllNumbers;
-@property (nonatomic, readonly) BOOL isHasNumbers;
-@property (nonatomic, readonly) BOOL isHasULetter;
-@property (nonatomic, readonly) BOOL isHasLLetter;
-@property (nonatomic, readonly) BOOL isHasSpecial;
-@property (nonatomic, readonly) BOOL isHasChinese;
+@property (nonatomic, readonly) UIBarButtonItem *labeled;
 
 @end
 

@@ -917,7 +917,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A33F68F4AC89FCBF7A4CBA4D /* Pods-KaiWatch.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -938,7 +937,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 676112868AE2FF2103432016 /* Pods-KaiWatch.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;

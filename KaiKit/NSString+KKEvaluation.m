@@ -26,6 +26,7 @@
 
 static BOOL matches(NSString *regex, NSString *value)
 {
+    // https://jex.im/regulex/#!flags=&re=%5E(a%7Cb)*%3F%24
     id predicate = [NSPredicate predicateWithFormat:@"self matches %@", regex];
     return [predicate evaluateWithObject:value];
 }
@@ -44,6 +45,21 @@ static BOOL matches(NSString *regex, NSString *value)
     
     NSCharacterSet *set = [NSCharacterSet whitespaceAndNewlineCharacterSet];
     if (![[self stringByTrimmingCharactersInSet:set] length]) return YES;
+    
+    return NO;
+}
+
+- (BOOL)isInURL
+{
+    NSString *regex = @"^(?:(?:https?|ftp):\\/\\/)(?:\\S+(?::\\S*)?@)?(?:(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,}))\\.?)(?::\\d{2,5})?(?:[/?#]\\S*)?$";
+    return matches(regex, self);
+}
+
+- (BOOL)isUndefined
+{
+    if (self.isEmpty) return YES;
+    
+    if ([self isEqualToString:@"undefined"]) return YES;
     
     return NO;
 }

@@ -77,6 +77,9 @@
 
 - (UIColor *)initWithHexUStr:(NSString *)hexUStr
 {
+    if ([hexUStr hasPrefix:@"#"]) {
+        hexUStr = [hexUStr substringFromIndex:1];
+    }
     unsigned hexUInt = 0;
     NSScanner *scanner = [NSScanner scannerWithString:hexUStr];
     [scanner scanHexInt:&hexUInt];

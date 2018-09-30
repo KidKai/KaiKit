@@ -23,6 +23,7 @@
 //
 
 #import "UIImage+KKAdditions.h"
+#import "UIView+KKViewGeometry.h"
 
 @implementation UIImage (KKAdditions)
 
@@ -44,6 +45,34 @@
         UIGraphicsEndImageContext();
         return image;
     }
+}
+
+- (UIImage *)resizableImageWithScale:(CGFloat)scale
+{
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:self];
+    CGFloat width = self.size.width * scale;
+    CGFloat height = self.size.height * scale;
+    imageView.frame = CGRectMake(0.f, 0.f, width, height);
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    UIGraphicsBeginImageContextWithOptions(imageView.size, NO, scale);
+    [imageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return result;
+}
+
+- (UIImage *)resizableImageWithWidth:(CGFloat)width
+{
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:self];
+    CGFloat origin = self.size.width / self.size.height;
+    imageView.frame = CGRectMake(0.f, 0.f, width, ceil(width / origin));
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    UIGraphicsBeginImageContextWithOptions(imageView.size, NO, self.scale);
+    [imageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return result;
 }
 
 @end

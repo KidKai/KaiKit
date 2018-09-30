@@ -30,6 +30,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (nullable UIImage *)imageWithColor:(UIColor *)color;
 
+- (nullable UIImage *)resizableImageWithScale:(CGFloat)scale;
+- (nullable UIImage *)resizableImageWithWidth:(CGFloat)width;
+
 @end
 
 NS_ASSUME_NONNULL_END
