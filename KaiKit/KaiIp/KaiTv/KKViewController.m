@@ -132,10 +132,12 @@
 - (void)setBeforePopNavigationBarColors
 { /* Override in subclasses */ }
 
+#if TARGET_OS_IOS
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return self.preferredStatusBarStyle1;
 }
+#endif
 
 - (void)didChangePreferredContentSize:(NSNotification *)note
 { /* Override in subclasses */ }

@@ -48,7 +48,7 @@ NS_SWIFT_NAME(init(int:green:blue:));
                    alpha:(CGFloat)alpha
 NS_SWIFT_NAME(init(int:green:blue:alpha:));
 - (UIColor *)initWithHexUInt:(UInt32)hexUInt; // 0x33FFCC00
-- (UIColor *)initWithHexUStr:(NSString *)hexUStr; // '33FFCC00'
+- (UIColor *)initWithHexUStr:(NSString *)hexUStr; // '33FFCC00', '#33FFCC00'
 
 @property (nullable, nonatomic, readonly) UIImage *image;
 

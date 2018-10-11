@@ -8,14 +8,14 @@
 #import <UIKit/UIKit.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
-__TVOS_PROHIBITED @protocol TSWebViewDelegate <UIWebViewDelegate>
+API_UNAVAILABLE(tvos) @protocol TSWebViewDelegate <UIWebViewDelegate>
 
 @optional
-- (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext *)ctx;
+- (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext *)ctx API_DEPRECATED("No longer supported.", ios(2.0, 12.0));
 
 @end
 
-@interface UIWebView (TS_JavaScriptContext)
+UIKIT_EXTERN API_DEPRECATED("No longer supported; please adopt WKWebView.", ios(2.0, 12.0)) API_UNAVAILABLE(tvos, macos) @interface UIWebView (TS_JavaScriptContext)
 
 @property (nonatomic, readonly) JSContext *ts_javaScriptContext;
 

@@ -1,5 +1,5 @@
 //
-//  UIViewController+KKNavigationBar.h
+//  NSData+KKAdditions.h
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -22,20 +22,17 @@
 //  SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIViewController (KKNavigationBar)
+@interface NSData (KKAdditions)
 
-@property (nonatomic, readonly) CGFloat kkNavigationBarHeight;
-
-@property (nullable, nonatomic, readonly) UIView *kkNavigationBar;
-
-@property (nullable, nonatomic) UIColor *kkNavigationBarTintColor;
-
-- (void)popOrDismissViewControllerAnimated:(BOOL)flag;
-- (void)popToRootOrDismissViewControllerAnimated:(BOOL)flag;
+@property (nullable, nonatomic, readonly) NSArray *array;
+@property (nullable, nonatomic, readonly) NSDictionary *dict;
+@property (nullable, nonatomic, readonly) NSString *utf8str;
+@property (nullable, nonatomic, readonly) NSString *utf16str;
+@property (nullable, nonatomic, readonly) NSString *utf32str;
 
 @end
 

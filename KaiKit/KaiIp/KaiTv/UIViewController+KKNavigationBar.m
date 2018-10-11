@@ -23,9 +23,8 @@
 //
 
 #import "UIViewController+KKNavigationBar.h"
-#import <objc/runtime.h>
-
 #import "UIView+KKViewGeometry.h"
+#import <objc/runtime.h>
 
 @implementation UIViewController (KKNavigationBar)
 
@@ -71,6 +70,28 @@
     }
     kkNavigationBar.backgroundColor = kkNavigationBarTintColor;
     [self setKkNavigationBar:kkNavigationBar];
+}
+
+- (void)popOrDismissViewControllerAnimated:(BOOL)flag
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.navigationController.viewControllers.count < 2) {
+            [self dismissViewControllerAnimated:flag completion:nil];
+        } else {
+            [self.navigationController popViewControllerAnimated:flag];
+        }
+    });
+}
+
+- (void)popToRootOrDismissViewControllerAnimated:(BOOL)flag
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.navigationController.viewControllers.count < 2) {
+            [self dismissViewControllerAnimated:flag completion:nil];
+        } else {
+            [self.navigationController popToRootViewControllerAnimated:flag];
+        }
+    });
 }
 
 @end

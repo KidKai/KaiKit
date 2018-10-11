@@ -1,5 +1,5 @@
 //
-//  UIViewController+KKNavigationBar.h
+//  KKUIView.h
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -26,16 +26,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIViewController (KKNavigationBar)
-
-@property (nonatomic, readonly) CGFloat kkNavigationBarHeight;
-
-@property (nullable, nonatomic, readonly) UIView *kkNavigationBar;
-
-@property (nullable, nonatomic) UIColor *kkNavigationBarTintColor;
-
-- (void)popOrDismissViewControllerAnimated:(BOOL)flag;
-- (void)popToRootOrDismissViewControllerAnimated:(BOOL)flag;
+@interface KKUIView : UIView
 
 @end
 

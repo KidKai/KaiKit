@@ -392,7 +392,31 @@ static NSString * const kM2DWebViewControllerGetTitleScript = @"var elements=doc
 
 #pragma mark - UIWebViewDelegate
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType API_DEPRECATED("No longer supported.", ios(2.0, 12.0))
+{
+    self.title = [webView stringByEvaluatingJavaScriptFromString:kM2DWebViewControllerGetTitleScript];
+    
+    if ([self.delegate respondsToSelector:@selector(m2d_webView:shouldStartLoadWithRequest:navigationType:)]) {
+        return [self.delegate m2d_webView:webView shouldStartLoadWithRequest:request navigationType:navigationType];
+    }
+    
+    return YES;
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView API_DEPRECATED("No longer supported.", ios(2.0, 12.0))
+{
+    goBackButton_.enabled = [webView_ canGoBack];
+    goForwardButton_.enabled = [webView_ canGoForward];
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [self updateToolbarItemsWithType:UIBarButtonSystemItemStop];
+    
+    if ([self.delegate respondsToSelector:@selector(m2d_webViewDidStartLoad:)]) {
+        [self.delegate m2d_webViewDidStartLoad:webView];
+    }
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView API_DEPRECATED("No longer supported.", ios(2.0, 12.0))
 {
     self.title = [webView stringByEvaluatingJavaScriptFromString:kM2DWebViewControllerGetTitleScript];
     goBackButton_.enabled = [webView_ canGoBack];
@@ -407,37 +431,13 @@ static NSString * const kM2DWebViewControllerGetTitleScript = @"var elements=doc
     }
 }
 
-- (void)webViewDidStartLoad:(UIWebView *)webView
-{
-    goBackButton_.enabled = [webView_ canGoBack];
-    goForwardButton_.enabled = [webView_ canGoForward];
-    
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    [self updateToolbarItemsWithType:UIBarButtonSystemItemStop];
-    
-    if ([self.delegate respondsToSelector:@selector(m2d_webViewDidStartLoad:)]) {
-        [self.delegate m2d_webViewDidStartLoad:webView];
-    }
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error API_DEPRECATED("No longer supported.", ios(2.0, 12.0))
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [self updateToolbarItemsWithType:UIBarButtonSystemItemRefresh];
     if ([self.delegate respondsToSelector:@selector(m2d_webView:didFailLoadWithError:)]) {
         [self.delegate m2d_webView:webView didFailLoadWithError:error];
     }
-}
-
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-    self.title = [webView stringByEvaluatingJavaScriptFromString:kM2DWebViewControllerGetTitleScript];
-    
-    if ([self.delegate respondsToSelector:@selector(m2d_webView:shouldStartLoadWithRequest:navigationType:)]) {
-        return [self.delegate m2d_webView:webView shouldStartLoadWithRequest:request navigationType:navigationType];
-    }
-    
-    return YES;
 }
 
 #pragma mark -

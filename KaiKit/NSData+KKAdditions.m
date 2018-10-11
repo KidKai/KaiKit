@@ -1,5 +1,5 @@
 //
-//  UIViewController+KKNavigationBar.h
+//  NSData+KKAdditions.m
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -22,21 +22,47 @@
 //  SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import "NSData+KKAdditions.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@implementation NSData (KKAdditions)
 
-@interface UIViewController (KKNavigationBar)
+- (NSArray *)array
+{
+    id jsonObject = [NSJSONSerialization
+                     JSONObjectWithData:self
+                     options:NSJSONReadingMutableContainers
+                     error:NULL];
+    if ([jsonObject isKindOfClass:[NSArray classForCoder]]) {
+        return jsonObject;
+    }
+    return nil;
+}
 
-@property (nonatomic, readonly) CGFloat kkNavigationBarHeight;
+- (NSDictionary *)dict
+{
+    id jsonObject = [NSJSONSerialization
+                     JSONObjectWithData:self
+                     options:NSJSONReadingMutableContainers
+                     error:NULL];
+    if ([jsonObject isKindOfClass:[NSDictionary classForCoder]]) {
+        return jsonObject;
+    }
+    return nil;
+}
 
-@property (nullable, nonatomic, readonly) UIView *kkNavigationBar;
+- (NSString *)utf8str
+{
+    return [[NSString alloc] initWithData:self encoding:NSUTF8StringEncoding];
+}
 
-@property (nullable, nonatomic) UIColor *kkNavigationBarTintColor;
+- (NSString *)utf16str
+{
+    return [[NSString alloc] initWithData:self encoding:NSUTF16StringEncoding];
+}
 
-- (void)popOrDismissViewControllerAnimated:(BOOL)flag;
-- (void)popToRootOrDismissViewControllerAnimated:(BOOL)flag;
+- (NSString *)utf32str
+{
+    return [[NSString alloc] initWithData:self encoding:NSUTF32StringEncoding];
+}
 
 @end
-
-NS_ASSUME_NONNULL_END

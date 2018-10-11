@@ -28,14 +28,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KKViewController : UIViewController
 
-@property (nonatomic) UIStatusBarStyle preferredStatusBarStyle1;
+@property (nonatomic) UIStatusBarStyle preferredStatusBarStyle1 __TVOS_PROHIBITED;
 
 - (void)setNavigationBarColors;
 - (void)setBeforePopNavigationBarColors;
 
 - (void)didChangePreferredContentSize:(NSNotification *)note;
 
-- (void)cellularDataRestrictionDidUpdateNotifier API_AVAILABLE(ios(9.0));
+- (void)cellularDataRestrictionDidUpdateNotifier __OSX_AVAILABLE_STARTING(__MAC_NA, __IPHONE_9_0);
 - (void)setAFNetworkReachabilityStatusChangeBlock;
 
 @end

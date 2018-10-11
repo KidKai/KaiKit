@@ -1,5 +1,5 @@
 //
-//  UIFont+KKAdditions.h
+//  UIFontDescriptor+KKAdditions.h
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -26,19 +26,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIFont (KKAdditions)
+@interface UIFontDescriptor (KKAdditions)
 
-@property (class, nonatomic, readonly) UIFont *largeTitleFont API_AVAILABLE(ios(11.0)) API_UNAVAILABLE(watchos, tvos);
-@property (class, nonatomic, readonly) UIFont *title1Font NS_AVAILABLE_IOS(9_0);
-@property (class, nonatomic, readonly) UIFont *title2Font NS_AVAILABLE_IOS(9_0);
-@property (class, nonatomic, readonly) UIFont *title3Font NS_AVAILABLE_IOS(9_0);
-@property (class, nonatomic, readonly) UIFont *headlineFont NS_AVAILABLE_IOS(7_0);
-@property (class, nonatomic, readonly) UIFont *subheadlineFont NS_AVAILABLE_IOS(7_0);
-@property (class, nonatomic, readonly) UIFont *bodyFont NS_AVAILABLE_IOS(7_0);
-@property (class, nonatomic, readonly) UIFont *calloutFont NS_AVAILABLE_IOS(9_0);
-@property (class, nonatomic, readonly) UIFont *footnoteFont NS_AVAILABLE_IOS(7_0);
-@property (class, nonatomic, readonly) UIFont *caption1Font NS_AVAILABLE_IOS(7_0);
-@property (class, nonatomic, readonly) UIFont *caption2Font NS_AVAILABLE_IOS(7_0);
+@property (class, nonatomic, readonly) UIFontDescriptor *largeTitleFont API_AVAILABLE(ios(11.0), watchos(5.0)) API_UNAVAILABLE(tvos);
+@property (class, nonatomic, readonly) UIFontDescriptor *title1Font NS_AVAILABLE_IOS(9_0);
+@property (class, nonatomic, readonly) UIFontDescriptor *title2Font NS_AVAILABLE_IOS(9_0);
+@property (class, nonatomic, readonly) UIFontDescriptor *title3Font NS_AVAILABLE_IOS(9_0);
+@property (class, nonatomic, readonly) UIFontDescriptor *headlineFont NS_AVAILABLE_IOS(7_0);
+@property (class, nonatomic, readonly) UIFontDescriptor *subheadlineFont NS_AVAILABLE_IOS(7_0);
+@property (class, nonatomic, readonly) UIFontDescriptor *bodyFont NS_AVAILABLE_IOS(7_0);
+@property (class, nonatomic, readonly) UIFontDescriptor *calloutFont NS_AVAILABLE_IOS(9_0);
+@property (class, nonatomic, readonly) UIFontDescriptor *footnoteFont NS_AVAILABLE_IOS(7_0);
+@property (class, nonatomic, readonly) UIFontDescriptor *caption1Font NS_AVAILABLE_IOS(7_0);
+@property (class, nonatomic, readonly) UIFontDescriptor *caption2Font NS_AVAILABLE_IOS(7_0);
 
 @end
 

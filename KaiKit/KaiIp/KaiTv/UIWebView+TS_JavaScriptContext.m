@@ -20,6 +20,7 @@ static NSHashTable *g_webViews = nil;
 
 @implementation NSObject (TS_JavaScriptContext)
 
+#if TARGET_OS_IOS
 - (void)webView:(id)unused didCreateJavaScriptContext:(JSContext *)ctx forFrame:(id<TSWebFrame>)frame
 {
     NSParameterAssert([frame respondsToSelector:@selector(parentFrame)]);
@@ -48,6 +49,7 @@ static NSHashTable *g_webViews = nil;
         dispatch_async(dispatch_get_main_queue(), notifyDidCreateJavaScriptContext);
     }
 }
+#endif
 
 @end
 

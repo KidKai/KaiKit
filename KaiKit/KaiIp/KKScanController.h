@@ -1,5 +1,5 @@
 //
-//  UIFontDescriptor+KKAdditions.h
+//  KKScanController.h
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -22,23 +22,27 @@
 //  SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import "KKViewController.h"
+#import "KaiIpGlobals.h"
+#import <AVKit/AVKit.h>
+#import "KKScanView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIFontDescriptor (KKAdditions)
+@interface KKScanController : KKViewController
+<AVCaptureMetadataOutputObjectsDelegate>
 
-@property (class, nonatomic, readonly) UIFontDescriptor *largeTitleFont API_AVAILABLE(ios(11.0)) API_UNAVAILABLE(watchos, tvos);
-@property (class, nonatomic, readonly) UIFontDescriptor *title1Font NS_AVAILABLE_IOS(9_0);
-@property (class, nonatomic, readonly) UIFontDescriptor *title2Font NS_AVAILABLE_IOS(9_0);
-@property (class, nonatomic, readonly) UIFontDescriptor *title3Font NS_AVAILABLE_IOS(9_0);
-@property (class, nonatomic, readonly) UIFontDescriptor *headlineFont NS_AVAILABLE_IOS(7_0);
-@property (class, nonatomic, readonly) UIFontDescriptor *subheadlineFont NS_AVAILABLE_IOS(7_0);
-@property (class, nonatomic, readonly) UIFontDescriptor *bodyFont NS_AVAILABLE_IOS(7_0);
-@property (class, nonatomic, readonly) UIFontDescriptor *calloutFont NS_AVAILABLE_IOS(9_0);
-@property (class, nonatomic, readonly) UIFontDescriptor *footnoteFont NS_AVAILABLE_IOS(7_0);
-@property (class, nonatomic, readonly) UIFontDescriptor *caption1Font NS_AVAILABLE_IOS(7_0);
-@property (class, nonatomic, readonly) UIFontDescriptor *caption2Font NS_AVAILABLE_IOS(7_0);
+@property (nullable, nonatomic, readonly) AVCaptureVideoPreviewLayer *prelayer;
+
+@property (nonatomic, strong, readonly) KKScanView *scanView;
+
+@property (nullable, nonatomic, readonly) AVCaptureDevice *device;
+@property (nullable, nonatomic, readonly) AVCaptureSession *session;
+
+@property (nullable, nonatomic, copy) void (^didOutputMetadataObjects)(id data);
+
+- (void)startRunning;
+- (void)stopRunning;
 
 @end
 

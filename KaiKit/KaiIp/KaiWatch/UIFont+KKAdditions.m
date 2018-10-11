@@ -26,7 +26,7 @@
 
 @implementation UIFont (KKAdditions)
 
-+ (UIFont *)largeTitleFont API_AVAILABLE(ios(11.0)) API_UNAVAILABLE(watchos, tvos)
++ (UIFont *)largeTitleFont API_AVAILABLE(ios(11.0), watchos(5.0)) API_UNAVAILABLE(tvos)
 {
     return [self preferredFontForTextStyle:UIFontTextStyleLargeTitle];
 }

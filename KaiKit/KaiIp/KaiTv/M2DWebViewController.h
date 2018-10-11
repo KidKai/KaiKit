@@ -40,10 +40,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)m2d_webViewWebContentProcessDidTerminate:(WKWebView *)webView API_AVAILABLE(macosx(10.11), ios(9.0));
 
 // UIWebViewDelegate
-- (BOOL)m2d_webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
-- (void)m2d_webViewDidFinishLoad:(UIWebView *)webView;
-- (void)m2d_webViewDidStartLoad:(UIWebView *)webView;
-- (void)m2d_webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error;
+- (BOOL)m2d_webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType API_DEPRECATED("No longer supported.", ios(2.0, 12.0));
+- (void)m2d_webViewDidStartLoad:(UIWebView *)webView API_DEPRECATED("No longer supported.", ios(2.0, 12.0));
+- (void)m2d_webViewDidFinishLoad:(UIWebView *)webView API_DEPRECATED("No longer supported.", ios(2.0, 12.0));
+- (void)m2d_webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error API_DEPRECATED("No longer supported.", ios(2.0, 12.0));
 
 @end
 

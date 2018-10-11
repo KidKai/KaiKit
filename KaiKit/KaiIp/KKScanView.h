@@ -1,5 +1,5 @@
 //
-//  UIViewController+KKNavigationBar.h
+//  KKScanView.h
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -22,20 +22,24 @@
 //  SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import "KKUIView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIViewController (KKNavigationBar)
+@interface KKScanView : KKUIView
 
-@property (nonatomic, readonly) CGFloat kkNavigationBarHeight;
+@property (nonatomic, strong, readonly) CAShapeLayer *backLayer;
+@property (nonatomic, strong, readonly) CAShapeLayer *lineLayer;
+@property (nonatomic, strong, readonly) CAShapeLayer *overLayer;
 
-@property (nullable, nonatomic, readonly) UIView *kkNavigationBar;
+@property (nonatomic, strong, readonly) CAGradientLayer  *moveLayer;
+@property (nonatomic, strong, readonly) CABasicAnimation *animation;
 
-@property (nullable, nonatomic) UIColor *kkNavigationBarTintColor;
+@property (nonatomic, readonly) CGRect scanrect;
+- (CGRect)scanned:(CGRect)rect;
 
-- (void)popOrDismissViewControllerAnimated:(BOOL)flag;
-- (void)popToRootOrDismissViewControllerAnimated:(BOOL)flag;
+- (void)roll;
+- (void)stop;
 
 @end
 

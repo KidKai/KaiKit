@@ -1,5 +1,5 @@
 //
-//  UIViewController+KKNavigationBar.h
+//  UIFont+KKAdditions.h
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -26,16 +26,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIViewController (KKNavigationBar)
+@interface UIFont (KKAdditions)
 
-@property (nonatomic, readonly) CGFloat kkNavigationBarHeight;
-
-@property (nullable, nonatomic, readonly) UIView *kkNavigationBar;
-
-@property (nullable, nonatomic) UIColor *kkNavigationBarTintColor;
-
-- (void)popOrDismissViewControllerAnimated:(BOOL)flag;
-- (void)popToRootOrDismissViewControllerAnimated:(BOOL)flag;
+@property (class, nonatomic, readonly) UIFont *largeTitleFont API_AVAILABLE(ios(11.0), watchos(5.0)) API_UNAVAILABLE(tvos);
+@property (class, nonatomic, readonly) UIFont *title1Font NS_AVAILABLE_IOS(9_0);
+@property (class, nonatomic, readonly) UIFont *title2Font NS_AVAILABLE_IOS(9_0);
+@property (class, nonatomic, readonly) UIFont *title3Font NS_AVAILABLE_IOS(9_0);
+@property (class, nonatomic, readonly) UIFont *headlineFont NS_AVAILABLE_IOS(7_0);
+@property (class, nonatomic, readonly) UIFont *subheadlineFont NS_AVAILABLE_IOS(7_0);
+@property (class, nonatomic, readonly) UIFont *bodyFont NS_AVAILABLE_IOS(7_0);
+@property (class, nonatomic, readonly) UIFont *calloutFont NS_AVAILABLE_IOS(9_0);
+@property (class, nonatomic, readonly) UIFont *footnoteFont NS_AVAILABLE_IOS(7_0);
+@property (class, nonatomic, readonly) UIFont *caption1Font NS_AVAILABLE_IOS(7_0);
+@property (class, nonatomic, readonly) UIFont *caption2Font NS_AVAILABLE_IOS(7_0);
 
 @end
 
