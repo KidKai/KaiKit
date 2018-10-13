@@ -23,7 +23,7 @@
 //
 
 #import "KKViewController.h"
-#import "KaiIpGlobals.h"
+#import "KaiTvGlobals.h"
 #import <AVKit/AVKit.h>
 #import "KKScanView.h"
 

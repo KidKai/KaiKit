@@ -23,6 +23,7 @@
 //
 
 #import "KKScanView.h"
+#import "KaiTvGlobals.h"
 #import "KaiIpGlobals.h"
 #import "KaiKitGlobals.h"
 #import "NSObject+KKDevice.h"

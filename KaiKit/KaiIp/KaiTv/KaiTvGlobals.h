@@ -1,5 +1,5 @@
 //
-//  UIBarButtonItem+KKAdditions.m
+//  KaiTvGlobals.h
 //
 //  Copyright (c) 2018 KidKai
 //
@@ -22,20 +22,19 @@
 //  SOFTWARE.
 //
 
-#import "UIBarButtonItem+KKAdditions.h"
-#import "KaiTvGlobals.h"
+#import <UIKit/UIKit.h>
 
-@implementation UIBarButtonItem (KKAdditions)
+NS_ASSUME_NONNULL_BEGIN
 
-- (UIBarButtonItem *)labeled
-{
-    UIBarButtonItem *barButtonItem = self;
-    barButtonItem.enabled = NO;
-    id aTintColor = playground().navigationController.navigationBar.tintColor;
-    id attributes = @{NSForegroundColorAttributeName:aTintColor};
-    [barButtonItem setTitleTextAttributes:attributes forState:UIControlStateNormal];
-    [barButtonItem setTitleTextAttributes:attributes forState:UIControlStateDisabled];
-    return barButtonItem;
-}
+CG_EXTERN CGRect  screenBounds(void);
+CG_EXTERN CGFloat screenWidth(void);
+CG_EXTERN CGFloat screenHeight(void);
 
-@end
+FOUNDATION_EXTERN NSString *sysVersion(void);
+FOUNDATION_EXTERN NSString *bundleName(void);
+FOUNDATION_EXTERN NSString *appVersion(void);
+
+UIKIT_EXTERN UIViewController * _Nullable rootground(void);
+UIKIT_EXTERN UIViewController * _Nullable playground(void);
+
+NS_ASSUME_NONNULL_END

@@ -7,7 +7,7 @@
 //
 
 #import "UIImage+Luban_iOS_Extension_h.h"
-#import "KaiIpGlobals.h"
+#import "KaiTvGlobals.h"
 #import <objc/runtime.h>
 
 @implementation UIImage (Luban_iOS_Extension_h)

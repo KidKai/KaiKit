@@ -24,68 +24,10 @@
 
 #import "KaiIpGlobals.h"
 
-CGRect screenBounds()
-{
-    return UIScreen.mainScreen.bounds;
-}
-
-CGFloat screenWidth()
-{
-    return CGRectGetWidth(screenBounds());
-}
-
-CGFloat screenHeight()
-{
-    return CGRectGetHeight(screenBounds());
-}
-
 CGFloat statusHeight()
 {
     UIApplication *app = UIApplication.sharedApplication;
     return CGRectGetHeight(app.statusBarFrame);
-}
-
-NSString *sysVersion()
-{
-    return UIDevice.currentDevice.systemVersion;
-}
-
-NSString *bundleName()
-{
-    id dict = NSBundle.mainBundle.infoDictionary;
-    return [dict valueForKey:@"CFBundleName"];
-}
-
-NSString *appVersion()
-{
-    NSDictionary *dict = NSBundle.mainBundle.infoDictionary;
-    return [dict valueForKey:@"CFBundleShortVersionString"];
-}
-
-static UIViewController *playgroundUnder(UIViewController *controller)
-{
-    if ([controller isKindOfClass:[UITabBarController classForCoder]]) {
-        UITabBarController *tab = (UITabBarController *)controller;
-        return playgroundUnder(tab.selectedViewController);
-    }
-    if ([controller isKindOfClass:[UINavigationController classForCoder]]) {
-        UINavigationController *nav = (UINavigationController *)controller;
-        return playgroundUnder(nav.visibleViewController);
-    }
-    UIViewController *presentedController = controller.presentedViewController;
-    if (presentedController) return playgroundUnder(presentedController);
-    return controller;
-}
-
-UIViewController *rootground()
-{
-    UIApplication *app = UIApplication.sharedApplication;
-    return app.keyWindow.rootViewController;
-}
-
-UIViewController *playground()
-{
-    return playgroundUnder(rootground());
 }
 
 void telephone(NSString *telephone)

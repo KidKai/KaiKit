@@ -15,128 +15,131 @@
  */
 
 import Foundation
-import WebKit
+#if os(iOS) || os(macOS)
+    import WebKit
 
-public class XWVScriptObject: XWVObject {
-    // asynchronized method calling
-    @objc public func construct(arguments: [Any]?, completionHandler: Handler) {
-        let expr = "new " + expression(forMethod: nil, arguments: arguments)
-        evaluateExpression(expr, completionHandler: completionHandler)
-    }
-
-    @objc public func call(arguments: [Any]?, completionHandler: Handler) {
-        let expr = expression(forMethod: nil, arguments: arguments)
-        evaluateExpression(expr, completionHandler: completionHandler)
-    }
-
-    @objc public func callMethod(_ name: String, with arguments: [Any]?, completionHandler: Handler) {
-        let expr = expression(forMethod: name, arguments: arguments)
-        evaluateExpression(expr, completionHandler: completionHandler)
-    }
-
-    // synchronized method calling
-    @objc public func construct(arguments: [Any]?) throws -> XWVScriptObject {
-        let expr = "new" + expression(forMethod: nil, arguments: arguments)
-        guard let result = try evaluateExpression(expr) as? XWVScriptObject else {
-            let code = WKError.javaScriptExceptionOccurred.rawValue
-            throw NSError(domain: WKErrorDomain, code: code, userInfo: nil)
-        }
-        return result
-    }
-
-    @objc public func call(arguments: [Any]?) throws -> Any {
-        return try evaluateExpression(expression(forMethod: nil, arguments: arguments))
-    }
-
-    @objc public func callMethod(_ name: String, with arguments: [Any]?) throws -> Any {
-        return try evaluateExpression(expression(forMethod: name, arguments: arguments))
-    }
-
-    // property manipulation
-    @objc public func defineProperty(_ name: String, descriptor: [String: Any]) throws -> Any {
-        let expr = "Object.defineProperty(\(namespace), \(name), \(jsonify(descriptor)!))"
-        return try evaluateExpression(expr)
-    }
-
-    @objc public func deleteProperty(_ name: String) -> Bool {
-        let expr = "delete " + expression(forProperty: name)
-        let result: Any? = try! evaluateExpression(expr)
-        return (result as? NSNumber)?.boolValue ?? false
-    }
-
-    @objc public func hasProperty(_ name: String) -> Bool {
-        let expr = expression(forProperty: name) + " != undefined"
-        let result: Any? = try! evaluateExpression(expr)
-        return (result as? NSNumber)?.boolValue ?? false
-    }
-
-    // property accessing
-    @objc public func value(for name: String) throws -> Any {
-        return try evaluateExpression(expression(forProperty: name))
-    }
-
-    @objc public func setValue(_ value: Any?, for name: String) {
-        guard let json = jsonify(value) else { return }
-        let script = expression(forProperty: name) + " = " + json
-        webView?.asyncEvaluateJavaScript(script, completionHandler: nil)
-    }
-
-    @objc public func value(at index: UInt) throws -> Any {
-        return try evaluateExpression("\(namespace)[\(index)]")
-    }
-
-    @objc public func setValue(_ value: Any?, at index: UInt) {
-        guard let json = jsonify(value) else { return }
-        let script = "\(namespace)[\(index)] = \(json)"
-        webView?.asyncEvaluateJavaScript(script, completionHandler: nil)
-    }
-
-    // expression generation
-    private func expression(forProperty name: String?) -> String {
-        guard let name = name else {
-            return namespace
+    public class XWVScriptObject: XWVObject {
+        // asynchronized method calling
+        @objc public func construct(arguments: [Any]?, completionHandler: Handler) {
+            let expr = "new " + expression(forMethod: nil, arguments: arguments)
+            evaluateExpression(expr, completionHandler: completionHandler)
         }
 
-        if name.isEmpty {
-            return "\(namespace)['']"
-        } else if let idx = Int(name) {
-            return "\(namespace)[\(idx)]"
-        } else {
-            return "\(namespace).\(name)"
+        @objc public func call(arguments: [Any]?, completionHandler: Handler) {
+            let expr = expression(forMethod: nil, arguments: arguments)
+            evaluateExpression(expr, completionHandler: completionHandler)
         }
-    }
 
-    private func expression(forMethod name: String?, arguments: [Any]?) -> String {
-        let args = arguments?.map { jsonify($0) ?? "" } ?? []
-        return expression(forProperty: name) + "(" + args.joined(separator: ", ") + ")"
-    }
-}
-
-@objc extension XWVScriptObject {
-    // Subscript as property accessor
-    public subscript(name: String) -> Any {
-        get {
-            return (try? value(for: name)) ?? undefined
+        @objc public func callMethod(_ name: String, with arguments: [Any]?, completionHandler: Handler) {
+            let expr = expression(forMethod: name, arguments: arguments)
+            evaluateExpression(expr, completionHandler: completionHandler)
         }
-        set {
-            setValue(newValue, for: name)
+
+        // synchronized method calling
+        @objc public func construct(arguments: [Any]?) throws -> XWVScriptObject {
+            let expr = "new" + expression(forMethod: nil, arguments: arguments)
+            guard let result = try evaluateExpression(expr) as? XWVScriptObject else {
+                let code = WKError.javaScriptExceptionOccurred.rawValue
+                throw NSError(domain: WKErrorDomain, code: code, userInfo: nil)
+            }
+            return result
+        }
+
+        @objc public func call(arguments: [Any]?) throws -> Any {
+            return try evaluateExpression(expression(forMethod: nil, arguments: arguments))
+        }
+
+        @objc public func callMethod(_ name: String, with arguments: [Any]?) throws -> Any {
+            return try evaluateExpression(expression(forMethod: name, arguments: arguments))
+        }
+
+        // property manipulation
+        @objc public func defineProperty(_ name: String, descriptor: [String: Any]) throws -> Any {
+            let expr = "Object.defineProperty(\(namespace), \(name), \(jsonify(descriptor)!))"
+            return try evaluateExpression(expr)
+        }
+
+        @objc public func deleteProperty(_ name: String) -> Bool {
+            let expr = "delete " + expression(forProperty: name)
+            let result: Any? = try! evaluateExpression(expr)
+            return (result as? NSNumber)?.boolValue ?? false
+        }
+
+        @objc public func hasProperty(_ name: String) -> Bool {
+            let expr = expression(forProperty: name) + " != undefined"
+            let result: Any? = try! evaluateExpression(expr)
+            return (result as? NSNumber)?.boolValue ?? false
+        }
+
+        // property accessing
+        @objc public func value(for name: String) throws -> Any {
+            return try evaluateExpression(expression(forProperty: name))
+        }
+
+        @objc public func setValue(_ value: Any?, for name: String) {
+            guard let json = jsonify(value) else { return }
+            let script = expression(forProperty: name) + " = " + json
+            webView?.asyncEvaluateJavaScript(script, completionHandler: nil)
+        }
+
+        @objc public func value(at index: UInt) throws -> Any {
+            return try evaluateExpression("\(namespace)[\(index)]")
+        }
+
+        @objc public func setValue(_ value: Any?, at index: UInt) {
+            guard let json = jsonify(value) else { return }
+            let script = "\(namespace)[\(index)] = \(json)"
+            webView?.asyncEvaluateJavaScript(script, completionHandler: nil)
+        }
+
+        // expression generation
+        private func expression(forProperty name: String?) -> String {
+            guard let name = name else {
+                return namespace
+            }
+
+            if name.isEmpty {
+                return "\(namespace)['']"
+            } else if let idx = Int(name) {
+                return "\(namespace)[\(idx)]"
+            } else {
+                return "\(namespace).\(name)"
+            }
+        }
+
+        private func expression(forMethod name: String?, arguments: [Any]?) -> String {
+            let args = arguments?.map { jsonify($0) ?? "" } ?? []
+            return expression(forProperty: name) + "(" + args.joined(separator: ", ") + ")"
         }
     }
 
-    public subscript(index: UInt) -> Any {
-        get {
-            return (try? value(at: index)) ?? undefined
+    @objc extension XWVScriptObject {
+        // Subscript as property accessor
+        public subscript(name: String) -> Any {
+            get {
+                return (try? value(for: name)) ?? undefined
+            }
+            set {
+                setValue(newValue, for: name)
+            }
         }
-        set {
-            setValue(newValue, at: index)
-        }
-    }
-}
 
-class XWVWindowObject: XWVScriptObject {
-    private let origin: XWVObject
-    init(webView: WKWebView) {
-        origin = XWVObject(namespace: "XWVPlugin.context", webView: webView)
-        super.init(namespace: "window", origin: origin)
+        public subscript(index: UInt) -> Any {
+            get {
+                return (try? value(at: index)) ?? undefined
+            }
+            set {
+                setValue(newValue, at: index)
+            }
+        }
     }
-}
+
+    class XWVWindowObject: XWVScriptObject {
+        private let origin: XWVObject
+        init(webView: WKWebView) {
+            origin = XWVObject(namespace: "XWVPlugin.context", webView: webView)
+            super.init(namespace: "window", origin: origin)
+        }
+    }
+
+#endif

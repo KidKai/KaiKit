@@ -7,14 +7,15 @@
 
 #import "WebViewJavascriptBridgeBase.h"
 
-#if (__MAC_OS_X_VERSION_MAX_ALLOWED > __MAC_10_9 \
-|| __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_1)
+#if (__MAC_OS_X_VERSION_MAX_ALLOWED > __MAC_10_9 || WK_API_ENABLED)
 #define supportsWKWebView
 #endif
 
 #ifdef supportsWKWebView
 #import <WebKit/WebKit.h>
 #endif
+
+#if !TARGET_OS_TV
 
 #ifdef __MAC_OS_X_VERSION_MAX_ALLOWED
 #define WVJB_PLATFORM_OSX
@@ -53,3 +54,5 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+
+#endif

@@ -17,6 +17,8 @@
 #define WVJB_WEAK __unsafe_unretained
 #endif
 
+#if !TARGET_OS_TV
+
 @implementation WebViewJavascriptBridge {
     WVJB_WEAK WVJB_WEBVIEW_TYPE *_webView;
     WVJB_WEAK id _webViewDelegate;
@@ -201,3 +203,5 @@
 #endif
 
 @end
+
+#endif

@@ -15,58 +15,61 @@
  */
 
 import Foundation
-import WebKit
+#if os(iOS) || os(macOS)
+    import WebKit
 
-class XWVUserScript {
-    weak var webView: WKWebView?
-    let script: WKUserScript
-    let cleanup: String?
+    class XWVUserScript {
+        weak var webView: WKWebView?
+        let script: WKUserScript
+        let cleanup: String?
 
-    init(webView: WKWebView, script: WKUserScript, cleanup: String? = nil) {
-        self.webView = webView
-        self.script = script
-        self.cleanup = cleanup
-        inject()
-    }
+        init(webView: WKWebView, script: WKUserScript, cleanup: String? = nil) {
+            self.webView = webView
+            self.script = script
+            self.cleanup = cleanup
+            inject()
+        }
 
-    convenience init(webView: WKWebView, script: WKUserScript, namespace: String) {
-        self.init(webView: webView, script: script, cleanup: "delete \(namespace)")
-    }
+        convenience init(webView: WKWebView, script: WKUserScript, namespace: String) {
+            self.init(webView: webView, script: script, cleanup: "delete \(namespace)")
+        }
 
-    deinit {
-        eject()
-    }
+        deinit {
+            eject()
+        }
 
-    private func inject() {
-        guard let webView = webView else { return }
+        private func inject() {
+            guard let webView = webView else { return }
 
-        // add to userContentController
-        webView.configuration.userContentController.addUserScript(script)
+            // add to userContentController
+            webView.configuration.userContentController.addUserScript(script)
 
-        // inject into current context
-        if webView.url != nil {
-            webView.evaluateJavaScript(script.source) {
-                if let error = $1 {
-                    log("!Failed to inject script. \(error)")
+            // inject into current context
+            if webView.url != nil {
+                webView.evaluateJavaScript(script.source) {
+                    if let error = $1 {
+                        log("!Failed to inject script. \(error)")
+                    }
                 }
+            }
+        }
+
+        private func eject() {
+            guard let webView = webView else { return }
+
+            // remove from userContentController
+            let controller = webView.configuration.userContentController
+            let userScripts = controller.userScripts
+            controller.removeAllUserScripts()
+            userScripts.forEach {
+                if $0 != self.script { controller.addUserScript($0) }
+            }
+
+            if webView.url != nil, let cleanup = cleanup {
+                // clean up in current context
+                webView.evaluateJavaScript(cleanup, completionHandler: nil)
             }
         }
     }
 
-    private func eject() {
-        guard let webView = webView else { return }
-
-        // remove from userContentController
-        let controller = webView.configuration.userContentController
-        let userScripts = controller.userScripts
-        controller.removeAllUserScripts()
-        userScripts.forEach {
-            if $0 != self.script { controller.addUserScript($0) }
-        }
-
-        if webView.url != nil, let cleanup = cleanup {
-            // clean up in current context
-            webView.evaluateJavaScript(cleanup, completionHandler: nil)
-        }
-    }
-}
+#endif
