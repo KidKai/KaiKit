@@ -55,6 +55,14 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self
+     name:UIApplicationDidBecomeActiveNotification
+     object:nil];
+}
+
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];
