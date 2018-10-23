@@ -5,6 +5,8 @@
 //  Copyright (c) 2014 @LokiMeyburg. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+
 NS_ASSUME_NONNULL_BEGIN
 
 #define kOldProtocolScheme @"wvjbscheme"

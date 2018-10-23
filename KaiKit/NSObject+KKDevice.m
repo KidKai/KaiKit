@@ -23,6 +23,7 @@
 //
 
 #include <sys/sysctl.h>
+#import <Foundation/Foundation.h>
 
 static NSString *sysinfobyname(char *name)
 {
