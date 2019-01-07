@@ -32,7 +32,7 @@ static NSHashTable *g_webViews = nil;
     
     void (^notifyDidCreateJavaScriptContext)(void) = ^{
         for (UIWebView *webView in g_webViews) {
-            NSString *cookie = [NSString stringWithFormat:@"ts_jscWebView_%lud", webView.hash];
+            NSString *cookie = [NSString stringWithFormat:@"ts_jscWebView_%lud", (unsigned long)webView.hash];
             NSString *script = [NSString stringWithFormat:@"var %@ = '%@'", cookie, cookie];
             [webView stringByEvaluatingJavaScriptFromString:script];
             
